@@ -1,0 +1,26 @@
+{
+	"admin@optima.org.in": {
+		"password": "Tech@Optima",
+		"role": 4
+	},
+	"finance@optima.org.in": {
+		"password": "Optima@Razor2025",
+		"role": 3
+	},
+	"regdesk@optima.org.in": {
+		"password": "Arena@Optima",
+		"role": 2.5
+	},
+	"heads@optima.org.in": {
+		"password": "Optima@ISE51",
+		"role": 2
+	},
+	"ctms@optima.org.in": {
+		"password": "Optima@2025",
+		"role": 1
+	}
+}
+
+
+
+

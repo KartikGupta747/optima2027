@@ -1,0 +1,28 @@
+@keyframes workshop-shine {
+	0% {
+	  transform: translate(-100%, -100%) rotate(30deg);
+	  opacity: 0.5;
+	}
+	100% {
+	  transform: translate(200%, 200%) rotate(30deg);
+	  opacity: 0;
+	}
+  }
+  
+  .workshop-shine::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(
+	  120deg,
+	  rgba(255, 255, 255, 0.2) 20%,
+	  rgba(255, 255, 255, 0.6) 50%,
+	  rgba(255, 255, 255, 0.2) 80%
+	);
+	transform: translate(-100%, -100%) rotate(30deg);
+	animation: workshop-shine 4s infinite ease-in-out;
+  }
+  

@@ -1,0 +1,245 @@
+/* * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+} */
+
+/* #footer... */
+#optima-footer {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(25deg, #100430, #682191);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}
+
+.optima-footer-about-portion {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.optima-footer-about-portion img {
+    width: 310px;
+    /* margin-left: 10px; */
+}
+
+.optima-footer-about-portion p {
+    margin: 10px 0;
+}
+
+.optima-footer-social-handles {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 25px;
+    font-size: 2.2rem;
+    margin-top: 20px;
+}
+
+.quick-links-contact-us {
+    width: 67%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.optima-footer-quick-links {
+    width: 50%;
+}
+
+.optima-footer-quick-links li {
+    margin: 5px;
+    list-style-type: none;
+    position: relative;
+    /*Remove this to get enhaced view of hover effect*/
+    padding-left: 4px;
+}
+
+.optima-footer-quick-links li:hover {
+    color: #F47621;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.optima-footer-quick-links li::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 80%;
+    width: 1px;
+    /* background: linear-gradient(45deg, #9a4eff, #24ff72); */
+    transform: translateX(50%);
+}
+
+.optima-footer-quick-links li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* background: linear-gradient(45deg, #9a4eff, #24ff72); */
+    transform: translateY(50%);
+}
+
+.optima-footer-contact-us {
+    width: 50%;
+}
+
+.optima-footer-contact-us div a {
+    color: white;
+    text-decoration: none;
+}
+
+.optima-footer-contact-us div {
+    margin: 5px;
+}
+
+.optima-footer-hovered {
+    display: none;
+}
+
+.optima-footer-hovered:hover {
+    color: #F47621;
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+.optima-footer-location:hover .optima-footer-normal,
+.optima-footer-call:hover .optima-footer-normal,
+.optima-footer-mail1:hover .optima-footer-normal,
+.optima-footer-mail2:hover .optima-footer-normal,
+.optima-footer-fb:hover .optima-footer-normal,
+.optima-footer-ig:hover .optima-footer-normal,
+.optima-footer-in:hover .optima-footer-normal {
+    display: none;
+}
+
+.optima-footer-location:hover .optima-footer-hovered,
+.optima-footer-call:hover .optima-footer-hovered,
+.optima-footer-mail1:hover .optima-footer-hovered,
+.optima-footer-mail2:hover .optima-footer-hovered,
+.optima-footer-fb:hover .optima-footer-hovered,
+.optima-footer-ig:hover .optima-footer-hovered,
+.optima-footer-in:hover .optima-footer-hovered {
+    display: block;
+}
+
+@media (max-width: 970px) {
+    #optima-footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 25px 50px;
+    }
+
+    .optima-footer-about-portion {
+        width: 100%;
+        /* padding: 10px; */
+        box-sizing: border-box;
+    }
+    .optima-footer-social-handles {
+        margin-bottom: 15px;
+    }
+    .quick-links-contact-us {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .optima-footer-quick-links {
+        width: 50%;
+        /* padding: 15px; */
+    }
+
+    .optima-footer-contact-us {
+        width: 50%;
+        /* padding: 15px; */
+        /* margin-right: 10px; */
+    }
+
+}
+
+@media (max-width: 600px) {
+    #optima-footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 20px;
+    }
+    .optima-footer-about-portion {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .quick-links-contact-us {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* .optima-footer-quick-ways {
+        width: 37%;
+        padding: 15px;
+    } */
+    .optima-footer-quick-links{
+        display: none;
+    }
+    .optima-footer-contact-us {
+        width: 100%;
+        padding: 15px;
+        margin-right: 15px;
+    }
+}
+@media (max-width:533px) {
+    #optima-footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 7px 14px;
+    }
+}
+@media (max-width: 457px) {
+    #optima-footer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 15px 30px;
+    }
+
+    .optima-footer-about-portion {
+        width: 100%;
+        /* padding: 8px; */
+        box-sizing: border-box;
+        align-items: center;
+    }
+
+    .quick-links-contact-us {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+    }
+
+    .optima-footer-quick-links {
+        align-self: center;
+        width: 100%;
+        /* padding: 8px; */
+    }
+
+    .optima-footer-contact-us {
+        align-self: center;
+        width: 100%;
+    }
+}
+@media (max-width: 332px) {
+    .optima-footer-quick-links{
+        display: none;
+    }
+}

@@ -1,0 +1,101 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.optima-team-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 50px;
+  column-gap: 20px;
+  color: white;
+  /* background: #6b6ea4; */
+  /* background: linear-gradient(25deg, #19064d, #a72693); */
+}
+
+.optima-team-executives,
+.optima-team-core-heads {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.optima-team-executives .optima-team-members,
+.optima-team-core-heads .optima-team-members {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  column-gap: 20px;
+}
+
+.optima-team-executives h1,
+.optima-team-core-heads h1 {
+  width: 290px;
+  /* height: 50px; */
+  /* background: linear-gradient(-45deg, #9a4eff, #24ff72); */
+  /* background: linear-gradient(25deg, #19064d, #a72693); */
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+.optima-shani-card-odd {
+  animation: slideOut 1s ease-out;
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.optima-shani-card-even {
+  animation: slideIn 1s ease-out;
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .optima-team-executives h1,
+  .optima-team-core-heads h1 {
+    width: 300px;
+  }
+
+  .card {
+    width: 300px;
+    height: 410px;
+  }
+
+  .front img {
+    height: 290px;
+    width: 280px;
+  }
+}
+@media (max-width: 332px) {
+  .optima-team-executives h1,
+  .optima-team-core-heads h1 {
+    width: 265px;
+  }
+}
