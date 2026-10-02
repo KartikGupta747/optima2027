@@ -58,7 +58,7 @@ const Sponsors = () => {
           transition={{ delay: 0.8 }}
           className="mt-20"
         >
-          <a href="mailto:sumanta@optima.org.in" className="text-slate-400 hover:text-cyan-400 font-mono text-sm tracking-widest uppercase transition-colors border-b border-white/20 pb-1 hover:border-cyan-400">
+          <a href="mailto:KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in" className="text-slate-400 hover:text-cyan-400 font-mono text-sm tracking-widest uppercase transition-colors border-b border-white/20 pb-1 hover:border-cyan-400">
             Become a Partner
           </a>
         </motion.div>

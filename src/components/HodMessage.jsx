@@ -64,7 +64,7 @@ const HodMessage = () => {
                 <img
                   src={chair}
                   alt="hod"
-                  className="rounded-3xl w-40 lg:w-48"
+                  className="rounded-3xl w-40 h-40 lg:w-48 lg:h-48 object-cover object-top"
                 />
                 <h1 className="">Prof. Goutam Sen</h1>
                 <div className="flex gap-5">
@@ -92,7 +92,7 @@ const HodMessage = () => {
                 <img
                   src={cochair}
                   alt="hod"
-                  className="rounded-3xl w-40 lg:w-48"
+                  className="rounded-3xl w-40 h-40 lg:w-48 lg:h-48 object-cover object-top"
                 />
                 <h1>Prof. Subhajit Sidhanta</h1>
                 <div className="gap-5 flex">

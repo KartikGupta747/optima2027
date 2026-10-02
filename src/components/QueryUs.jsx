@@ -78,35 +78,35 @@ const QueryUs = () => {
                 IIT Kharagpur - 721302
               </a>
               <div className="flex flex-col gap-0 mb-4">
-                <a href="tel:+916370708967">
+                <a href="tel:+919835075835">
                   <FontAwesomeIcon
                     icon={faPhone}
                     style={{ color: "#9333ea" }}
                   />
-                  <span className="pl-2">+91 6370708967</span>
+                  <span className="pl-2">+91 98350 75835</span>
                 </a>
-                <a href="tel:+917027000295">
+                <a href="tel:+918484050146">
                   <FontAwesomeIcon
                     icon={faPhone}
                     style={{ color: "#9333ea" }}
                   />
-                  <span className="pl-2">+91 7027000295</span>
+                  <span className="pl-2">+91 84840 50146</span>
                 </a>
               </div>
               <div className="flex flex-col gap-0 mb-4">
-                <a href="mailto:sumanta@optima.org.in">
+                <a href="mailto:KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in">
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     style={{ color: "#9333ea" }}
                   />{" "}
-                  sumanta@optima.org.in
+                  KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in
                 </a>
-                <a href="mailto:baranwalsanchay01@gmail.com">
+                <a href="mailto:ANORAANKUR.24@kgpian.iitkgp.ac.in">
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     style={{ color: "#9333ea" }}
                   />{" "}
-                  sanchay@optima.org.in
+                  ANORAANKUR.24@kgpian.iitkgp.ac.in
                 </a>
               </div>
               <h1 className="mb-3">Get connected with us:</h1>

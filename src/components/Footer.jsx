@@ -104,44 +104,44 @@ const Footer = () => {
 								<div className="optima-footer-call pb-1">
 									<a
 										className="optima-footer-normal"
-										href={`tel:+916370708967`}
+										href={`tel:+919835075835`}
 										target="_blank"
 									>
 										<FontAwesomeIcon icon={faPhone} />
 										<span className="pl-2">
-											+91 6370708967
+											+91 98350 75835
 										</span>
 									</a>
 									<a
 										className="optima-footer-hovered"
-										href={`tel:+916370708967`}
+										href={`tel:+919835075835`}
 										target="_blank"
 									>
 										<FontAwesomeIcon icon={faPhone} shake />
 										<span className="pl-2">
-											+91 6370708967
+											+91 98350 75835
 										</span>
 									</a>
 								</div>
 								<div className="optima-footer-mail1 pb-1">
 									<a
 										className="optima-footer-normal"
-										href={`mailto:sumanta@optima.org.in`}
+										href={`mailto:KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in`}
 										target="_blank"
 									>
 										<FontAwesomeIcon icon={faEnvelope} />{" "}
-										sumanta@optima.org.in
+										KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in
 									</a>
 									<a
 										className="optima-footer-hovered"
-										href={`mailto:sumanta@optima.org.in`}
+										href={`mailto:KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in`}
 										target="_blank"
 									>
 										<FontAwesomeIcon
 											icon={faEnvelope}
 											beat
 										/>{" "}
-										sumanta@optima.org.in
+										KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in
 									</a>
 								</div>
 								{/* <div className="optima-footer-mail2">

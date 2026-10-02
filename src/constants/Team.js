@@ -1,5 +1,6 @@
 import exec1 from "../assets/Team/Saharsh.webp";
 import exec2 from "../assets/Team/Vivek.webp";
+
 import core9 from "../assets/Team/Mayank.webp";
 import core8 from "../assets/Team/Manasvi.webp";
 import core7 from "../assets/Team/Debdulal.webp";
@@ -10,6 +11,16 @@ import core3 from "../assets/Team/Shreya.webp";
 import core2 from "../assets/Team/Sumanta.webp";
 import core1 from "../assets/Team/Sanchay.webp";
 
+import head1 from "../assets/Team/Swabhiman.webp";
+import head2 from "../assets/Team/Kshitij_Reddy.webp";
+import head3 from "../assets/Team/Kartik.webp";
+import head4 from "../assets/Team/Anora_Ankur.webp";
+import head5 from "../assets/Team/Janmejay_Bhuyan.webp";
+import head6 from "../assets/Team/Hemakiran_B.webp";
+import head7 from "../assets/Team/Kshitij_Nayan.webp";
+import head8 from "../assets/Team/Srinithya.webp";
+
+/* EXECUTIVES */
 export const Executives = [
 	{
 		id: 1,
@@ -35,8 +46,96 @@ export const Executives = [
 	},
 ];
 
-// eslint-disable-next-line no-sparse-arrays
+/* =========================
+   OPTIMA 2027 HEADS (Ordered)
+========================= */
 export const CoreHeads = [
+	{
+		id: 1,
+		imageUrl: head7,
+		name: "Kshitij Nayan",
+		positionName: "Outreach and Media",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/kshitij-nayan--/",
+			mail: "mailto:KSHITIJ.NAYAN.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 2,
+		imageUrl: head4,
+		name: "Anora Ankur",
+		positionName: "Event and Spons",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/anora-ankur-k-8a6a29330/",
+			mail: "mailto:ANORAANKUR.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 3,
+		imageUrl: head5,
+		name: "Janmejay Bhuyan",
+		positionName: "Spons",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/janmejaybhuyan/",
+			mail: "mailto:JANMEJAYBHUYAN4.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 4,
+		imageUrl: head2,
+		name: "Kshitij Reddy",
+		positionName: "Spons",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/kshitijreddymokila/",
+			mail: "mailto:KSHITIJREDDY5.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 5,
+		imageUrl: head8,
+		name: "Srinithya",
+		positionName: "Spons",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/yerukala-srinithya-80971234b/",
+			mail: "mailto:YSRINITHYA27.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 6,
+		imageUrl: head6,
+		name: "Hemakiran B",
+		positionName: "Design and Finance",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/hemkir/",
+			mail: "mailto:hk.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 7,
+		imageUrl: head3,
+		name: "Kartik Gupta",
+		positionName: "Tech",
+		socialLinks: {
+			linkedin: "http://linkedin.com/in/kartik-gupta-79292b2a5/",
+			mail: "mailto:kartikg771.24@kgpian.iitkgp.ac.in",
+		},
+	},
+	{
+		id: 8,
+		imageUrl: head1,
+		name: "Swabhiman Nayak",
+		positionName: "Tech",
+		socialLinks: {
+			linkedin: "https://www.linkedin.com/in/swabhiman-nayak/",
+			mail: "mailto:swabhimannayak.24@kgpian.iitkgp.ac.in",
+		},
+	},
+];
+
+/* =========================
+   PREVIOUS YEAR'S HEADS
+========================= */
+export const PreviousYearHeads = [
 	{
 		id: 1,
 		imageUrl: core2,
@@ -72,7 +171,6 @@ export const CoreHeads = [
 			mail: "mailto:swetank.shandilya.iitkgp@gmail.com",
 		},
 	},
-	,
 	{
 		id: 4,
 		imageUrl: core8,
@@ -103,7 +201,7 @@ export const CoreHeads = [
 		socialLinks: {
 			facebook: "https://www.facebook.com/share/18hRA7y8rK/",
 			linkedin:
-				"https://www.linkedin.com/in/shreya-das-448281255?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+				"https://www.linkedin.com/in/shreya-das-448281255",
 			mail: "mailto:shreya.das.iitkgp@gmail.com",
 		},
 	},
@@ -125,7 +223,7 @@ export const CoreHeads = [
 		positionName: "Tech Head",
 		socialLinks: {
 			facebook:
-				"https://www.facebook.com/suranjan.karmakar.750?mibextid=ZbWKwL",
+				"https://www.facebook.com/suranjan.karmakar.750",
 			linkedin: "https://www.linkedin.com/in/suranjan-karmakar1207",
 			mail: "mailto:suranjan.karmakar.iitkgp@gmail.com",
 		},

@@ -10,8 +10,8 @@
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 285px;
+  height: 390px;
 }
 
 .optima-card-side {
@@ -25,7 +25,7 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 10px;
-  padding: 20px;
+  padding: 18px;
   overflow: hidden;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -48,8 +48,8 @@
 }
 
 .optima-card-front img {
-  height: 220px;
-  width: 220px;
+  height: 210px;
+  width: 210px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -77,7 +77,6 @@
 }
 
 .optima-card-back-contact a {
-  /* color: rgba(255, 255, 255, 0.8); */
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -99,15 +98,14 @@
 }
 
 @media (max-width: 332px) {
-
   .optima-card,
   .optima-card-side {
-    width: 265px;
-    height: 375px;
+    width: 260px;
+    height: 360px;
   }
 
   .optima-card-front img {
-    height: 205px;
-    width: 205px;
+    height: 190px;
+    width: 190px;
   }
 }
