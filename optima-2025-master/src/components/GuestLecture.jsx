@@ -13,7 +13,7 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { LuAlarmClock } from "react-icons/lu";
 
 const GuestLecture = () => {
-	document.title = "Guest Lectures | Optima 2025";
+	document.title = "Guest Lectures | Optima 2027";
 	const text = "Many-More-Stars-Are-On-Their-Way!";
 	const chars = text.split("");
 

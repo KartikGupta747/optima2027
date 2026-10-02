@@ -25,7 +25,7 @@ const Hero = () => {
             {` `}
             <span className="inline-block relative">
               <span className="bg-gradient-to-r from-orange-500 to-red-600 text-transparent bg-clip-text">
-                Optima 2025
+                Optima 2027
               </span>{" "}
               <img
                 src={curve}
@@ -39,7 +39,7 @@ const Hero = () => {
 
           <p className="max-w-5xl mx-auto mb-6 md:text-lg text-gray-200 lg:mb-8">
             IIT Kharagpur's renowned Techno-Optimization Fest, Optima, is back
-            from 7th-9th March 2025, proudly organized by the Department of
+            from 7th-9th March 2027, proudly organized by the Department of
             Industrial&nbsp;and&nbsp;Systems Engineering.
           </p>
 

@@ -11,7 +11,7 @@ import Section from "./Section.jsx";
 import { GradientLight } from "./design/Benefits.jsx";
 
 const Schedule = () => {
-	document.title = "Schedule | Optima 2025";
+	document.title = "Schedule | Optima 2027";
 	const parallaxRef = useRef(null);
 	const [day, setDay] = useState(0);
 	return (

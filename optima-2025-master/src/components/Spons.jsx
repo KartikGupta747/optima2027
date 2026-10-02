@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 
 // Separate data into a new file: src/data/sponsorsData.js
 const SPONSORS_DATA = {
-  2025: {
-    title: "Optima 2025 Sponsors",
+  2027: {
+    title: "Optima 2027 Sponsors",
     categories: {
       titleSponsor: {
         name: "Title Sponsor",
@@ -261,9 +261,9 @@ const SponsCard = ({ imageUrl, size = "sm" }) => {
 
 // Main Spons component
 // const Spons = () => {
-//   const [activeTab, setActiveTab] = useState("2025");
+//   const [activeTab, setActiveTab] = useState("2027");
 //   const tabs = [
-//     { id: "2025", label: "2024-2025" },
+//     { id: "2027", label: "2024-2027" },
 //     { id: "2023", label: "2023-2024" },
 //     { id: "previous", label: "Previous" },
 //   ];
@@ -332,8 +332,8 @@ const SponsCard = ({ imageUrl, size = "sm" }) => {
 // };
 
 const Spons = () => {
-  document.title = "Sponsors | Optima 2025";
-  const [activeTab, setActiveTab] = useState("2025");
+  document.title = "Sponsors | Optima 2027";
+  const [activeTab, setActiveTab] = useState("2027");
 
   return (
     <Section id="spons">
@@ -345,8 +345,8 @@ const Spons = () => {
         <BackgroundCircles />
         <div className="flex flex-col md:flex-row w-36  mx-auto md:w-auto md:justify-center gap-4 mb-8">
           <SelectButton
-            active={activeTab === "2025"}
-            onClick={() => setActiveTab("2025")}
+            active={activeTab === "2027"}
+            onClick={() => setActiveTab("2027")}
           >
             2024-2025
           </SelectButton>
@@ -364,12 +364,12 @@ const Spons = () => {
           </SelectButton>
         </div>
         {/* Hardcoded Content Based on Selection */}
-        {activeTab === "2025" && (
+        {activeTab === "2027" && (
           // <div className="flex justify-center z-0">
           // 	<ComingSoon /> {/* dummy */}
           // </div>
           <div className="space-y-10">
-            {Object.entries(SPONSORS_DATA["2025"].categories).map(
+            {Object.entries(SPONSORS_DATA["2027"].categories).map(
               ([key, category]) => (
                 <SponsorCategory
                   key={key}

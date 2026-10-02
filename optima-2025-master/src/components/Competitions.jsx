@@ -13,7 +13,7 @@ import { grid } from "../assets";
 import { PiNoteDuotone } from "react-icons/pi";
 
 const Competitions = () => {
-	document.title = "Competitions | Optima 2025";
+	document.title = "Competitions | Optima 2027";
 	return (
 		<Section id="competitions">
 			<div className="container relative z-2">

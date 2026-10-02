@@ -52,7 +52,7 @@ const WorkshopDescription = ({ text }) => {
 };
 
 const Workshops = () => {
-  document.title = "Workshops | Optima 2025";
+  document.title = "Workshops | Optima 2027";
 
   return (
     <Section id="workshops">

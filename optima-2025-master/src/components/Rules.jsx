@@ -11,7 +11,7 @@ import {
 } from "../constants/Rules";
 import { Gradient } from "./design/Roadmap";
 const Rules = () => {
-	document.title = "Rules | Optima 2025";
+	document.title = "Rules | Optima 2027";
 	return (
 		<Section id="rules">
 			<div className="container relative z-2">

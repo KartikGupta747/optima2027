@@ -12,7 +12,7 @@ const About_home = () => {
 				<div className="w-full lg:w-1/2 max-w-[28rem] text-center lg:text-left space-y-6">
 					<div>
 						<h2 className="text-2xl md:text-3xl font-bold">
-							Optima 2025
+							Optima 2027
 						</h2>
 						<h3 className="text-xl mt-1 md:text-xl font-semibold text-gray-300">
 							Department of Industrial and Systems Engineering
@@ -45,7 +45,7 @@ const About_home = () => {
 						<div className="flex items-center justify-center w-[6rem] sm:w-[8rem] md:w-60 aspect-square border border-gray-300 rounded-full">
 							<div className="w-[3rem] sm:w-[4rem] md:w-[6rem] aspect-square bg-gray-100 flex items-center justify-center rounded-full">
 								<img
-									src="/logo-optima.webp"
+									src="/favicon.webp"
 									width={70}
 									height={70}
 									alt="logo-optima"

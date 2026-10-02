@@ -30,13 +30,13 @@ import Rules from "./components/Rules";
 import WelcomeScreen from "./components/WelcomeScreen";
 
 const App = () => {
-	const [showSplash, setShowSplash] = useState(false);
+	const [showSplash, setShowSplash] = useState(() => {
+		const splashPlayed = sessionStorage.getItem("splashPlayed");
+		return !splashPlayed;
+	});
 
 	useEffect(() => {
-		const splashPlayed = sessionStorage.getItem("splashPlayed");
-		if (!splashPlayed) {
-			setShowSplash(true);
-		}
+		// Initial state already handled in useState
 	}, []);
 
 	const handleSplashComplete = () => {

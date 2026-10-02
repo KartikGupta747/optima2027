@@ -1,7 +1,7 @@
 import Section from "./Section";
-import hod from "../assets/HodMessage/hod.webp";
+import hod from "../assets/HodMessage/hod.png";
 import chair from "../assets/HodMessage/chairman.webp";
-import cochair from "../assets/HodMessage/cochairman.webp";
+import cochair from "../assets/HodMessage/cochairman.png";
 import { Gradient } from "./design/Services";
 import { FaEnvelope, FaLinkedin } from "react-icons/fa";
 
@@ -21,14 +21,14 @@ const HodMessage = () => {
                 <img src={hod} alt="hod" className="rounded-3xl w-40 lg:w-48" />
               </div>
               <h1 className="text-xl lg:text-2xl font-semibold mt-2">
-                Prof. Jhareshwar Maiti
+                Prof. Jitendra Kumar Jha
               </h1>
               <p className="p-4 text-n-2 md:text-lg lg:p-8">
                 {/* <span className="text-purple-500 font-semibold text-4xl">
                   ✎...{" "}
                 </span> */}
                 "As the Department of Industrial and Systems Engineering marks
-                its 52th anniversary, I am delighted to present to you Optima 2025,
+                its 54th anniversary, I am delighted to present to you Optima 2027,
                 the techno-optimization fest of IIT Kharagpur, meticulously
                 organised by our department. Optima offers a distinctive
                 platform for students to delve into this domain and experience
@@ -94,18 +94,18 @@ const HodMessage = () => {
                   alt="hod"
                   className="rounded-3xl w-40 lg:w-48"
                 />
-                <h1>Prof. Abhishek Sharma</h1>
+                <h1>Prof. Subhajit Sidhanta</h1>
                 <div className="gap-5 flex">
                   <a
                     className="text-3xl hover:text-purple-500 transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:shadow-white"
-                    href="mailto:abhishek@iem.iitkgp.ac.in"
+                    href="mailto:subhajit@iem.iitkgp.ac.in"
                     target="_blank"
                   >
                     <FaEnvelope />
                   </a>
                   <a
                     className="text-3xl hover:text-purple-500 transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl hover:shadow-white"
-                    href="https://www.linkedin.com/in/abhishek-sharma-44797884/?originalSubdomain=in"
+                    href="https://www.linkedin.com/in/subhajit-sidhanta-0902167/"
                     target="_blank"
                   >
                     <FaLinkedin />
@@ -114,7 +114,7 @@ const HodMessage = () => {
               </div>
             </div>
           </div>
-          <Gradient/>
+          <Gradient />
         </div>
       </div>
     </Section>

@@ -5,7 +5,7 @@ import About_home from "./About_Home";
 import Testimonial from "./Testimonial";
 import Section from "./Section";
 const Homepage = () => {
-	document.title = "Optima 2025 | IIT Kharagpur";
+	document.title = "Optima 2027 | IIT Kharagpur";
 	return (
 		<>
 			<Section className="pt-[5rem] -mt-[5.25rem]" id="hero">

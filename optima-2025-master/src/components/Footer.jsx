@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/optima2025-logo.png";
+import logo from "../assets/optima2027-logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faEnvelope,
@@ -241,7 +241,7 @@ const Footer = () => {
 					</div>
 				</section>
 				<div className="text-xs sm:text-sm md:text-md lg:text-lg text-gray-400 text-center">
-					&copy; Optima 2025 | All Rights Reserved.
+					&copy; Optima 2027 | All Rights Reserved.
 				</div>
 			</footer>
 		</div>

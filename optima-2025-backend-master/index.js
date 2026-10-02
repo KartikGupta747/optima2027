@@ -46,7 +46,7 @@ mongoose
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to the Optima 2025 Backend API",
+    message: "Welcome to the Optima 2027 Backend API",
     status: 200,
   });
 });

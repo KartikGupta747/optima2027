@@ -7,13 +7,13 @@ import Button from "./Button";
 import { BackgroundCircles } from "./design/Hero";
 
 const About = () => {
-	document.title = "About | Optima 2025";
+	document.title = "About | Optima 2027";
 	return (
 		<Section id="about">
 			<div className="container md:pb-10">
 				<Heading
 					className="md:max-w-md lg:max-w-2xl text-center mb-6"
-					title="Optima 2025"
+					title="Optima 2027"
 				/>
 				<BackgroundCircles />
 
@@ -53,7 +53,7 @@ const About = () => {
 									challenges across sectors like supply chain
 									management, production line optimization,
 									and more. The event, from 7th - 9th March
-									2025, offers a rich mix of competitions,
+									2027, offers a rich mix of competitions,
 									workshops, seminars, and interactive
 									sessions, driving sustainable advancements,
 									efficiencies, and productivity.

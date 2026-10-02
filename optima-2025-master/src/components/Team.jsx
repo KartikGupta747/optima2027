@@ -9,7 +9,7 @@ import { Gradient } from "./design/Services.jsx";
 ("use client");
 
 const Team = () => {
-	document.title = "Team | Optima 2025";
+	document.title = "Team | Optima 2027";
 	const parallaxRef = useRef(null);
 	return (
 		<Section id="team">

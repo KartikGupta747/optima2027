@@ -8,7 +8,7 @@ import GuestLec from "./design/GuestLec";
 import { BackgroundCircles } from "./design/Hero.jsx";
 
 const Gallery = () => {
-	document.title = "Gallery | Optima 2025";
+	document.title = "Gallery | Optima 2027";
 	return (
 		<Section id="gallery">
 			<div className="container mx-auto px-4 relative z-2">

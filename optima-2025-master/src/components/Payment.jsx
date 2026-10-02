@@ -15,7 +15,7 @@ import Loading from "./design/Loading";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Payment = () => {
-	document.title = "Payment | Optima 2025";
+	document.title = "Payment | Optima 2027";
 
 	const navigate = useNavigate();
 	const [userData, setUserData] = useState(null);

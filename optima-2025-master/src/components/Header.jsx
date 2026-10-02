@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import logo from "../assets/optima2025-logo.png";
+import logo from "../assets/optima2027-logo.png";
 import { navDropdown, navigation } from "../constants/Navlinks";
 import Button from "./Button";
 import MenuSvg from "../assets/svg/MenuSvg";

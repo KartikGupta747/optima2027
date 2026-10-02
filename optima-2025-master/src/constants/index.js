@@ -159,7 +159,7 @@ export const competitions = [
 		photoUrl: "/assets/competitions-card-images/innovate-x-image.webp",
 		whatsAppLink: "https://chat.whatsapp.com/F07PevjevGMDJ4fEsoWT0b", // Add your WhatsApp link here
 		unstopLink:
-			"https://unstop.com/p/innovate-x-optima-2025-iit-kharagpur-1390456", // Add your Unstop link here
+			"https://unstop.com/p/innovate-x-optima-2027-iit-kharagpur-1390456", // Add your Unstop link here
 		driveLink:
 			"https://drive.google.com/drive/folders/1r1oEfz0F3Um4q1VaSLAjr9vTiLOaN-RK?usp=drive_link",
 	},
@@ -188,7 +188,7 @@ export const competitions = [
 		photoUrl: "/assets/competitions-card-images/strategy-sutram-image.webp", // Added photo URL
 		whatsAppLink: "https://chat.whatsapp.com/JqrdmYEwQSnBp1svSQsYEb", // Add your WhatsApp link here
 		unstopLink:
-			"https://unstop.com/competitions/strategy-sutram-the-business-case-challenge-optima-2025-iit-kharagpur-1392906", // Add your Unstop link here
+			"https://unstop.com/competitions/strategy-sutram-the-business-case-challenge-optima-2027-iit-kharagpur-1392906", // Add your Unstop link here
 		driveLink:
 			"https://drive.google.com/drive/folders/1RIPRneHp9AEahMOTw2k17axCdG68LwZ1",
 	},
@@ -232,7 +232,7 @@ export const competitions = [
 		photoUrl: "/assets/competitions-card-images/Ai-Odyssey-image.webp", // Added photo URL
 		whatsAppLink: "https://chat.whatsapp.com/G5DlPfVRNvfFzLKH9bwTRs", // Add your WhatsApp link here
 		unstopLink:
-			"https://unstop.com/quiz/ai-odyssey-optima-2025-iit-kharagpur-1398376", // Add your Unstop link here
+			"https://unstop.com/quiz/ai-odyssey-optima-2027-iit-kharagpur-1398376", // Add your Unstop link here
 		driveLink: null,
 	},
 	{
@@ -246,7 +246,7 @@ export const competitions = [
 		photoUrl: "/assets/competitions-card-images/Datavantage.webp", // Added photo URL
 		whatsAppLink: "https://chat.whatsapp.com/Cb0puzEHLmxKDkQIBGpUf5", // Add your WhatsApp link here
 		unstopLink:
-			"https://unstop.com/competitions/datavantage-optima-2025-iit-kharagpur-1403662", // Add your Unstop link here
+			"https://unstop.com/competitions/datavantage-optima-2027-iit-kharagpur-1403662", // Add your Unstop link here
 		driveLink:
 			"https://drive.google.com/drive/folders/1dT1kMcrzR_7vyiyZO26QIa_36RfGp6Yh",
 	},
@@ -261,7 +261,7 @@ export const competitions = [
 		photoUrl: "/assets/competitions-card-images/Code-Ops.webp", // Added photo URL
 		whatsAppLink: "https://chat.whatsapp.com/Lt2IOSfwaxQHfQeCVlhZrh", // Add your WhatsApp link here
 		unstopLink:
-			"https://unstop.com/hackathons/the-code-quest-showdown-optima-2025-iit-kharagpur-1409476", // Add your Unstop link here
+			"https://unstop.com/hackathons/the-code-quest-showdown-optima-2027-iit-kharagpur-1409476", // Add your Unstop link here
 		driveLink: null,
 	},
 ];
