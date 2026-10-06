@@ -59,7 +59,7 @@ const Workshops = () => {
       <div className="container relative z-2">
         <Heading
           className="md:max-w-md lg:max-w-2xl text-center"
-          title="Workshops"
+          title="2025 Workshops"
         />
         <BackgroundCircles />
 

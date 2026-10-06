@@ -72,6 +72,7 @@ const Header = () => {
               <button
                 onClick={() => {
                   setIsAboutDropdownOpen(!isAboutDropdownOpen);
+                  setIsDropdownOpen(false);
                 }}
                 className={`flex relative font-code text-xl uppercase transition-colors px-3 xl:pl-4 py-4 lg:py-6 lg:-mr-0.25 lg:text-sm lg:font-semibold
 									${
@@ -120,6 +121,7 @@ const Header = () => {
               <button
                 onClick={() => {
                   setIsDropdownOpen(!isDropdownOpen);
+                  setIsAboutDropdownOpen(false);
                 }}
                 className={`flex relative font-code text-xl uppercase transition-colors px-3 xl:pl-4  py-4 lg:py-6 lg:-mr-0.25 lg:text-sm lg:font-semibold
 									${

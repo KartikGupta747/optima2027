@@ -22,7 +22,7 @@ const GuestLecture = () => {
 			<div className="container relative z-2">
 				<Heading
 					className="md:max-w-md lg:max-w-2xl text-center"
-					title="Guest Lectures"
+					title="2025 Guest Lectures"
 				/>
 				<BackgroundCircles />
 				{/* <div className="flex flex-col md:flex-row w-full"></div> */}

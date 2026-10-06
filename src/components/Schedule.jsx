@@ -19,7 +19,7 @@ const Schedule = () => {
 			<div className="container relative z-2">
 				<Heading
 					className="md:max-w-md lg:max-w-2xl text-center"
-					title="Event Schedule"
+					title="2025 Event Schedule"
 				/>
 				<BackgroundCircles />
 				<div className="rounded-lg p-0.25">

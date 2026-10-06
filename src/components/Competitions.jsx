@@ -20,7 +20,7 @@ const Competitions = () => {
 				{/* Section Heading */}
 				<Heading
 					className="md:max-w-md lg:max-w-2xl text-center"
-					title="Competitions"
+					title="2025 Competitions"
 				/>
 				<BackgroundCircles />
 
@@ -74,18 +74,13 @@ const Competitions = () => {
 
 								<div className="flex flex-col items-center gap-1 mt-auto justify-center">
 									{item.unstopLink && (
-										<a
-											href={item.unstopLink}
-											target="_blank"
-											rel="noopener noreferrer"
-											//className="cursor-pointer hover:scale-[105%] border border-n-2 rounded-md px-5 py-1.5 md:py-2 flex items-center transition-transform duration-200"
-											className="cursor-pointer hover:scale-[105%] border border-n-2 rounded-md px-5 py-1.5 md:py-2 flex items-center transition-transform duration-200 
-               											bg-gradient-to-r from-purple-500 to-sky-400 text-white"
+										<div
+											className="cursor-not-allowed border border-n-2 rounded-md px-5 py-1.5 md:py-2 flex items-center bg-gray-500 text-white opacity-60"
 										>
 											<p className="ml-auto font-code text-md font-bold uppercase">
-												Register
+												Registration Closed
 											</p>
-										</a>
+										</div>
 									)}
 
 									<div className="md:flex justify-center w-full gap-x-1">
@@ -109,21 +104,7 @@ const Competitions = () => {
 											</a>
 										)}
 
-										{item.whatsAppLink && (
-											<a
-												href={item.whatsAppLink}
-												target="_blank"
-												rel="noopener noreferrer"
-												//className="flex cursor-pointer hover:scale-[110%] transition transition:translate duration-200"
-												className="cursor-pointer hover:scale-[105%] md:max-w-[50%] p-1.5 md:p-2 flex items-center transition-transform duration-200"
-											>
-												<FaWhatsapp className="text-[2rem]" color="#25D366" />
-												<p className="font-code ml-1 text-n-2 cursor-pointer">
-													<p className="text-sm md:text-md">{item.title}</p>
-													<p className="text-xs opacity-70">WhatsApp Group</p>
-												</p>
-											</a>
-										)}
+
 									</div>
 								</div>
 							</div>
