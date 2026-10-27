@@ -119,10 +119,10 @@ const SponsorCard = ({ sponsor, height = "h-32", span = "col-span-1" }) => {
       href={sponsor.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${span} ${height} group relative cad-card p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow`}
+      className={`${span} ${height} group relative cad-card p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_10px_30px_rgba(255,107,0,0.18)]`}
     >
       {/* Category Readout Pill */}
-      <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-wider text-text-secondary/70 group-hover:text-accent-brand transition-colors">
+      <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-wider text-orange-400/80 group-hover:text-orange-300 transition-colors">
         // {sponsor.tier}
       </span>
 
@@ -136,7 +136,7 @@ const SponsorCard = ({ sponsor, height = "h-32", span = "col-span-1" }) => {
         <img
           src={sponsor.logo}
           alt={sponsor.name}
-          className="max-h-full max-w-[80%] object-contain grayscale brightness-[2.2] contrast-125 opacity-70 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105"
+          className="max-h-full max-w-[85%] object-contain transition-all duration-300 transform group-hover:scale-110 drop-shadow-[0_4px_16px_rgba(255,255,255,0.08)]"
           loading="lazy"
         />
       </div>
@@ -157,6 +157,8 @@ const Spons = () => {
     >
       {/* Background CAD grid */}
       <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
+      <div className="absolute top-1/3 -left-40 w-80 h-80 rounded-full bg-orange-500/10 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-80 h-80 rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Deliverable 10 Section Header */}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { AnimatePresence } from "framer-motion";
@@ -35,9 +35,20 @@ const App = () => {
 		return !splashPlayed;
 	});
 
+	const location = useLocation();
+
 	useEffect(() => {
-		// Initial state already handled in useState
-	}, []);
+		if (location.hash) {
+			const targetId = location.hash.replace("#", "");
+			const scrollTimer = setTimeout(() => {
+				const elem = document.getElementById(targetId);
+				if (elem) {
+					elem.scrollIntoView({ behavior: "smooth" });
+				}
+			}, 100);
+			return () => clearTimeout(scrollTimer);
+		}
+	}, [location.pathname, location.hash]);
 
 	const handleSplashComplete = () => {
 		setShowSplash(false);

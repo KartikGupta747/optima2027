@@ -105,7 +105,7 @@ const Competitions = () => {
                     <img
                       src={item.photoUrl}
                       alt={item.title}
-                      className="w-full h-full object-contain grayscale opacity-35 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 drop-shadow-[0_4px_16px_rgba(255,107,0,0.25)]"
                       loading="lazy"
                     />
                   </div>
@@ -159,7 +159,7 @@ const Competitions = () => {
                   </div>
 
                   {/* Slide-Up Primary Button on Hover (Deliverable 5 & 6) */}
-                  <div className="absolute inset-x-0 bottom-0 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                  <div className="absolute inset-x-0 bottom-0 translate-y-3 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                     <a
                       href={item.unstopLink}
                       target="_blank"

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
 import plugin from "tailwindcss/plugin";
+import scrollbarHide from "tailwind-scrollbar-hide";
 
 export default {
   darkMode: "class",
@@ -20,7 +21,7 @@ export default {
         "border-subtle": "var(--color-border-subtle)",
 
         // Direct intuitive aliases
-        base: "var(--color-bg-base)",
+
         surface: "var(--color-bg-surface)",
         elevated: "var(--color-bg-elevated)",
         primary: "var(--color-text-primary)",
@@ -129,7 +130,7 @@ export default {
     },
   },
   plugins: [
-    require("tailwind-scrollbar-hide"),
+    scrollbarHide,
     plugin(function ({ addBase, addComponents, addUtilities }) {
       addBase({});
       addComponents({

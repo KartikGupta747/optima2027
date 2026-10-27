@@ -11,6 +11,7 @@ import {
 } from "../constants/Rules";
 import { Gradient } from "./design/Roadmap";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import Loading from "./design/Loading";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
@@ -18,6 +19,7 @@ const Payment = () => {
 	document.title = "Payment | Optima 2027";
 
 	const navigate = useNavigate();
+	const { logout } = useAuth();
 	const [userData, setUserData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");

@@ -94,7 +94,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2.5 px-3.5 py-1 mb-6 border border-border-subtle bg-bg-surface/80 backdrop-blur-sm"
             >
               <Cpu className="w-3.5 h-3.5 text-accent-brand" />
-              <span className="font-display text-[11px] sm:text-xs uppercase tracking-[0.15em] font-semibold text-text-secondary">
+              <span className="font-display text-[11px] sm:text-xs uppercase tracking-[0.15em] font-semibold text-zinc-300">
                 Department of Industrial & Systems Engineering
               </span>
             </motion.div>
@@ -124,7 +124,7 @@ const Hero = () => {
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-4 max-w-2xl text-sm sm:text-base text-text-secondary font-sans leading-relaxed"
+              className="mt-5 max-w-2xl text-base sm:text-lg text-zinc-200 font-sans leading-relaxed font-normal"
             >
               IIT Kharagpur's Renowned Techno-Optimization Fest. Convergence of computational systems, mathematical modeling, and operational excellence.
             </motion.p>
@@ -148,10 +148,10 @@ const Hero = () => {
                 <Terminal className="w-3.5 h-3.5" />
                 <span>TERMINAL READOUT // FEST_DATES</span>
               </div>
-              <div className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.05em] text-text-primary">
+              <div className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.05em] text-white">
                 7TH &ndash; 9TH MARCH 2027
               </div>
-              <p className="text-xs sm:text-sm text-text-secondary leading-snug max-w-lg">
+              <p className="text-xs sm:text-sm text-zinc-300 leading-snug max-w-lg">
                 IIT Kharagpur&apos;s renowned Techno-Optimization Fest, proudly organized by the Department of Industrial & Systems Engineering.
               </p>
             </div>
@@ -159,13 +159,15 @@ const Hero = () => {
 
           {/* Bottom-Right Interaction & Action Block (Spanning ~5 Columns) */}
           <div className="md:col-span-5 flex flex-col sm:flex-row md:justify-end items-start sm:items-center gap-3">
-            <Link
-              to="/register"
+            <a
+              href="https://unstop.com/college-fests/optima-2027-indian-institute-of-technology-iit-kharagpur-260905"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary w-full sm:w-auto text-xs py-3 px-6 gap-2"
             >
               <span>Register on Unstop</span>
               <ArrowUpRight className="w-4 h-4" />
-            </Link>
+            </a>
 
             <a
               href="#about"
@@ -176,7 +178,7 @@ const Hero = () => {
                   elem.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="btn-secondary w-full sm:w-auto text-xs py-3 px-5 gap-2"
+              className="btn-secondary w-full sm:w-auto text-xs py-3 px-5 gap-2 text-white"
             >
               <span>Explore Fest</span>
               <ChevronDown className="w-4 h-4 text-accent-brand" />

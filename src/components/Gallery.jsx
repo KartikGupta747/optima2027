@@ -6,396 +6,380 @@ import {
   useTransform,
   useSpring,
   useMotionValue,
-  useInView,
 } from "framer-motion";
 import {
   Maximize2,
   X,
   ChevronLeft,
   ChevronRight,
-  Eye,
   Sparkles,
-  Layers,
-  Activity,
-  Scan,
-  Download,
+  MapPin,
 } from "lucide-react";
 import { playClickTick, playHoverChirp } from "../utils/cyberAudio";
 
 // ==========================================
-// 1. DATASET: 25 GENUINE ASSETS WITH METADATA
+// 1. DATASET: 25 GENUINE ASSETS (CLEAN & SIMPLE)
 // ==========================================
 const GALLERY_ITEMS = [
   // GLIMPSES OF OPTIMA
   {
     id: "glimpse-01",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "INAUGURAL PROCESSION",
+    categoryLabel: "Glimpses",
+    title: "Inaugural Procession",
     subtitle: "Department of Industrial & Systems Engineering",
-    code: "OPT_001",
-    timestamp: "CYCLE_2025 // 09:00 IST",
-    location: "ISE FOYER // IIT KGP",
+    location: "ISE Department, IIT Kharagpur",
     src: "/GalleryPhotos/day0-images/IMG_2518.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["DEPT_ISE", "INAUGURAL", "SYMPOSIUM"],
+    tags: ["Inaugural", "Symposium", "IIT Kharagpur"],
   },
   {
     id: "glimpse-02",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "SYMPOSIUM INITIATION",
-    subtitle: "Ceremonial Assembly & Address",
-    code: "OPT_002",
-    timestamp: "CYCLE_2025 // 10:15 IST",
-    location: "MAIN AUDITORIUM",
+    categoryLabel: "Glimpses",
+    title: "Symposium Initiation",
+    subtitle: "Ceremonial Assembly & Keynote Address",
+    location: "Main Auditorium",
     src: "/GalleryPhotos/day0-images/4.webp",
     aspect: "aspect-[16/10]",
-    resolution: "4096 x 2304",
-    tags: ["PLENARY", "DELEGATES", "KEYNOTE"],
+    tags: ["Plenary", "Delegates", "Keynote"],
   },
   {
     id: "glimpse-03",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "COMPUTATIONAL ARENA",
+    categoryLabel: "Glimpses",
+    title: "Computational Arena",
     subtitle: "Student Delegates & Researchers",
-    code: "OPT_003",
-    timestamp: "CYCLE_2025 // 11:30 IST",
-    location: "ANNEX LAB 03",
+    location: "Annex Computing Lab",
     src: "/GalleryPhotos/day0-images/6.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["STUDENT_BODY", "SYSTEMS", "COMPUTE"],
+    tags: ["Student Body", "Systems", "Compute"],
   },
   {
     id: "glimpse-04",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "RESEARCH DELEGATION",
+    categoryLabel: "Glimpses",
+    title: "Research Delegation",
     subtitle: "Academic Peer Review Panels",
-    code: "OPT_004",
-    timestamp: "CYCLE_2025 // 13:00 IST",
-    location: "CONFERENCE HALL A",
+    location: "Conference Hall A",
     src: "/GalleryPhotos/day0-images/8.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["FACULTY", "SCHOLARS", "PANEL"],
+    tags: ["Faculty", "Scholars", "Panel"],
   },
   {
     id: "glimpse-05",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "SYSTEM ARCHITECTS",
+    categoryLabel: "Glimpses",
+    title: "Fest Architects",
     subtitle: "Fest Coordination & Command Operations",
-    code: "OPT_005",
-    timestamp: "CYCLE_2025 // 15:00 IST",
-    location: "COMMAND DESK // ISE",
+    location: "ISE Command Desk",
     src: "/GalleryPhotos/day0-images/10.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["CORE_TEAM", "OPERATIONS", "DISPATCH"],
+    tags: ["Core Team", "Operations", "Organizers"],
   },
   {
     id: "glimpse-06",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "OPTIMIZATION PLENARY",
+    categoryLabel: "Glimpses",
+    title: "Optimization Plenary",
     subtitle: "Valedictory & Key Highlights",
-    code: "OPT_006",
-    timestamp: "CYCLE_2025 // 17:30 IST",
-    location: "CENTRAL AUDITORIUM",
+    location: "Central Auditorium",
     src: "/GalleryPhotos/day0-images/12.webp",
     aspect: "aspect-[16/10]",
-    resolution: "4096 x 2304",
-    tags: ["VALEDICTORY", "HONORS", "IITKGP"],
+    tags: ["Valedictory", "Honors", "IIT KGP"],
   },
   {
     id: "glimpse-07",
     category: "GLIMPSES",
-    categoryLabel: "GLIMPSES // DAY_00",
-    title: "COLLABORATION FORUM",
+    categoryLabel: "Glimpses",
+    title: "Collaboration Forum",
     subtitle: "Cross-Institutional Networking Hub",
-    code: "OPT_007",
-    timestamp: "CYCLE_2025 // 19:00 IST",
-    location: "SEMINAR COMPLEX",
+    location: "Seminar Complex",
     src: "/GalleryPhotos/day0-images/14.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["NETWORKING", "ALUMNI", "SYNERGY"],
+    tags: ["Networking", "Alumni", "Synergy"],
   },
   {
     id: "glimpse-08",
     category: "GLIMPSES",
-    categoryLabel: "CAMPUS // ARCHIVE",
-    title: "HISTORIC TOWER",
+    categoryLabel: "Glimpses",
+    title: "Historic Tower",
     subtitle: "IIT Kharagpur Heritage Campus",
-    code: "OPT_008",
-    timestamp: "CAMPUS_ARCHIVE",
-    location: "MAIN BUILDING // IIT KGP",
+    location: "Main Building, IIT Kharagpur",
     src: "/homepagePhotos/a.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["HERITAGE", "IIT_KGP", "LANDMARK"],
+    tags: ["Heritage", "IIT Kharagpur", "Landmark"],
   },
   {
     id: "glimpse-09",
     category: "GLIMPSES",
-    categoryLabel: "COMPUTE // CORE",
-    title: "SYNAPTIC DATA STREAM",
+    categoryLabel: "Glimpses",
+    title: "Data & Systems Hub",
     subtitle: "Algorithmic Performance Cluster",
-    code: "OPT_009",
-    timestamp: "ANALYTICS_CORE",
-    location: "ISE SERVER CLUSTER",
+    location: "ISE Server Lab",
     src: "/homepagePhotos/b.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["SUPERCOMPUTE", "HPC", "NEURAL"],
+    tags: ["Computing", "HPC", "Analytics"],
   },
 
   // GUEST LECTURES
   {
     id: "lecture-01",
     category: "GUEST_LECTURES",
-    categoryLabel: "GUEST LECTURE // KEYNOTE",
-    title: "GLOBAL SUPPLY CHAINS",
-    subtitle: "Industrial Keynote by Industry Stalwarts",
-    code: "LEC_001",
-    timestamp: "CYCLE_2025 // 11:00 IST",
-    location: "KALIDAS AUDITORIUM",
+    categoryLabel: "Guest Lectures",
+    title: "Global Supply Chains",
+    subtitle: "Keynote Address by Industry Leaders",
+    location: "Kalidas Auditorium",
     src: "/GalleryPhotos/guest-lecture-images/g1.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["SUPPLY_CHAIN", "INDUSTRY_4.0", "LEADERSHIP"],
+    tags: ["Supply Chain", "Industry 4.0", "Leadership"],
   },
   {
     id: "lecture-02",
     category: "GUEST_LECTURES",
-    categoryLabel: "GUEST LECTURE // DIALOGUE",
-    title: "EXECUTIVE PERSPECTIVES",
-    subtitle: "Enterprise Systems Optimization",
-    code: "LEC_002",
-    timestamp: "CYCLE_2025 // 14:30 IST",
-    location: "KALIDAS AUDITORIUM",
+    categoryLabel: "Guest Lectures",
+    title: "Executive Perspectives",
+    subtitle: "Enterprise Systems Optimization Dialogue",
+    location: "Kalidas Auditorium",
     src: "/GalleryPhotos/guest-lecture-images/g2.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["STRATEGY", "OPERATIONS", "DISCOURSE"],
+    tags: ["Strategy", "Operations", "Discourse"],
   },
   {
     id: "lecture-03",
     category: "GUEST_LECTURES",
-    categoryLabel: "GUEST LECTURE // FIRESIDE",
-    title: "STRATEGIC OPERATIONS",
+    categoryLabel: "Guest Lectures",
+    title: "Strategic Operations",
     subtitle: "Interactive Q&A Session with Delegates",
-    code: "LEC_003",
-    timestamp: "CYCLE_2025 // 16:45 IST",
-    location: "EXECUTIVE SUITE",
+    location: "Executive Suite",
     src: "/GalleryPhotos/guest-lecture-images/g3.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["ROUNDTABLE", "RESEARCH", "INSIGHTS"],
+    tags: ["Roundtable", "Research", "Insights"],
   },
 
   // WORKSHOPS
   {
     id: "workshop-01",
     category: "WORKSHOPS",
-    categoryLabel: "WORKSHOP // HANDS_ON",
-    title: "ADVANCED SIMULATION LAB",
+    categoryLabel: "Workshops",
+    title: "Advanced Simulation Lab",
     subtitle: "Stochastic Modeling & Discrete Events",
-    code: "WRK_001",
-    timestamp: "CYCLE_2025 // 09:30 IST",
-    location: "SIMULATION SUITE 1",
+    location: "Simulation Suite 1",
     src: "/GalleryPhotos/workshops/w1.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["SIMULATION", "STOCHASTIC", "FLEXSIM"],
+    tags: ["Simulation", "Stochastic", "FlexSim"],
   },
   {
     id: "workshop-02",
     category: "WORKSHOPS",
-    categoryLabel: "WORKSHOP // PRACTICUM",
-    title: "MACHINE LEARNING IN OR",
+    categoryLabel: "Workshops",
+    title: "Machine Learning in OR",
     subtitle: "Optimization via Neural Heuristics",
-    code: "WRK_002",
-    timestamp: "CYCLE_2025 // 11:45 IST",
-    location: "HPC TERMINAL ROOM",
+    location: "HPC Terminal Room",
     src: "/GalleryPhotos/workshops/w2.webp",
     aspect: "aspect-[16/10]",
-    resolution: "4096 x 2304",
-    tags: ["DEEP_LEARNING", "OR_METHODS", "PYTHON"],
+    tags: ["Deep Learning", "OR Methods", "Python"],
   },
   {
     id: "workshop-03",
     category: "WORKSHOPS",
-    categoryLabel: "WORKSHOP // LAB",
-    title: "QUANTITATIVE PORTFOLIO LAB",
+    categoryLabel: "Workshops",
+    title: "Quantitative Portfolio Lab",
     subtitle: "Algorithmic Risk & Capital Allocation",
-    code: "WRK_003",
-    timestamp: "CYCLE_2025 // 14:15 IST",
-    location: "FINANCIAL LAB B",
+    location: "Financial Computing Lab",
     src: "/GalleryPhotos/workshops/w3.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["QUANT_FINANCE", "RISK_ENGINEERING", "DATA"],
+    tags: ["Quant Finance", "Risk Engineering", "Data"],
   },
   {
     id: "workshop-04",
     category: "WORKSHOPS",
-    categoryLabel: "WORKSHOP // WAR_ROOM",
-    title: "SUPPLY CHAIN WAR ROOM",
+    categoryLabel: "Workshops",
+    title: "Supply Chain War Room",
     subtitle: "Live Scenario Bottleneck Elimination",
-    code: "WRK_004",
-    timestamp: "CYCLE_2025 // 16:30 IST",
-    location: "COLLAB SUITE 04",
+    location: "Collab Suite 04",
     src: "/GalleryPhotos/workshops/w4.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["LOGISTICS", "DISRUPTION", "STRATEGY"],
+    tags: ["Logistics", "Strategy", "Optimization"],
   },
   {
     id: "workshop-05",
     category: "WORKSHOPS",
-    categoryLabel: "WORKSHOP // SYNTHESIS",
-    title: "DECISION SYSTEMS CAPSTONE",
+    categoryLabel: "Workshops",
+    title: "Decision Systems Capstone",
     subtitle: "Dynamic Solution Prototyping",
-    code: "WRK_005",
-    timestamp: "CYCLE_2025 // 18:00 IST",
-    location: "INNOVATION HUB",
+    location: "Innovation Hub",
     src: "/GalleryPhotos/workshops/w5.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["SYSTEMS_ENG", "CAPSTONE", "SHOWCASE"],
+    tags: ["Systems Engineering", "Capstone", "Showcase"],
   },
 
   // COMPETITIONS
   {
     id: "comp-01",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // ARENA",
-    title: "STRATATHON // FINALS",
+    categoryLabel: "Competitions",
+    title: "Stratathon Finals",
     subtitle: "Fast-Paced Optimization Hackathon",
-    code: "CMP_001",
-    timestamp: "CYCLE_2025 // 10:00 IST",
-    location: "ARENA POD ALPHA",
+    location: "Arena Pod Alpha",
     src: "/GalleryPhotos/competitions/c1.webp",
     aspect: "aspect-[16/10]",
-    resolution: "4096 x 2304",
-    tags: ["HACKATHON", "SPRINT", "STRATATHON"],
+    tags: ["Hackathon", "Sprint", "Stratathon"],
   },
   {
     id: "comp-02",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // SHOWDOWN",
-    title: "INNOVATE-X PITCH BATTLE",
+    categoryLabel: "Competitions",
+    title: "Innovate-X Pitch Battle",
     subtitle: "Industrial Problem Statement Defense",
-    code: "CMP_002",
-    timestamp: "CYCLE_2025 // 12:15 IST",
-    location: "JURY BOARD ROOM",
+    location: "Jury Board Room",
     src: "/GalleryPhotos/competitions/c2.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["INNOVATE_X", "PITCH", "VENTURES"],
+    tags: ["Innovate-X", "Pitch", "Ventures"],
   },
   {
     id: "comp-03",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // CODE_CORE",
-    title: "CODELAND LIVE ARENA",
+    categoryLabel: "Competitions",
+    title: "Codeland Live Arena",
     subtitle: "Algorithmic Speed Combat",
-    code: "CMP_003",
-    timestamp: "CYCLE_2025 // 14:00 IST",
-    location: "TERMINAL GRID 2",
+    location: "Terminal Grid 2",
     src: "/GalleryPhotos/competitions/c3.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["CODELAND", "COMPETITIVE_CODE", "SYNTAX"],
+    tags: ["Codeland", "Competitive Code", "Algorithms"],
   },
   {
     id: "comp-04",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // SIMULATION",
-    title: "OPTISIM INDUSTRIAL DRILL",
+    categoryLabel: "Competitions",
+    title: "OptiSim Industrial Drill",
     subtitle: "Discrete-Event Warehouse Simulation",
-    code: "CMP_004",
-    timestamp: "CYCLE_2025 // 15:30 IST",
-    location: "SIMULATION ARENA",
+    location: "Simulation Arena",
     src: "/GalleryPhotos/competitions/c4.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["OPTISIM", "LOGISTICS", "WAREHOUSE"],
+    tags: ["OptiSim", "Logistics", "Warehouse"],
   },
   {
     id: "comp-05",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // FINANCE",
-    title: "FINANCE FANTASIA COMBAT",
+    categoryLabel: "Competitions",
+    title: "Finance Fantasia Combat",
     subtitle: "Live Market Arbitrage Modeling",
-    code: "CMP_005",
-    timestamp: "CYCLE_2025 // 16:45 IST",
-    location: "QUANT TRADING DESK",
+    location: "Quant Trading Desk",
     src: "/GalleryPhotos/competitions/c5.webp",
     aspect: "aspect-[4/3]",
-    resolution: "3840 x 2160",
-    tags: ["FINANCE_FANTASIA", "ARBITRAGE", "DERIVATIVES"],
+    tags: ["Finance Fantasia", "Arbitrage", "Derivatives"],
   },
   {
     id: "comp-06",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // LOGISTICS",
-    title: "NETWORKSIFY MATRIX",
+    categoryLabel: "Competitions",
+    title: "Networksify Challenge",
     subtitle: "Global Network Routing Challenge",
-    code: "CMP_006",
-    timestamp: "CYCLE_2025 // 18:00 IST",
-    location: "LOGISTICS LAB",
+    location: "Logistics Lab",
     src: "/GalleryPhotos/competitions/c6.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["NETWORKSIFY", "GRAPH_THEORY", "ROUTING"],
+    tags: ["Networksify", "Graph Theory", "Routing"],
   },
   {
     id: "comp-07",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // PODIUM",
-    title: "PRIZE PODIUM CEREMONY",
+    categoryLabel: "Competitions",
+    title: "Prize Podium Ceremony",
     subtitle: "Victory & Citations Conferred",
-    code: "CMP_007",
-    timestamp: "CYCLE_2025 // 19:30 IST",
-    location: "CENTRAL AMPHITHEATER",
+    location: "Central Amphitheater",
     src: "/GalleryPhotos/competitions/c7.webp",
     aspect: "aspect-[4/5]",
-    resolution: "2160 x 2700",
-    tags: ["PODIUM", "AWARDS", "CHAMPIONS"],
+    tags: ["Podium", "Awards", "Champions"],
   },
   {
     id: "comp-08",
     category: "COMPETITIONS",
-    categoryLabel: "COMPETITION // CELEBRATION",
-    title: "CHAMPIONS GATHERING",
+    categoryLabel: "Competitions",
+    title: "Champions Gathering",
     subtitle: "Celebrating Engineering Excellence",
-    code: "CMP_008",
-    timestamp: "CYCLE_2025 // 20:15 IST",
-    location: "CEREMONY STAGE",
+    location: "Ceremony Stage",
     src: "/GalleryPhotos/competitions/c8.webp",
     aspect: "aspect-[16/10]",
-    resolution: "3840 x 2160",
-    tags: ["EXCELLENCE", "OPT_2025", "TRIUMPH"],
+    tags: ["Excellence", "Optima", "Triumph"],
   },
 ];
 
+// Vibrant Category Themes
+const THEMES = {
+  ALL: {
+    name: "All Archives",
+    activeClass:
+      "border-orange-500 bg-gradient-to-r from-orange-500/25 via-pink-500/20 to-cyan-500/20 text-white shadow-[0_0_25px_rgba(255,107,0,0.45)]",
+    dotClass: "bg-gradient-to-r from-orange-400 to-cyan-400",
+    badgeClass: "bg-gradient-to-r from-orange-500/20 to-cyan-500/20 text-orange-200 border-orange-500/30",
+    tagClass: "bg-orange-500/10 text-orange-300 border-orange-500/25",
+    hoverBorder: "hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(255,107,0,0.25)]",
+    cardGlow: "group-hover:border-orange-500/60 group-hover:shadow-[0_20px_45px_rgba(255,107,0,0.3)]",
+    pinColor: "text-orange-400",
+    btnGrad: "from-orange-500 to-pink-600 hover:from-orange-600 hover:to-pink-700",
+  },
+  GLIMPSES: {
+    name: "Glimpses",
+    activeClass:
+      "border-[#ff6b00] bg-[#ff6b00]/20 text-white shadow-[0_0_25px_rgba(255,107,0,0.45)]",
+    dotClass: "bg-[#ff6b00]",
+    badgeClass: "bg-[#ff6b00]/20 text-orange-300 border-[#ff6b00]/40",
+    tagClass: "bg-[#ff6b00]/10 text-orange-300 border-[#ff6b00]/25",
+    hoverBorder: "hover:border-[#ff6b00]/60 hover:shadow-[0_0_20px_rgba(255,107,0,0.25)]",
+    cardGlow: "group-hover:border-[#ff6b00]/60 group-hover:shadow-[0_20px_45px_rgba(255,107,0,0.3)]",
+    pinColor: "text-orange-400",
+    btnGrad: "from-[#ff6b00] to-amber-500 hover:from-orange-600 hover:to-amber-600",
+  },
+  GUEST_LECTURES: {
+    name: "Guest Lectures",
+    activeClass:
+      "border-emerald-500 bg-emerald-500/20 text-white shadow-[0_0_25px_rgba(16,185,129,0.45)]",
+    dotClass: "bg-emerald-400",
+    badgeClass: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+    tagClass: "bg-emerald-500/10 text-emerald-300 border-emerald-500/25",
+    hoverBorder: "hover:border-emerald-400/60 hover:shadow-[0_0_20px_rgba(16,185,129,0.25)]",
+    cardGlow: "group-hover:border-emerald-500/60 group-hover:shadow-[0_20px_45px_rgba(16,185,129,0.3)]",
+    pinColor: "text-emerald-400",
+    btnGrad: "from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600",
+  },
+  WORKSHOPS: {
+    name: "Workshops",
+    activeClass:
+      "border-cyan-500 bg-cyan-500/20 text-white shadow-[0_0_25px_rgba(6,182,212,0.45)]",
+    dotClass: "bg-cyan-400",
+    badgeClass: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+    tagClass: "bg-cyan-500/10 text-cyan-300 border-cyan-500/25",
+    hoverBorder: "hover:border-cyan-400/60 hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]",
+    cardGlow: "group-hover:border-cyan-500/60 group-hover:shadow-[0_20px_45px_rgba(6,182,212,0.3)]",
+    pinColor: "text-cyan-400",
+    btnGrad: "from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600",
+  },
+  COMPETITIONS: {
+    name: "Competitions",
+    activeClass:
+      "border-purple-500 bg-purple-500/20 text-white shadow-[0_0_25px_rgba(168,85,247,0.45)]",
+    dotClass: "bg-purple-400",
+    badgeClass: "bg-purple-500/20 text-purple-300 border-purple-500/40",
+    tagClass: "bg-purple-500/10 text-purple-300 border-purple-500/25",
+    hoverBorder: "hover:border-purple-400/60 hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+    cardGlow: "group-hover:border-purple-500/60 group-hover:shadow-[0_20px_45px_rgba(168,85,247,0.3)]",
+    pinColor: "text-purple-400",
+    btnGrad: "from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600",
+  },
+};
+
 // Category Filter Definitions
 const FILTERS = [
-  { id: "ALL", label: "ALL ARCHIVES", count: 25 },
-  { id: "GLIMPSES", label: "GLIMPSES OF OPTIMA", count: 9 },
-  { id: "GUEST_LECTURES", label: "GUEST LECTURES", count: 3 },
-  { id: "WORKSHOPS", label: "WORKSHOPS", count: 5 },
-  { id: "COMPETITIONS", label: "COMPETITIONS", count: 8 },
+  { id: "ALL", label: "All Photos", count: 25 },
+  { id: "GLIMPSES", label: "Glimpses", count: 9 },
+  { id: "GUEST_LECTURES", label: "Guest Lectures", count: 3 },
+  { id: "WORKSHOPS", label: "Workshops", count: 5 },
+  { id: "COMPETITIONS", label: "Competitions", count: 8 },
 ];
 
 // ==========================================
-// 2. MAGNETIC HOLOGRAPHIC FILTER PILL
+// 2. MAGNETIC COLORFUL FILTER PILL
 // ==========================================
 const MagneticFilterPill = ({ filter, isActive, onClick }) => {
   const buttonRef = useRef(null);
@@ -404,6 +388,7 @@ const MagneticFilterPill = ({ filter, isActive, onClick }) => {
 
   const springX = useSpring(x, { stiffness: 350, damping: 20 });
   const springY = useSpring(y, { stiffness: 350, damping: 20 });
+  const theme = THEMES[filter.id] || THEMES.ALL;
 
   const handleMouseMove = (e) => {
     if (!buttonRef.current) return;
@@ -431,30 +416,30 @@ const MagneticFilterPill = ({ filter, isActive, onClick }) => {
         playClickTick();
         onClick(filter.id);
       }}
-      className={`relative px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 backdrop-blur-xl flex items-center gap-2 select-none group ${
+      className={`relative px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 backdrop-blur-xl flex items-center gap-2 select-none group border ${
         isActive
-          ? "border border-[#ff4500] bg-[#ff4500]/15 text-white shadow-[0_0_25px_rgba(255,69,0,0.5),inset_0_0_12px_rgba(255,69,0,0.3)]"
-          : "border border-white/10 bg-white/[0.03] text-white/60 hover:text-white hover:border-cyan-400/50 hover:bg-white/[0.06] hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+          ? theme.activeClass
+          : `border-white/10 bg-white/[0.04] text-white/70 hover:text-white ${theme.hoverBorder}`
       }`}
     >
       {/* Active Glowing Pulse Dot */}
       {isActive ? (
         <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4500] opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4500]"></span>
+          <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${theme.dotClass} opacity-75`}></span>
+          <span className={`relative inline-flex rounded-full h-2 w-2 ${theme.dotClass}`}></span>
         </span>
       ) : (
-        <span className="h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-cyan-400 transition-colors" />
+        <span className="h-1.5 w-1.5 rounded-full bg-white/30 group-hover:bg-white transition-colors" />
       )}
 
       <span>{filter.label}</span>
 
       {/* Item Count Chip */}
       <span
-        className={`px-1.5 py-0.5 rounded text-[10px] font-mono transition-colors ${
+        className={`px-2 py-0.5 rounded-full text-[11px] font-mono transition-colors border ${
           isActive
-            ? "bg-[#ff4500]/30 text-orange-200 border border-[#ff4500]/50"
-            : "bg-white/5 text-white/40 group-hover:text-white/80"
+            ? theme.badgeClass
+            : "bg-white/5 border-white/10 text-white/50 group-hover:text-white/80"
         }`}
       >
         {filter.count}
@@ -464,7 +449,7 @@ const MagneticFilterPill = ({ filter, isActive, onClick }) => {
 };
 
 // ==========================================
-// 3. MEDIA PLATE (3D TILT, SIBLING DIM, RGB GLITCH)
+// 3. MEDIA PLATE (VIBRANT & NATURAL COLORS)
 // ==========================================
 const MediaPlate = ({
   item,
@@ -475,7 +460,7 @@ const MediaPlate = ({
   onClick,
 }) => {
   const cardRef = useRef(null);
-  const [isGlitching, setIsGlitching] = useState(false);
+  const theme = THEMES[item.category] || THEMES.ALL;
 
   // 3D Tilt Motion Values
   const tiltX = useMotionValue(0);
@@ -489,25 +474,18 @@ const MediaPlate = ({
     const xRel = (e.clientX - rect.left) / rect.width - 0.5;
     const yRel = (e.clientY - rect.top) / rect.height - 0.5;
 
-    // Subtle 3D tilt tracking cursor (-10 to +10 degrees)
-    tiltX.set(-yRel * 16);
-    tiltY.set(xRel * 16);
+    tiltX.set(-yRel * 12);
+    tiltY.set(xRel * 12);
   };
 
   const handleMouseEnter = () => {
     playHoverChirp();
     onHoverStart(item.id);
-    // Trigger split-second RGB chromatic aberration glitch on hover start
-    setIsGlitching(true);
-    setTimeout(() => {
-      setIsGlitching(false);
-    }, 280);
   };
 
   const handleMouseLeave = () => {
     tiltX.set(0);
     tiltY.set(0);
-    setIsGlitching(false);
     onHoverEnd();
   };
 
@@ -515,13 +493,13 @@ const MediaPlate = ({
     <motion.div
       layout
       ref={cardRef}
-      initial={{ opacity: 0, scale: 0.88, filter: "blur(6px)" }}
+      initial={{ opacity: 0, scale: 0.92 }}
       animate={{
-        opacity: isDimmed ? 0.2 : 1,
-        scale: isTarget ? 1.06 : isDimmed ? 0.96 : 1,
-        filter: isDimmed ? "blur(3px)" : "blur(0px)",
+        opacity: isDimmed ? 0.35 : 1,
+        scale: isTarget ? 1.04 : isDimmed ? 0.97 : 1,
+        filter: isDimmed ? "blur(1.5px)" : "blur(0px)",
       }}
-      exit={{ opacity: 0, scale: 0.84, filter: "blur(8px)" }}
+      exit={{ opacity: 0, scale: 0.88 }}
       transition={{
         duration: 0.35,
         ease: [0.16, 1, 0.3, 1],
@@ -535,92 +513,53 @@ const MediaPlate = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => onClick(item)}
-      data-cursor="view-data"
-      className={`group relative mb-6 rounded-xl overflow-hidden cursor-pointer select-none transition-shadow duration-300 ${
+      className={`group relative mb-6 rounded-2xl overflow-hidden cursor-pointer select-none transition-all duration-300 border ${
         isTarget
-          ? "z-30 shadow-[0_25px_60px_rgba(255,69,0,0.4),0_0_35px_rgba(0,240,255,0.3)] ring-1 ring-[#ff4500]/70"
-          : "z-10 shadow-[0_10px_30px_rgba(0,0,0,0.85)] border border-white/5"
+          ? `z-30 ${theme.cardGlow} ring-1 ring-white/20`
+          : "z-10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] border-white/10 hover:border-white/30"
       }`}
     >
       {/* Aspect Ratio Container */}
-      <div className={`relative w-full ${item.aspect} overflow-hidden bg-[#07070a]`}>
-        {/* Main Photograph: Grayscale default -> Vibrant on hover */}
-        <motion.img
+      <div className={`relative w-full ${item.aspect} overflow-hidden bg-[#0d0d14]`}>
+        {/* Main Photograph: Clean B&W default -> Colorful on hover */}
+        <img
           src={item.src}
           alt={item.title}
           loading="lazy"
-          className={`w-full h-full object-cover transition-all duration-500 ease-out ${
-            isTarget
-              ? "grayscale-0 contrast-105 brightness-105 scale-105"
-              : "grayscale contrast-125 brightness-90 group-hover:grayscale-0 group-hover:scale-105"
-          }`}
+          className="w-full h-full object-cover grayscale contrast-115 brightness-95 transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:contrast-105 group-hover:brightness-105 group-hover:scale-108"
         />
 
-        {/* CRT Scanline & Grain Texture Overlay (Default state) */}
-        <div className="absolute inset-0 pointer-events-none z-10 opacity-35 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] mix-blend-overlay" />
+        {/* Soft Vignette Gradient for Clean Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent opacity-85 group-hover:opacity-75 transition-opacity duration-300" />
 
-        {/* Split-Second Real-Time RGB Chromatic Aberration Glitch Layer */}
-        {isGlitching && (
-          <div className="absolute inset-0 pointer-events-none z-20 mix-blend-screen opacity-85 overflow-hidden animate-pulse">
-            <img
-              src={item.src}
-              alt="glitch-red"
-              className="absolute inset-0 w-full h-full object-cover translate-x-[4px] translate-y-[-1px] filter drop-shadow([-3px_0_#ff0055])"
-            />
-            <img
-              src={item.src}
-              alt="glitch-cyan"
-              className="absolute inset-0 w-full h-full object-cover -translate-x-[4px] translate-y-[1px] filter drop-shadow([3px_0_#00ffff])"
-            />
-          </div>
-        )}
-
-        {/* Dark Vignette & Gradient Underlay */}
-        <div className="absolute inset-0 z-15 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-300" />
-
-        {/* Cybernetic Corner Reticle Markers */}
-        <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t border-l border-white/40 group-hover:border-cyan-400 transition-colors z-20" />
-        <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t border-r border-white/40 group-hover:border-orange-500 transition-colors z-20" />
-        <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b border-l border-white/40 group-hover:border-orange-500 transition-colors z-20" />
-        <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b border-r border-white/40 group-hover:border-cyan-400 transition-colors z-20" />
-
-        {/* Top Floating Telemetry Badges */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20 pointer-events-none">
-          <span className="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[9px] text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
-            <span className="w-1 h-1 rounded-full bg-cyan-400" />
+        {/* Top Floating Category Badge */}
+        <div className="absolute top-3 left-3 z-20 pointer-events-none">
+          <span
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full backdrop-blur-md border text-[11px] font-semibold tracking-wide shadow-md ${theme.badgeClass}`}
+          >
+            <span className={`w-1.5 h-1.5 rounded-full ${theme.dotClass}`} />
             {item.categoryLabel}
-          </span>
-          <span className="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[9px] text-orange-400 uppercase tracking-widest">
-            {item.code}
           </span>
         </div>
 
-        {/* Bottom Content Metadata Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 z-20 flex flex-col justify-end translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="font-mono text-[10px] text-white/50 tracking-wider">
-              {item.timestamp}
+        {/* Bottom Metadata Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 z-20 flex flex-col justify-end">
+          <h3 className="text-sm md:text-base font-bold text-white tracking-tight flex items-center justify-between">
+            <span className="truncate group-hover:text-white transition-colors">
+              {item.title}
             </span>
-            <span className="text-white/20">/</span>
-            <span className="font-mono text-[10px] text-orange-400/90 tracking-wider">
-              {item.location}
-            </span>
-          </div>
-
-          <h3 className="text-sm md:text-base font-bold font-sans tracking-tight text-white group-hover:text-cyan-300 transition-colors flex items-center justify-between">
-            <span>{item.title}</span>
-            <Maximize2 className="w-3.5 h-3.5 text-white/30 group-hover:text-cyan-400 transition-colors ml-2 flex-shrink-0" />
+            <div className="p-1.5 rounded-full bg-white/10 group-hover:bg-white/20 text-white/70 group-hover:text-white transition-all ml-2 flex-shrink-0">
+              <Maximize2 className="w-3.5 h-3.5" />
+            </div>
           </h3>
 
-          <p className="text-[11px] text-white/60 line-clamp-1 mt-0.5">
+          <p className="text-[12px] text-white/70 line-clamp-1 mt-0.5">
             {item.subtitle}
           </p>
 
-          {/* Interactive Inspection Indicator on Hover */}
-          <div className="overflow-hidden h-0 group-hover:h-5 transition-all duration-300 mt-1 flex items-center gap-2">
-            <span className="text-[9px] font-mono text-cyan-400 uppercase tracking-widest flex items-center gap-1">
-              <Scan className="w-2.5 h-2.5" /> [ CLICK TO DECRYPT FULLSTREAM ]
-            </span>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-white/60">
+            <MapPin className={`w-3 h-3 ${theme.pinColor} flex-shrink-0`} />
+            <span className="truncate">{item.location}</span>
           </div>
         </div>
       </div>
@@ -629,9 +568,11 @@ const MediaPlate = ({
 };
 
 // ==========================================
-// 4. LIGHTBOX INSPECTION MODAL (EXPANDED RECORD)
+// 4. LIGHTBOX INSPECTION MODAL (CLEAN & ELEGANT)
 // ==========================================
 const LightboxModal = ({ item, onClose, onPrev, onNext }) => {
+  const theme = THEMES[item.category] || THEMES.ALL;
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -649,113 +590,90 @@ const LightboxModal = ({ item, onClose, onPrev, onNext }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-2xl"
+      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-2xl"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.92, opacity: 0 }}
+        initial={{ scale: 0.94, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.92, opacity: 0 }}
+        exit={{ scale: 0.94, opacity: 0 }}
         transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.35 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-w-5xl w-full bg-[#050508] border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.9),0_0_40px_rgba(255,69,0,0.3)] flex flex-col"
+        className="relative max-w-5xl w-full bg-[#09090f] border border-white/15 rounded-2xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.95)] flex flex-col"
       >
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
-          <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span className="font-mono text-xs text-cyan-300 font-bold tracking-widest uppercase">
-              DECRYPTED RECORD: {item.code}
+        <div className="flex items-center justify-between px-6 py-3.5 border-b border-white/10 bg-white/[0.03]">
+          <div className="flex items-center gap-2.5">
+            <span
+              className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border text-xs font-semibold ${theme.badgeClass}`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${theme.dotClass}`} />
+              {item.categoryLabel}
             </span>
             <span className="text-white/20">|</span>
-            <span className="font-mono text-xs text-white/50">{item.timestamp}</span>
+            <span className="text-xs text-white/60 font-medium truncate max-w-[200px] sm:max-w-xs">
+              {item.title}
+            </span>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={onClose}
-              className="px-3 py-1.5 rounded-lg border border-white/10 hover:border-red-500/50 bg-white/5 hover:bg-red-500/10 text-white/70 hover:text-red-400 font-mono text-xs tracking-wider transition-colors flex items-center gap-1.5"
-            >
-              <X className="w-3.5 h-3.5" />
-              <span>[ ESC // CLOSE ]</span>
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-lg border border-white/10 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-medium"
+          >
+            <X className="w-4 h-4" />
+            <span className="hidden sm:inline">Close</span>
+          </button>
         </div>
 
         {/* Center Media Viewport */}
-        <div className="relative w-full max-h-[65vh] min-h-[40vh] bg-black flex items-center justify-center overflow-hidden">
+        <div className="relative w-full max-h-[68vh] min-h-[45vh] bg-black/60 flex items-center justify-center overflow-hidden p-2">
           <img
             src={item.src}
             alt={item.title}
-            className="max-h-[65vh] w-auto max-w-full object-contain"
+            className="max-h-[66vh] w-auto max-w-full object-contain rounded-lg shadow-2xl transition-all duration-300"
           />
 
-          {/* Nav Controls */}
+          {/* Navigation Controls */}
           <button
             onClick={onPrev}
-            className="absolute left-4 p-3 rounded-full bg-black/60 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400 text-white transition-all backdrop-blur-md"
+            aria-label="Previous image"
+            className="absolute left-4 p-3 rounded-full bg-black/60 hover:bg-white/20 border border-white/15 text-white transition-all backdrop-blur-md hover:scale-105"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={onNext}
-            className="absolute right-4 p-3 rounded-full bg-black/60 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400 text-white transition-all backdrop-blur-md"
+            aria-label="Next image"
+            className="absolute right-4 p-3 rounded-full bg-black/60 hover:bg-white/20 border border-white/15 text-white transition-all backdrop-blur-md hover:scale-105"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Bottom Technical Telemetry Panel */}
-        <div className="p-6 border-t border-white/10 bg-white/[0.01] grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="md:col-span-2">
-            <div className="text-[10px] font-mono text-cyan-400 tracking-widest uppercase mb-1">
-              RECORD TITLE // METADATA
-            </div>
-            <h2 className="text-xl md:text-2xl font-black text-white tracking-tight">
+        {/* Bottom Details Panel */}
+        <div className="p-6 border-t border-white/10 bg-white/[0.02]">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
               {item.title}
             </h2>
             <p className="text-sm text-white/70 mt-1">{item.subtitle}</p>
 
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex items-center gap-2 mt-2 text-xs text-white/60">
+              <MapPin className={`w-3.5 h-3.5 ${theme.pinColor} flex-shrink-0`} />
+              <span>{item.location}</span>
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-1.5 mt-3">
               {item.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 rounded bg-white/5 border border-white/10 font-mono text-[10px] text-white/60 tracking-wider"
+                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-medium border ${theme.tagClass}`}
                 >
                   #{tag}
                 </span>
               ))}
             </div>
-          </div>
-
-          <div className="border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6 flex flex-col justify-between">
-            <div className="space-y-2 text-xs font-mono">
-              <div className="flex justify-between text-white/50">
-                <span>LOCATION:</span>
-                <span className="text-white font-bold">{item.location}</span>
-              </div>
-              <div className="flex justify-between text-white/50">
-                <span>COORDINATES:</span>
-                <span className="text-orange-400">22.3149° N, 87.3105° E</span>
-              </div>
-              <div className="flex justify-between text-white/50">
-                <span>RESOLUTION:</span>
-                <span className="text-white font-bold">{item.resolution}</span>
-              </div>
-              <div className="flex justify-between text-white/50">
-                <span>CIPHER STATUS:</span>
-                <span className="text-green-400 font-bold">VERIFIED_AUTHENTIC</span>
-              </div>
-            </div>
-
-            <a
-              href={item.src}
-              download={`${item.code}_OPTIMA2027.webp`}
-              className="mt-4 px-4 py-2 rounded-lg bg-white/5 hover:bg-orange-500/20 border border-white/10 hover:border-orange-500 text-white font-mono text-xs tracking-wider transition-colors flex items-center justify-center gap-2"
-            >
-              <Download className="w-3.5 h-3.5 text-orange-400" />
-              <span>DOWNLOAD HIGH-RES</span>
-            </a>
           </div>
         </div>
       </motion.div>
@@ -764,12 +682,11 @@ const LightboxModal = ({ item, onClose, onPrev, onNext }) => {
 };
 
 // ==========================================
-// 5. MAIN COMPONENT: THE VELOCITY PARALLAX MATRIX
+// 5. MAIN COMPONENT: GALLERY MATRIX
 // ==========================================
 const Gallery = ({ standalone = false }) => {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
-  const isInView = useInView(sectionRef, { margin: "250px 0px 250px 0px" });
 
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [hoveredId, setHoveredId] = useState(null);
@@ -787,13 +704,11 @@ const Gallery = ({ standalone = false }) => {
     mass: 0.2,
   });
 
-  // Parallax Matrix Translations:
-  // Columns 1 & 3 move FASTER than baseline
-  // Columns 2 & 4 move SLOWER than baseline
-  const col1Y = useTransform(smoothProgress, [0, 1], ["50px", "-110px"]);
-  const col2Y = useTransform(smoothProgress, [0, 1], ["-50px", "80px"]);
-  const col3Y = useTransform(smoothProgress, [0, 1], ["80px", "-130px"]);
-  const col4Y = useTransform(smoothProgress, [0, 1], ["-70px", "95px"]);
+  // Parallax Translations across 4 Columns
+  const col1Y = useTransform(smoothProgress, [0, 1], ["40px", "-90px"]);
+  const col2Y = useTransform(smoothProgress, [0, 1], ["-40px", "60px"]);
+  const col3Y = useTransform(smoothProgress, [0, 1], ["60px", "-100px"]);
+  const col4Y = useTransform(smoothProgress, [0, 1], ["-50px", "70px"]);
 
   // Filtered dataset
   const filteredItems = useMemo(() => {
@@ -834,13 +749,14 @@ const Gallery = ({ standalone = false }) => {
       ref={sectionRef}
       id="gallery"
       onMouseLeave={() => setHoveredId(null)}
-      className="relative py-28 md:py-36 bg-[#030305] text-white border-t border-b border-white/5 overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#030305] text-white border-t border-b border-white/5 overflow-hidden"
     >
       {/* Background Ambient Glow Gradients */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 rounded-full bg-[#ff4500]/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-48 w-96 h-96 rounded-full bg-orange-500/10 blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 rounded-full bg-cyan-500/10 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-500/5 blur-[160px] pointer-events-none" />
 
-      {/* Cybernetic Grid Background Overlay */}
+      {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
@@ -850,51 +766,44 @@ const Gallery = ({ standalone = false }) => {
       />
 
       {/* ========================================== */}
-      {/* SECTION HEADER: KINETIC TYPOGRAPHY STANDARD */}
+      {/* SECTION HEADER                             */}
       {/* ========================================== */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-14 relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pb-8 border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-12 relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-8 border-b border-white/10">
           <div>
-            {/* Cybernetic HUD Tag */}
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-xs font-mono text-cyan-400 mb-5 tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>SEC_06 // PARALLAX_MATRIX</span>
-              <span className="text-white/20">|</span>
-              <span className="text-orange-400">ENCRYPTED_LOGS</span>
+            {/* Category Tag */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/80 mb-4 tracking-wide">
+              <Sparkles className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
+              <span>Festive Archives</span>
+              <span className="text-white/20">•</span>
+              <span className="text-orange-400">Moments of Optima</span>
             </div>
 
-            {/* Kinetic Typography Headline */}
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black font-sans tracking-tight text-white flex items-center gap-4 flex-wrap">
-              <span className="text-[#ff4500]">■</span>
-              <span>THE ARCHIVE</span>
-              <span className="text-white/20 font-light">//</span>
-              <span className="bg-gradient-to-r from-white via-white/90 to-white/60 bg-clip-text text-transparent">
-                OPTICAL RECORDS
+            {/* Colorful Typography Headline */}
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black font-sans tracking-tight text-white flex items-center gap-3 flex-wrap">
+              <span>THE</span>
+              <span className="bg-gradient-to-r from-orange-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                GALLERY
               </span>
             </h2>
 
-            <p className="text-sm md:text-base text-white/60 font-sans mt-3 max-w-2xl">
-              High-velocity multi-spectral capture of computational rigor, industry dialogue,
-              and symposium milestones across the Optima continuum.
+            <p className="text-sm md:text-base text-white/70 font-sans mt-3 max-w-2xl leading-relaxed">
+              Memories of computational rigor, industry dialogue, and engineering celebration
+              across Optima editions at IIT Kharagpur.
             </p>
           </div>
 
-          {/* Real-Time Telemetry Readout */}
-          <div className="flex flex-col items-start lg:items-end gap-2 text-xs font-mono text-white/50">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-emerald-400 font-bold">STREAM_LIVE</span>
-              <span className="text-white/20">|</span>
-              <span>ASSETS_LOADED: 25 RAW</span>
-            </div>
-            <div className="text-[11px] text-white/40">
-              PHYSICS: 4-COL VELOCITY PARALLAX // 60FPS
-            </div>
+          {/* Quick Counter Readout */}
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-xs font-mono text-white/60">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-emerald-400 font-bold">25 Photos</span>
+            <span className="text-white/20">|</span>
+            <span>4 Categories</span>
           </div>
         </div>
 
         {/* ========================================== */}
-        {/* HOLOGRAPHIC CATEGORY FILTERS               */}
+        {/* COLORFUL CATEGORY FILTERS                  */}
         {/* ========================================== */}
         <div className="mt-8 flex flex-wrap items-center gap-3">
           {FILTERS.map((f) => (
@@ -909,12 +818,11 @@ const Gallery = ({ standalone = false }) => {
       </div>
 
       {/* ========================================== */}
-      {/* VELOCITY-SYNCED MASONRY GRID               */}
+      {/* PARALLAX MASONRY GRID                      */}
       {/* ========================================== */}
       <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        {/* Grid Columns with Asymmetric Parallax */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-          {/* COLUMN 1 (Fast scroll speed) */}
+          {/* COLUMN 1 */}
           <motion.div style={{ y: col1Y }} className="flex flex-col">
             <AnimatePresence mode="popLayout">
               {columnData[0].map((item) => (
@@ -931,7 +839,7 @@ const Gallery = ({ standalone = false }) => {
             </AnimatePresence>
           </motion.div>
 
-          {/* COLUMN 2 (Slow scroll speed) */}
+          {/* COLUMN 2 */}
           <motion.div style={{ y: col2Y }} className="flex flex-col">
             <AnimatePresence mode="popLayout">
               {columnData[1].map((item) => (
@@ -948,7 +856,7 @@ const Gallery = ({ standalone = false }) => {
             </AnimatePresence>
           </motion.div>
 
-          {/* COLUMN 3 (Fast scroll speed) */}
+          {/* COLUMN 3 */}
           <motion.div style={{ y: col3Y }} className="flex flex-col">
             <AnimatePresence mode="popLayout">
               {columnData[2].map((item) => (
@@ -965,7 +873,7 @@ const Gallery = ({ standalone = false }) => {
             </AnimatePresence>
           </motion.div>
 
-          {/* COLUMN 4 (Slow scroll speed) */}
+          {/* COLUMN 4 */}
           <motion.div style={{ y: col4Y }} className="flex flex-col">
             <AnimatePresence mode="popLayout">
               {columnData[3].map((item) => (
@@ -985,7 +893,7 @@ const Gallery = ({ standalone = false }) => {
       </div>
 
       {/* ========================================== */}
-      {/* EXPANDED LIGHTBOX INSPECTION MODAL         */}
+      {/* LIGHTBOX MODAL                             */}
       {/* ========================================== */}
       <AnimatePresence>
         {activeModalItem && (

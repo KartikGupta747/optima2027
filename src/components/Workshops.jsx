@@ -59,7 +59,7 @@ const Workshops = () => {
       <div className="container relative z-2">
         <Heading
           className="md:max-w-md lg:max-w-2xl text-center"
-          title="2025 Workshops"
+          title="Optima 2027 Workshops"
         />
         <BackgroundCircles />
 
@@ -68,7 +68,8 @@ const Workshops = () => {
         </div> */}
         <div className="relative grid gap-6 md:grid-cols-2 md:gap-12 md:pb-[7rem]">
           {workshops.map((workshop) => (
-            <div className="md:flex even:md:translate-y-[10rem] p-0.25 rounded-[2.5rem] bg-conic-gradient">
+            <div key={workshop.id || workshop.title} className="md:flex even:md:translate-y-[10rem] p-0.25 rounded-[2.5rem] bg-conic-gradient">
+            
               <div className="relative p-8 bg-n-8 rounded-[2.4375rem] overflow-hidden xl:p-15 transition-all duration-200 hover:shadow-lg hover:shadow-purple-500">
                 {/* <div className="absolute top-0 left-0 max-w-full">
                   <img

@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useVelocity,
-  useSpring,
-  useTransform,
-  useMotionValueEvent,
-} from "framer-motion";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import NavLogo from "./NavLogo";
 import NavLinkItem from "./NavLinkItem";
@@ -28,9 +21,9 @@ const NAV_ITEMS = [
 
 /**
  * THE ALGORITHMIC RIBBON
- * Highly kinetic, strictly sticky navigation entity fixed top-4 z-[999].
- * Pure minimalist layout: commanding brand logo, kinetic links with data particle,
- * and high-voltage perimeter-beam Register CTA.
+ * - 0 Scroll: Expansive, prominent command ribbon (max-w-7xl) with larger logo & generous padding.
+ * - Scrolled: Smoothly transitions into a sleek compact dock (max-w-[1120px]) with tight padding.
+ * - Hardware-accelerated CSS transition replaces Framer layout to guarantee buttery 60/120fps performance.
  */
 const Navbar = () => {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -40,39 +33,13 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Scroll velocity physics setup
   const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    stiffness: 280,
-    damping: 24,
-    mass: 0.15,
-  });
 
-  // Fast-scroll aerodynamic capsule compression
-  const scaleX = useTransform(
-    smoothVelocity,
-    [-2400, -800, 0, 800, 2400],
-    [0.965, 0.985, 1, 0.98, 0.96]
-  );
-  const scaleY = useTransform(
-    smoothVelocity,
-    [-2400, -800, 0, 800, 2400],
-    [1.02, 1.01, 1, 0.985, 0.97]
-  );
-
-  // Scrolling Up: Deep-orange (#ff4500) underglow flare
-  const orangeUnderglowOpacity = useTransform(
-    smoothVelocity,
-    [-1800, -120, -10, 60],
-    [0.85, 0.45, 0, 0]
-  );
-
-  // Monitor Idle vs Scrolled status
+  // Hysteresis threshold: prevents boundary jitter
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest <= 15) {
+    if (latest < 25) {
       setIsAtTop(true);
-    } else {
+    } else if (latest > 55) {
       setIsAtTop(false);
     }
   });
@@ -128,46 +95,30 @@ const Navbar = () => {
         Sticky Desktop Ribbon (Never leaves screen, fixed top-4 z-[999])
         Hidden on mobile viewports (< 1280px) where the Command Grid takes over
       */}
-      <header className="fixed top-4 left-0 right-0 z-[999] hidden xl:flex items-center justify-center px-4 pointer-events-none">
-        <motion.div
-          style={{
-            scaleX,
-            scaleY,
-          }}
-          className="relative pointer-events-auto flex items-center justify-center"
-        >
-          {/* Reactive Deep-Orange Underglow on Scrolling Up */}
-          <motion.div
-            style={{ opacity: orangeUnderglowOpacity }}
-            className="absolute -inset-2 rounded-full bg-gradient-to-b from-transparent via-[#ff4500]/25 to-[#ff4500]/60 blur-xl pointer-events-none -z-10"
+      <header className="fixed top-4 left-0 right-0 z-[999] hidden xl:flex items-center justify-center px-4 sm:px-6 pointer-events-none">
+        <div className="relative pointer-events-auto flex items-center justify-center w-full max-w-7xl">
+          {/* Ambient Backing Glow */}
+          <div
+            className={`absolute -inset-1 rounded-full bg-gradient-to-b from-transparent via-[#ff4500]/10 to-[#ff4500]/25 blur-lg pointer-events-none -z-10 transition-opacity duration-300 ${
+              isAtTop ? "opacity-30" : "opacity-75"
+            }`}
           />
 
-          {/* Morphing Ribbon Body */}
-          <motion.div
-            animate={{
-              borderRadius: isAtTop ? "20px" : "9999px",
-              paddingTop: isAtTop ? "10px" : "8px",
-              paddingBottom: isAtTop ? "10px" : "8px",
-              paddingLeft: isAtTop ? "28px" : "20px",
-              paddingRight: isAtTop ? "28px" : "20px",
-            }}
-            transition={{
-              duration: 0.45,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className={`relative flex items-center justify-between gap-6 transition-colors duration-500 ${
+          {/* Morphing Ribbon: Smooth native CSS transition with 0 layout calculation lag */}
+          <div
+            className={`relative flex items-center justify-between gap-4 transition-all duration-300 ease-out will-change-[max-width,padding,border-radius] ${
               isAtTop
-                ? "w-full max-w-7xl bg-black/20 backdrop-blur-2xl border border-white/5"
-                : "w-auto bg-[#050505]/85 backdrop-blur-3xl border border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.85)]"
+                ? "w-full max-w-7xl px-8 py-3.5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                : "w-full max-w-[1120px] px-5 py-2 rounded-full bg-[#050505]/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.85)]"
             }`}
           >
-            {/* Left: Bold, Commanding Brand Logo Anchor */}
-            <div className="flex items-center pr-3">
+            {/* Left: Brand Logo (Scales up smoothly via CSS) */}
+            <div className="flex items-center pr-2 flex-shrink-0">
               <NavLogo isScrolled={!isAtTop} />
             </div>
 
-            {/* Center: Kinetic Typography, Scramble, & Data Particle */}
-            <nav className="flex items-center gap-1.5 relative">
+            {/* Center: Kinetic Typography & Active Route Indicator */}
+            <nav className="flex items-center gap-0.5 sm:gap-1 relative flex-shrink-0">
               {/* Geometric SVG guide path */}
               <svg
                 className="absolute -bottom-1 left-0 w-full h-[1px] pointer-events-none opacity-20 overflow-visible"
@@ -195,11 +146,11 @@ const Navbar = () => {
             </nav>
 
             {/* Right: Apex Register CTA Button */}
-            <div className="flex items-center pl-3">
+            <div className="flex items-center pl-2 flex-shrink-0">
               <RegisterButton />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </header>
 
       {/* 

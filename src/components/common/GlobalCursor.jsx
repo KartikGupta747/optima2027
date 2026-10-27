@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 /**
@@ -52,7 +52,7 @@ const GlobalCursor = () => {
     const handlePointerMove = (e) => {
       rawX.set(e.clientX);
       rawY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     };
 
     // Interactive element detection across entire DOM
@@ -95,7 +95,7 @@ const GlobalCursor = () => {
       if (mediaQuery.removeEventListener) {
         mediaQuery.removeEventListener("change", handleMediaChange);
       } else {
-        mediaQuery.removeListener(handleMediaChange);
+        mediaQuery.addListener(handleMediaChange);
       }
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("mouseover", handlePointerOver);
@@ -104,7 +104,7 @@ const GlobalCursor = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [isVisible, rawX, rawY]);
+  }, [rawX, rawY]);
 
   // Disable on mobile/touch screens
   if (!isFinePointer) return null;
@@ -123,68 +123,66 @@ const GlobalCursor = () => {
           y: springRingY,
           opacity: isVisible ? 1 : 0,
         }}
-        className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200"
+        className="fixed top-0 left-0 transition-opacity duration-200 pointer-events-none"
       >
-        <AnimatePresence mode="wait">
-          {isViewData ? (
-            /* VIEW_DATA [//] Holographic Morph Pill */
-            <motion.div
-              key="view-data-pill"
-              initial={{ scale: 0.7, opacity: 0 }}
-              animate={{
-                scale: isPressed ? 0.9 : 1,
-                opacity: 1,
-              }}
-              exit={{ scale: 0.7, opacity: 0 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="px-4 py-1.5 rounded-full border border-cyan-400 bg-black/90 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.8),inset_0_0_12px_rgba(0,240,255,0.3)] flex items-center gap-2 whitespace-nowrap"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-              <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-300 uppercase">
-                VIEW_DATA [//]
-              </span>
-            </motion.div>
-          ) : (
-            /* The Orbital Energy Ring */
-            <motion.div
-              key="orbital-ring"
-              animate={{
-                scale: isPressed ? 0.82 : isHovered ? 1.5 : 1,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 25,
-              }}
-              className="relative flex items-center justify-center w-12 h-12"
-            >
-              {/* Outer Circular Track with Deep-Orange Glowing Shadow */}
+        <div className="-translate-x-1/2 -translate-y-1/2">
+          <AnimatePresence mode="wait">
+            {isViewData ? (
+              /* VIEW_DATA [//] Holographic Morph Pill */
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: isHovered ? 3.5 : 8, // Rotation speed doubles on hover!
-                  repeat: Infinity,
-                  ease: "linear",
+                key="view-data-pill"
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{
+                  scale: isPressed ? 0.9 : 1,
+                  opacity: 1,
                 }}
-                className={`absolute inset-0 rounded-full border transition-colors duration-300 ${
-                  isHovered
-                    ? "border-cyan-400/90 shadow-[0_0_24px_rgba(0,240,255,0.7),inset_0_0_10px_rgba(0,240,255,0.3)]"
-                    : "border-orange-500/80 shadow-[0_0_18px_rgba(255,69,0,0.65),inset_0_0_8px_rgba(255,69,0,0.2)]"
-                }`}
+                exit={{ scale: 0.7, opacity: 0 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="px-4 py-1.5 rounded-full border border-cyan-400 bg-black/90 backdrop-blur-2xl shadow-[0_0_30px_rgba(0,240,255,0.8),inset_0_0_12px_rgba(0,240,255,0.3)] flex items-center gap-2 whitespace-nowrap"
               >
-                {/* 4 Orbiting Data Nodes: 2 Cyan Nodes + 2 Orange Nodes */}
-                {/* Top Node (Cyan) */}
-                <span className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#00f0ff] shadow-[0_0_8px_#00f0ff]" />
-                {/* Bottom Node (Cyan) */}
-                <span className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#00f0ff] shadow-[0_0_8px_#00f0ff]" />
-                {/* Left Node (Orange) */}
-                <span className="absolute -left-[3px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#ff4500] shadow-[0_0_8px_#ff4500]" />
-                {/* Right Node (Orange) */}
-                <span className="absolute -right-[3px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#ff4500] shadow-[0_0_8px_#ff4500]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                <span className="text-[10px] font-mono font-bold tracking-widest text-cyan-300 uppercase">
+                  VIEW_DATA [//]
+                </span>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            ) : (
+              /* The Orbital Energy Ring */
+              <motion.div
+                key="orbital-ring"
+                animate={{
+                  scale: isPressed ? 0.82 : isHovered ? 1.5 : 1,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 25,
+                }}
+                className="relative flex items-center justify-center w-12 h-12"
+              >
+                {/* Outer Circular Track with Deep-Orange Glowing Shadow */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: isHovered ? 3.5 : 8, // Rotation speed doubles on hover!
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className={`absolute inset-0 rounded-full border transition-colors duration-300 ${
+                    isHovered
+                      ? "border-cyan-400/90 shadow-[0_0_24px_rgba(0,240,255,0.7),inset_0_0_10px_rgba(0,240,255,0.3)]"
+                      : "border-orange-500/80 shadow-[0_0_18px_rgba(255,69,0,0.65),inset_0_0_8px_rgba(255,69,0,0.2)]"
+                  }`}
+                >
+                  {/* 4 Orbiting Data Nodes: 2 Cyan Nodes + 2 Orange Nodes */}
+                  <span className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#00f0ff] shadow-[0_0_8px_#00f0ff]" />
+                  <span className="absolute -bottom-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#00f0ff] shadow-[0_0_8px_#00f0ff]" />
+                  <span className="absolute -left-[3px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#ff4500] shadow-[0_0_8px_#ff4500]" />
+                  <span className="absolute -right-[3px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#ff4500] shadow-[0_0_8px_#ff4500]" />
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </motion.div>
 
       {/* ======================================================== */}
@@ -196,37 +194,39 @@ const GlobalCursor = () => {
           y: rawY,
           opacity: isVisible && !isViewData ? 1 : 0,
         }}
-        className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none transition-opacity duration-150"
+        className="fixed top-0 left-0 pointer-events-none transition-opacity duration-150"
       >
-        <motion.div
-          animate={{
-            scale: isPressed ? 0.75 : 1,
-          }}
-          transition={{ duration: 0.1 }}
-          className="relative flex items-center justify-center w-5 h-5"
-        >
-          {/* Default Mode: Crisp, bright cyan crosshair (+) tracking instantly with 0 delay */}
-          <motion.span
+        <div className="-translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+          <motion.div
             animate={{
-              opacity: isHovered ? 0 : 1,
-              scale: isHovered ? 0.3 : 1,
+              scale: isPressed ? 0.75 : 1,
             }}
-            transition={{ duration: 0.18 }}
-            className="absolute text-[13px] font-mono font-bold text-cyan-300 drop-shadow-[0_0_8px_#00f0ff] select-none leading-none pointer-events-none"
+            transition={{ duration: 0.1 }}
+            className="relative flex items-center justify-center w-5 h-5"
           >
-            +
-          </motion.span>
+            {/* Default Mode: Crisp, bright cyan crosshair (+) tracking instantly with 0 delay */}
+            <motion.span
+              animate={{
+                opacity: isHovered ? 0 : 1,
+                scale: isHovered ? 0.3 : 1,
+              }}
+              transition={{ duration: 0.18 }}
+              className="absolute text-[13px] font-mono font-bold text-cyan-300 drop-shadow-[0_0_8px_#00f0ff] select-none leading-none pointer-events-none"
+            >
+              +
+            </motion.span>
 
-          {/* Hover Mode: Morphs into a small, solid glowing cyan dot */}
-          <motion.span
-            animate={{
-              opacity: isHovered ? 1 : 0,
-              scale: isHovered ? 1 : 0.2,
-            }}
-            transition={{ duration: 0.18 }}
-            className="absolute w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_12px_#00f0ff,0_0_4px_#ffffff] pointer-events-none"
-          />
-        </motion.div>
+            {/* Hover Mode: Morphs into a small, solid glowing cyan dot */}
+            <motion.span
+              animate={{
+                opacity: isHovered ? 1 : 0,
+                scale: isHovered ? 1 : 0.2,
+              }}
+              transition={{ duration: 0.18 }}
+              className="absolute w-2 h-2 rounded-full bg-cyan-300 shadow-[0_0_12px_#00f0ff,0_0_4px_#ffffff] pointer-events-none"
+            />
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );

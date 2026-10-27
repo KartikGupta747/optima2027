@@ -21,13 +21,13 @@ const NavLogo = ({ isScrolled = false }) => {
       className="flex items-center group focus-visible:outline-none select-none py-1"
       aria-label="Optima 2027 Home"
     >
-      {/* Commanding Bold Brand Logo Anchor (Scaled up 60%-75%) */}
+      {/* Commanding Bold Brand Logo Anchor: Smooth CSS transition between sizes */}
       <div className="relative flex items-center justify-center">
         <img
           src={logo}
           alt="Optima 2027"
-          className={`w-auto object-contain transition-all duration-300 ${
-            isScrolled ? "h-10 sm:h-11" : "h-11 sm:h-13 md:h-14"
+          className={`w-auto object-contain transition-all duration-300 ease-out ${
+            isScrolled ? "h-9" : "h-11"
           } group-hover:brightness-115 group-hover:drop-shadow-[0_0_18px_rgba(255,107,0,0.45)]`}
         />
         {/* Ambient Brand Underglow */}

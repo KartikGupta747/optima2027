@@ -18,7 +18,7 @@ const WelcomeScreen = ({ onComplete }) => {
         onCompleteRef.current?.();
       }, 600);
       return () => clearTimeout(exitTimer);
-    }, 2200);
+    }, 3300);
 
     return () => clearTimeout(timer);
   }, []);

@@ -93,15 +93,15 @@
   /* Shape Language: Zero rounded corners (border-radius: 0px) */
   /* Shape Language: Zero rounded corners (border-radius: 0px) by default */
   /* Deliverable 13 Aesthetic Constraint: Elements default to 0px; pill-docks and circular indicators use .rounded-full */
-  button:not(.rounded-full),
+  button:not([class*="rounded"]),
   input:not(.rounded-full),
   select:not(.rounded-full),
   textarea:not(.rounded-full),
-  div:not([class*="rounded-full"]),
+  div:not([class*="rounded"]),
   section,
   article,
-  nav:not([class*="rounded-full"]),
-  header:not([class*="rounded-full"]),
+  nav:not([class*="rounded"]),
+  header:not([class*="rounded"]),
   footer {
     border-radius: 0px;
   }

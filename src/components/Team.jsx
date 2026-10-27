@@ -148,10 +148,6 @@ const GlassIdentityPlate = ({ member, index, isArchived = false }) => {
     setIsHovered(false);
   };
 
-  const codeId = `${isArchived ? "ARCH" : "CORE"}_${(index + 1)
-    .toString()
-    .padStart(2, "0")}`;
-
   return (
     <motion.div
       ref={cardRef}
@@ -191,9 +187,6 @@ const GlassIdentityPlate = ({ member, index, isArchived = false }) => {
           className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
-        {/* CRT Scanline & Grain Texture Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-10 opacity-30 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.7)_50%)] bg-[length:100%_4px] mix-blend-overlay" />
-
         {/* Volumetric Holographic Light Sweep Scanline (Triggered on Hover) */}
         {isHovered && (
           <motion.div
@@ -208,22 +201,6 @@ const GlassIdentityPlate = ({ member, index, isArchived = false }) => {
 
         {/* Dark Cinematic Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#09090e] via-[#09090e]/30 to-transparent z-15" />
-
-        {/* Cybernetic Corner Brackets */}
-        <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-white/40 group-hover:border-cyan-400 transition-colors z-20" />
-        <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-white/40 group-hover:border-orange-500 transition-colors z-20" />
-        <div className="absolute bottom-3 left-3 w-3 h-3 border-b border-l border-white/40 group-hover:border-orange-500 transition-colors z-20" />
-        <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-white/40 group-hover:border-cyan-400 transition-colors z-20" />
-
-        {/* Top Badges (Telemetry Code & Cycle) */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-20 px-1 pointer-events-none">
-          <span className="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[9px] text-cyan-300 uppercase tracking-widest">
-            {codeId}
-          </span>
-          <span className="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[9px] text-orange-400 uppercase tracking-wider">
-            {isArchived ? "RECORD // 2025" : "ACTIVE // 2027"}
-          </span>
-        </div>
       </div>
 
       {/* ======================================================== */}
