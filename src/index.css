@@ -1,88 +1,386 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* --font-sora: "Sora", sans-serif;
-  --font-code: "Source Code Pro", monospace;
-  --font-grotesk: "Space Grotesk", sans-serif;*/
+  /* ==========================================================================
+     Deliverable 3 — Color Palette Tokens
+     ========================================================================== */
+  --color-bg-base: #030305;
+  --color-bg-surface: #0A0A0E;
+  --color-bg-elevated: #14141A;
+  --color-text-primary: #F2F2F5;
+  --color-text-secondary: #8A8A99;
+  --color-accent-brand: #FF6B00;
+  --color-accent-glow: #FF8C00;
+  --color-accent-muted: #5C45FD;
+  --color-border-subtle: #1F1F2E;
+
+  /* RGB variants for alpha channel composition */
+  --color-bg-base-rgb: 3, 3, 5;
+  --color-bg-surface-rgb: 10, 10, 14;
+  --color-bg-elevated-rgb: 20, 20, 26;
+  --color-text-primary-rgb: 242, 242, 245;
+  --color-text-secondary-rgb: 138, 138, 153;
+  --color-accent-brand-rgb: 255, 107, 0;
+  --color-accent-glow-rgb: 255, 140, 0;
+  --color-accent-muted-rgb: 92, 69, 253;
+  --color-border-subtle-rgb: 31, 31, 46;
+
+  /* Typography tokens */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
   color-scheme: dark;
 }
 
-* {
-  scroll-behavior: smooth;
-}
-
 @layer base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    border-color: var(--color-border-subtle);
+  }
+
+  html {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply font-code bg-n-8 text-n-1 text-base;
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Global System Cursor Override — Eradicates OS arrow on desktop devices */
+  @media (pointer: fine) {
+    *,
+    *::before,
+    *::after,
+    html,
+    body,
+    a,
+    button,
+    input,
+    select,
+    textarea {
+      cursor: none !important;
+    }
+  }
+
+  /* Headings: Space Grotesk engineered geometric sans-serif */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+  }
+
+  /* Shape Language: Zero rounded corners (border-radius: 0px) */
+  /* Shape Language: Zero rounded corners (border-radius: 0px) by default */
+  /* Deliverable 13 Aesthetic Constraint: Elements default to 0px; pill-docks and circular indicators use .rounded-full */
+  button:not(.rounded-full),
+  input:not(.rounded-full),
+  select:not(.rounded-full),
+  textarea:not(.rounded-full),
+  div:not([class*="rounded-full"]),
+  section,
+  article,
+  nav:not([class*="rounded-full"]),
+  header:not([class*="rounded-full"]),
+  footer {
+    border-radius: 0px;
+  }
+
+  .rounded-full,
+  [class*="rounded-full"] {
+    border-radius: 9999px;
+  }
+
+  /* Accessibility Focus States (Deliverable 12) */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-brand);
+    outline-offset: 4px;
+  }
+
+  /* Brand selection styling */
+  ::selection {
+    background-color: var(--color-accent-brand);
+    color: #000000;
   }
 }
 
-.rotate-45 {
-  @apply rotate-[45deg];
+@layer components {
+  /* ==========================================================================
+     Deliverable 10 — Primary Button
+     Structure: padding: 12px 24px, border: 1px solid var(--color-accent-brand)
+     Default State: background: transparent, color: var(--color-text-primary)
+     Hover State: background: var(--color-accent-brand), color: #000000, transition: all 0.2s ease
+     Active State: transform: scale(0.96)
+     ========================================================================== */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: 1px solid var(--color-accent-brand);
+    background-color: transparent;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 0px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-brand);
+    color: #000000;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.25);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.96);
+  }
+
+  /* Secondary CAD button */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: 1px solid var(--color-border-subtle);
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border-radius: 0px;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-bg-elevated);
+    border-color: var(--color-accent-muted);
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.96);
+  }
+
+  /* ==========================================================================
+     Deliverable 10 — Section Header
+     Structure: Flex container. A 24px orange square (var(--color-accent-brand))
+     followed by Space Grotesk text, font-weight: 700, text-transform: uppercase,
+     letter-spacing: 0.1em.
+     ========================================================================== */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-header-square {
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-accent-brand);
+    flex-shrink: 0;
+  }
+
+  .section-header-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-primary);
+  }
+
+  /* CAD Card container with 1px border */
+  .cad-card {
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cad-card:hover {
+    border-color: var(--color-accent-brand);
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.15);
+  }
 }
 
-.rotate-90 {
-  @apply rotate-[90deg];
+@layer utilities {
+  /* Controlled use of light (Deliverable 3 & 7) */
+  .glow-brand {
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.15);
+  }
+
+  .glow-brand-lg {
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.25);
+  }
+
+  /* CAD technical grid pattern */
+  .bg-cad-grid {
+    background-image:
+      linear-gradient(to right, rgba(31, 31, 46, 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(31, 31, 46, 0.4) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Terminal-style metadata block */
+  .terminal-meta {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    border-left: 2px solid var(--color-accent-brand);
+    padding-left: 0.75rem;
+  }
 }
 
-.rotate-135 {
-  @apply rotate-[135deg];
+/* Custom Scrollbar - CAD & Terminal Theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.rotate-180 {
-  @apply rotate-[180deg];
+::-webkit-scrollbar-track {
+  background: #030305;
 }
 
-.rotate-225 {
-  @apply rotate-[225deg];
+::-webkit-scrollbar-thumb {
+  background: #1F1F2E;
 }
 
-.rotate-270 {
-  @apply rotate-[270deg];
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B00;
 }
 
-.rotate-315 {
-  @apply rotate-[315deg];
+/* Legacy rotation utilities */
+.rotate-45 { @apply rotate-[45deg]; }
+.rotate-90 { @apply rotate-[90deg]; }
+.rotate-135 { @apply rotate-[135deg]; }
+.rotate-180 { @apply rotate-[180deg]; }
+.rotate-225 { @apply rotate-[225deg]; }
+.rotate-270 { @apply rotate-[270deg]; }
+.rotate-315 { @apply rotate-[315deg]; }
+.rotate-360 { @apply rotate-[360deg]; }
+.-rotate-45 { @apply rotate-[-45deg]; }
+.-rotate-90 { @apply rotate-[-90deg]; }
+.-rotate-135 { @apply rotate-[-135deg]; }
+.-rotate-180 { @apply rotate-[-180deg]; }
+.-rotate-225 { @apply rotate-[-225deg]; }
+.-rotate-270 { @apply rotate-[-270deg]; }
+.-rotate-315 { @apply rotate-[-315deg]; }
+.-rotate-360 { @apply rotate-[-360deg]; }
+
+/* ==========================================================================
+   Algorithmic Ribbon — RGB Chromatic Aberration & Holographic Glitch
+   ========================================================================== */
+.rgb-split-text {
+  --rgb-offset: 0px;
+  position: relative;
+  display: inline-block;
+  will-change: transform, text-shadow;
 }
 
-.rotate-360 {
-  @apply rotate-[360deg];
+.group:hover .rgb-split-text {
+  animation: rgbAberration 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.-rotate-45 {
-  @apply rotate-[-45deg];
+@keyframes rgbAberration {
+  0% {
+    --rgb-offset: 0px;
+    text-shadow: none;
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    --rgb-offset: 3px;
+    text-shadow: 
+      calc(var(--rgb-offset) * -1) 0 0 #ff0055,
+      var(--rgb-offset) 0 0 #00f0ff,
+      0 1px 0 #00ff66;
+    transform: skewX(-5deg) translate3d(-1px, 0, 0);
+  }
+  45% {
+    --rgb-offset: 4.5px;
+    text-shadow: 
+      var(--rgb-offset) 0 0 #ff0055,
+      calc(var(--rgb-offset) * -1) 0 0 #00f0ff,
+      0 -1px 0 #00ff66;
+    transform: skewX(3deg) translate3d(1.5px, 0, 0);
+  }
+  70% {
+    --rgb-offset: 1.5px;
+    text-shadow: 
+      calc(var(--rgb-offset) * -1) 0 0 #ff0055,
+      var(--rgb-offset) 0 0 #00f0ff;
+    transform: skewX(-1deg) translate3d(-0.5px, 0, 0);
+  }
+  100% {
+    --rgb-offset: 0px;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.9), 0 0 20px rgba(255, 69, 0, 0.5);
+    transform: skewX(0deg) translate3d(0, 0, 0);
+  }
 }
 
-.-rotate-90 {
-  @apply rotate-[-90deg];
+.liquid-metal-shimmer {
+  background: radial-gradient(
+    ellipse at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(0, 240, 255, 0.28) 0%,
+    rgba(255, 69, 0, 0.22) 40%,
+    transparent 80%
+  );
+  filter: contrast(135%) brightness(125%);
 }
 
-.-rotate-135 {
-  @apply rotate-[-135deg];
+/* ==========================================================================
+   Dimensional Bento Grid — Animated Neon Border
+   ========================================================================== */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
-.-rotate-180 {
-  @apply rotate-[-180deg];
+@keyframes spinBorderAngle {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 360deg;
+  }
 }
 
-.-rotate-225 {
-  @apply rotate-[-225deg];
+.neon-animated-border {
+  --border-angle: 0deg;
+  border: 1.5px solid transparent !important;
+  background: 
+    linear-gradient(#0a0a10, #0a0a10) padding-box,
+    conic-gradient(from var(--border-angle), #ff4500, #00f0ff, #5c45fd, #ff4500) border-box !important;
+  animation: spinBorderAngle 3s linear infinite;
+  box-shadow: 0 0 25px rgba(255, 69, 0, 0.25), 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
-.-rotate-270 {
-  @apply rotate-[-270deg];
-}
-
-.-rotate-315 {
-  @apply rotate-[-315deg];
-}
-
-.-rotate-360 {
-  @apply rotate-[-360deg];
-}

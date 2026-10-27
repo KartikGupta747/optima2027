@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { AnimatePresence } from "framer-motion";
-import ButtonGradient from "./assets/svg/ButtonGradient";
 import About from "./components/About";
 import ResetPassword from "./components/auth/ResetPassword";
 import SignIn from "./components/auth/SignIn";
@@ -28,6 +27,7 @@ import { guestLectures } from "./constants/GuestLectures";
 import { AuthProvider } from "./context/AuthContext";
 import Rules from "./components/Rules";
 import WelcomeScreen from "./components/WelcomeScreen";
+import GlobalCursor from "./components/common/GlobalCursor";
 
 const App = () => {
 	const [showSplash, setShowSplash] = useState(() => {
@@ -46,15 +46,16 @@ const App = () => {
 
 	return (
 		<AuthProvider>
+			<GlobalCursor />
 			<AnimatePresence>
 				{showSplash && <WelcomeScreen onComplete={handleSplashComplete} />}
 			</AnimatePresence>
-			<div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
-				<Header className="fixed top-0 left-0 w-full z-50" />
+			<div className="min-h-screen bg-bg-base text-text-primary font-sans selection:bg-accent-brand selection:text-black overflow-x-clip">
+				<Header />
 				<Routes>
 					<Route path="/" element={<Homepage />} />
 					<Route path="/about" element={<About />} />
-					<Route path="/gallery" element={<Gallery />} />
+					<Route path="/gallery" element={<Navigate to="/#gallery" replace />} />
 					<Route path="/schedule" element={<Schedule />}/>
 					<Route path="/workshops" element={<Workshops />} />
 					<Route path="/competitions" element={<Competitions />} />
@@ -75,10 +76,11 @@ const App = () => {
 						);
 					})}
 
-					{competitions.map((event) => {
-						return event.whatsAppLink ? (
+					{competitions
+						.filter((event) => event.whatsAppLink)
+						.map((event) => (
 							<Route
-								key={event.id}
+								key={`wa-${event.id}`}
 								path={event.pathToWhatsApp}
 								element={
 									<Redirect
@@ -88,15 +90,13 @@ const App = () => {
 									/>
 								}
 							/>
-						) : (
-							<></>
-						);
-					})}
+						))}
 
-					{competitions.map((event) => {
-						return event.driveLink ? (
+					{competitions
+						.filter((event) => event.driveLink)
+						.map((event) => (
 							<Route
-								key={event.id}
+								key={`ps-${event.id}`}
 								path={event.pathToPS}
 								element={
 									<Redirect
@@ -106,10 +106,7 @@ const App = () => {
 									/>
 								}
 							/>
-						) : (
-							<></>
-						);
-					})}
+						))}
 
 					<Route path="/guest-lectures" element={<GuestLecture />} />
 					{guestLectures.map((event) => {
@@ -142,7 +139,6 @@ const App = () => {
 				</Routes>
 				<Footer />
 			</div>
-			<ButtonGradient />
 		</AuthProvider>
 	);
 };

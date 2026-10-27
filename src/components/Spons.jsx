@@ -1,455 +1,237 @@
-import React, { useState } from "react";
-import brackets from "../assets/svg/Brackets";
-import { motion } from "framer-motion";
-import { BackgroundCircles, BottomLine } from "./design/Hero";
-import Heading from "./Heading";
-import Section from "./Section";
-import { Gradient } from "./design/Services.jsx";
-import Button from "./Button.jsx";
-import ComingSoon from "./design/ComingSoon.jsx";
-import { Link } from "react-router-dom";
+import React from "react";
+import { ArrowUpRight, Building2, ShieldCheck } from "lucide-react";
 
-// Separate data into a new file: src/data/sponsorsData.js
-const SPONSORS_DATA = {
-  2027: {
-    title: "Optima 2027 Sponsors",
-    categories: {
-      titleSponsor: {
-        name: "Title Sponsor",
-        size: "lg",
-        sponsors: ["spons-25/Hire3x.webp"],
-      },
-      coTitleSponsor: {
-        name: "Co-Title Sponsor",
-        size: "md",
-        sponsors: ["spons-25/Adani_Ai_Sirius_Digitech.webp"],
-      },
-      platinumSponsor: {
-        name: "Platinum Sponsor",
-        size: "md",
-        sponsors: ["spons-25/ONGC.webp"],
-      },
-      inAssociationWith: {
-        name: "In Association With",
-        size: "md",
-        sponsors: ["spons-25/GAIL.webp"],
-      },
-      strategicPartners: {
-        name: "Strategic Sponsor",
-        size: "md",
-        sponsors: ["spons-25/OPTYM.webp"],
-      },
-      majorSponsors: {
-        name: "Major Sponsor",
-        size: "md",
-        sponsors: ["spons-25/blue_yonder.webp"],
-      },
-      silverSponsors: {
-        name: "Silver Sponsor",
-        size: "md",
-        sponsors: ["spons-25/IEM.webp"],
-      },
-      poweredBy: {
-        name: "Powered By",
-        size: "sm",
-        sponsors: ["spons-25/Unstop.webp"],
-      },
-      eventPartner: {
-        name: "Event Partners",
-        size: "sm",
-        sponsors: ["spons-25/Delhivery_Logo.webp", "spons-25/LiveAi.webp", "spons-25/kgts.webp", "spons-25/decisionOptNew.webp"],
-      },
-      titleMediaPartner: {
-        name: "Title Media Partner",
-        size: "sm",
-        sponsors: ["spons-25/the-times-of-india.webp"],
-      },
-      mediaPartner: {
-        name: "Media Partners",
-        size: "sm",
-        sponsors: ["spons-25/CampusVarta.webp", "spons-25/InsightSuccess.webp"],
-      
-      },
-      youthMediaPartner: {
-        name: "Youth Media Partner",
-        size: "sm",
-        sponsors: ["spons-25/YouthIncorporated.webp"],
-      },
-      outreachPartner: {
-        name: "Blogger Outreach Partner",
-        size: "sm",
-        sponsors: ["spons-25/BlogAdda.webp"],
-      },
-    },
+const tier1Sponsors = [
+  {
+    tier: "TITLE SPONSOR",
+    name: "Hire3x",
+    logo: "/assets/spons/spons-25/Hire3x.webp",
+    url: "https://hire3x.com/",
+    span: "md:col-span-6",
+    height: "h-44 sm:h-52",
   },
-  2023: {
-    title: "Optima 2023 Sponsors",
-    categories: {
-      titleSponsor: {
-        name: "Title Sponsor",
-        size: "lg",
-        sponsors: ["spons-23/OPTYM.webp"],
-      },
-      majorSponsors: {
-        name: "Major Sponsors",
-        size: "md",
-        sponsors: ["spons-23/AirIndia.webp", "spons-23/FlexSim.webp"],
-      },
-      strategicPartners: {
-        name: "Strategic Partners",
-        size: "sm",
-        sponsors: ["spons-23/RahulCommerce.webp", "spons-23/Vicon.webp"],
-      },
-      eventsPartners: {
-        name: "Event Partners",
-        size: "sm",
-        sponsors: [
-          "spons-23/ORMAE.webp",
-          "spons-23/DCVisionVR.webp",
-          "spons-23/Blue_Yonder.webp",
-          "spons-23/Delhivery_Logo.webp",
-          "spons-23/GFG.webp",
-          "spons-23/Sabre.webp",
-        ],
-      },
-      merchandisePartner: {
-        name: "Merchandise Partner",
-        size: "sm",
-        sponsors: ["spons-23/OwlPrints.webp"],
-      },
-      mediaPartners: {
-        name: "Media Partners",
-        size: "sm",
-        sponsors: ["spons-23/CampusVarta.webp", "spons-23/WomansEra.webp"],
-      },
-    },
+  {
+    tier: "CO-TITLE SPONSOR",
+    name: "Sirius DigiTech / Adani AI",
+    logo: "/assets/spons/spons-25/Adani_Ai_Sirius_Digitech.webp",
+    url: "https://www.linkedin.com/company/sirius-digitech/",
+    span: "md:col-span-6",
+    height: "h-44 sm:h-52",
   },
-  previous: {
-    title: "Previous Sponsors",
-    categories: {
-      previousSponsors: {
-        name: "Previous Sponsors",
-        size: "sm",
-        sponsors: [
-          "spons-prev/ACC.webp",
-          "spons-prev/AIBH.webp",
-          "spons-prev/Allied_publishers.webp",
-          "spons-prev/GE_HealthCare.webp",
-          "spons-prev/RP_Industrial_Consultant.webp",
-          "spons-prev/Springer.webp",
-          "spons-prev/SR_Srinivasan.webp",
-          "spons-prev/TATA.webp",
-          "spons-prev/Total_Library_Solution.webp",
-        ],
-      },
-    },
+];
+
+const tier2Sponsors = [
+  {
+    tier: "PLATINUM SPONSOR",
+    name: "ONGC",
+    logo: "/assets/spons/spons-25/ONGC.webp",
+    url: "https://ongcindia.com/",
+    span: "md:col-span-4",
+    height: "h-36 sm:h-40",
   },
-};
+  {
+    tier: "STRATEGIC SPONSOR",
+    name: "Optym",
+    logo: "/assets/spons/spons-25/OPTYM.webp",
+    url: "https://www.optym.com/",
+    span: "md:col-span-4",
+    height: "h-36 sm:h-40",
+  },
+  {
+    tier: "IN ASSOCIATION WITH",
+    name: "GAIL",
+    logo: "/assets/spons/spons-25/GAIL.webp",
+    url: "https://gailonline.com/",
+    span: "md:col-span-4",
+    height: "h-36 sm:h-40",
+  },
+];
 
-const imgToUrl = {
-  "spons-prev/ACC.webp": "https://www.acclimited.com/",
-  "spons-prev/AIBH.webp": "https://www.aibh.in/",
-  "spons-prev/Allied_publishers.webp": "https://www.alliedpublishers.com/",
-  "spons-prev/GE_HealthCare.webp": "https://www.gehealthcare.com/",
-  "spons-prev/RP_Industrial_Consultant.webp": "https://www.rpic.in/",
-  "spons-prev/Springer.webp": "https://www.springer.com/",
-  "spons-prev/SR_Srinivasan.webp": "https://www.srsrinivasan.com/",
-  "spons-prev/TATA.webp": "https://www.tata.com/",
-  "spons-prev/Total_Library_Solution.webp": "https://tlsgroup.co.in/",
-  "spons-25/OPTYM.webp": "https://www.optym.com/",
-  "spons-25/Unstop.webp": "https://unstop.com/",
-  "spons-25/InsightSuccess.webp": "https://www.insightssuccess.in/",
-  "spons-25/CampusVarta.webp": "https://www.campusvarta.com/",
-  "spons-25/BlogAdda.webp": "https://www.blogadda.com/",
-  "spons-25/YouthIncorporated.webp": "https://youthincmag.com/",
-  "spons-25/Hire3x.webp": "https://hire3x.com/",
-  "spons-25/Adani_Ai_Sirius_Digitech.webp": "https://www.linkedin.com/company/sirius-digitech/",
-  "spons-25/ONGC.webp": "https://ongcindia.com/",
-  "spons-25/GAIL.webp": "https://gailonline.com/",
-  "spons-25/blue_yonder.webp": "https://www.blueyonder.com/",
-  "spons-25/the-times-of-india.webp": "https://timesofindia.indiatimes.com/",
-  "spons-25/IEM.webp": "http://www.iem.edu.in/",
-  "spons-25/Delhivery_Logo.webp": "https://www.delhivery.com/",
-  "spons-25/LiveAi.webp": "https://www.liveai.eu/",
-  "spons-25/kgts.webp": "https://www.linkedin.com/company/the-kgts/?originalSubdomain=in",
-  "spons-25/decisionOptNew.webp": "https://decisionopt.com/",
-  "spons-23/OPTYM.webp": "https://www.optym.com/",
-  "spons-23/AirIndia.webp": "https://www.airindia.in/",
-  "spons-23/FlexSim.webp": "https://www.flexsim.com/",
-  "spons-23/RahulCommerce.webp": "http://rahulcom.com/",
-  "spons-23/Vicon.webp": "https://www.vicon.com/",
-  "spons-23/ORMAE.webp": "https://www.ormae.com/",
-  "spons-23/DCVisionVR.webp": "https://dcvision.in/",
-  "spons-23/Blue_Yonder.webp": "https://www.blueyonder.com/",
-  "spons-23/Delhivery_Logo.webp": "https://www.delhivery.com/",
-  "spons-23/GFG.webp": "https://www.geeksforgeeks.org/",
-  "spons-23/Sabre.webp": "https://www.sabre.com/",
-  "spons-23/OwlPrints.webp": "https://www.owlprints.in/",
-  "spons-23/CampusVarta.webp": "https://www.campusvarta.com/",
-  "spons-23/WomansEra.webp": "https://www.womansera.com/",
-};
+const tier3Sponsors = [
+  {
+    tier: "MAJOR SPONSOR",
+    name: "Blue Yonder",
+    logo: "/assets/spons/spons-25/blue_yonder.webp",
+    url: "https://www.blueyonder.com/",
+  },
+  {
+    tier: "POWERED BY",
+    name: "Unstop",
+    logo: "/assets/spons/spons-25/Unstop.webp",
+    url: "https://unstop.com/",
+  },
+  {
+    tier: "CHALLENGE PARTNER",
+    name: "Delhivery",
+    logo: "/assets/spons/spons-25/Delhivery_Logo.webp",
+    url: "https://www.delhivery.com/",
+  },
+  {
+    tier: "AI PARTNER",
+    name: "LiveAI",
+    logo: "/assets/spons/spons-25/LiveAi.webp",
+    url: "https://www.liveai.eu/",
+  },
+];
 
-// Component for sponsor category section
-const SponsorCategory = ({ name, sponsors, size = "sm" }) => {
-  const sizeClasses = {
-    sm: "max-w-[18rem] p-1",
-    md: "max-w-[32rem] p-2",
-    lg: "max-w-[42rem] p-3",
-  };
+const tier4Sponsors = [
+  {
+    tier: "SILVER SPONSOR",
+    name: "IEM",
+    logo: "/assets/spons/spons-25/IEM.webp",
+    url: "http://www.iem.edu.in/",
+  },
+  {
+    tier: "TITLE MEDIA PARTNER",
+    name: "The Times of India",
+    logo: "/assets/spons/spons-25/the-times-of-india.webp",
+    url: "https://timesofindia.indiatimes.com/",
+  },
+  {
+    tier: "MEDIA PARTNER",
+    name: "Campus Varta",
+    logo: "/assets/spons/spons-25/CampusVarta.webp",
+    url: "https://www.campusvarta.com/",
+  },
+  {
+    tier: "EVENT PARTNER",
+    name: "KGTS",
+    logo: "/assets/spons/spons-25/kgts.webp",
+    url: "https://www.linkedin.com/company/the-kgts/",
+  },
+  {
+    tier: "ANALYTICS PARTNER",
+    name: "DecisionOpt",
+    logo: "/assets/spons/spons-25/decisionOptNew.webp",
+    url: "https://decisionopt.com/",
+  },
+  {
+    tier: "MEDIA PARTNER",
+    name: "Insight Success",
+    logo: "/assets/spons/spons-25/InsightSuccess.webp",
+    url: "https://www.insightssuccess.in/",
+  },
+];
 
+const SponsorCard = ({ sponsor, height = "h-32", span = "col-span-1" }) => {
   return (
-    <div className="mb-10">
-      <h2
-        className={`font-bold mb-6 text-center ${
-          size === "lg" ? "text-4xl mt-12" : "text-2xl"
-        }`}
-      >
-        {name}
-      </h2>
-      <div className="flex flex-wrap gap-6 justify-center">
-        {sponsors.map((spons) => (
-          <a
-            key={spons}
-            href={imgToUrl[spons]}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div
-              className={`relative rounded-lg shadow-lg bg-white hover:scale-105 transition-transform duration-300 ${sizeClasses[size]} group`}
-            >
-              <SponsCard imageUrl={`/assets/spons/${spons}`} size={size} />
-            </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// Updated SponsCard component
-const SponsCard = ({ imageUrl, size = "sm" }) => {
-  const heightClasses = {
-    sm: "h-40",
-    md: "h-56 md:h-72",
-    lg: "h-[250px] md:h-[400px]",
-  };
-
-  const widthClasses = {
-    sm: "w-40",
-    md: "w-56 md:w-72",
-    lg: "w-[250px] md:w-[400px]",
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className={`${heightClasses[size]} ${widthClasses[size]} bg-white rounded-lg shadow-md flex items-center justify-center overflow-hidden relative z-10`}
+    <a
+      href={sponsor.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${span} ${height} group relative cad-card p-6 flex flex-col items-center justify-center transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow`}
     >
-      <motion.img
-        src={imageUrl}
-        alt="Sponsor"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="h-full w-auto object-contain p-2"
-      />
-    </motion.div>
+      {/* Category Readout Pill */}
+      <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-wider text-text-secondary/70 group-hover:text-accent-brand transition-colors">
+        // {sponsor.tier}
+      </span>
+
+      {/* External Link Indicator */}
+      <span className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+        <ArrowUpRight className="w-3.5 h-3.5 text-accent-brand" />
+      </span>
+
+      {/* Constraint 3: Monochrome white/grey by default, revealing brand colors on hover */}
+      <div className="w-full h-full max-h-[70%] flex items-center justify-center p-2">
+        <img
+          src={sponsor.logo}
+          alt={sponsor.name}
+          className="max-h-full max-w-[80%] object-contain grayscale brightness-[2.2] contrast-125 opacity-70 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-105"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Sub-label */}
+      <span className="absolute bottom-2 text-[10px] font-mono uppercase tracking-wider text-text-secondary/60 group-hover:text-text-primary transition-colors">
+        {sponsor.name}
+      </span>
+    </a>
   );
 };
-
-// Main Spons component
-// const Spons = () => {
-//   const [activeTab, setActiveTab] = useState("2027");
-//   const tabs = [
-//     { id: "2027", label: "2024-2027" },
-//     { id: "2023", label: "2023-2024" },
-//     { id: "previous", label: "Previous" },
-//   ];
-
-//   return (
-//     <Section
-//       id="spons"
-//     >
-//       <div className="relative z-10">
-//         <BackgroundCircles />
-//       </div>
-//       <div className="container mx-auto relative z-20">
-//         <Heading
-//           className="md:max-w-md lg:max-w-2xl text-center "
-//           title="Our Esteemed Sponsors"
-//         />
-
-//         <div className="flex flex-col md:flex-row  w-72 mx-auto md:w-auto md:justify-center gap-4 mb-8">
-//           {tabs.map((tab) => (
-//             // <TabButton
-//             //   key={tab.id}
-//             //   active={activeTab === tab.id}
-//             //   onClick={() => setActiveTab(tab.id)}
-//             //   label={tab.label}
-//             // />
-//             <Button
-//               key={tab.id}
-//               active={activeTab === tab.id}
-//               onClick={() => setActiveTab(tab.id)}
-//             >
-//               {tab.label}
-//             </Button>
-//           ))}
-//         </div>
-
-//         {activeTab === "previous" ? (
-//           <div className="flex flex-wrap gap-10 mb-10 items-center justify-center">
-//             {SPONSORS_DATA.previous.sponsors.map((spons) => (
-//               <div
-//                 key={spons}
-//                 className="relative p-4 rounded-lg shadow-lg bg-white hover:scale-105 transition-transform duration-300 md:max-w-[18rem] group"
-//               >
-//                 <SponsCard imageUrl={`/assets/spons/spons-prev/${spons}`} />
-//               </div>
-//             ))}
-//           </div>
-//         ) : (
-//           <div className="space-y-10">
-//             {Object.entries(SPONSORS_DATA[activeTab].categories).map(
-//               ([key, category]) => (
-//                 <SponsorCategory
-//                   key={key}
-//                   name={category.name}
-//                   sponsors={category.sponsors}
-//                   size={category.size}
-//                 />
-//               )
-//             )}
-//           </div>
-//         )}
-//       </div>
-
-//       <Gradient />
-//     </Section>
-//   );
-// };
 
 const Spons = () => {
-  document.title = "Sponsors | Optima 2027";
-  const [activeTab, setActiveTab] = useState("2027");
-
   return (
-    <Section id="spons">
-      <div className="container relative z-2">
-        <Heading
-          className="md:max-w-md lg:max-w-2xl text-center"
-          title="Our Esteemed Sponsors"
-        />
-        <BackgroundCircles />
-        <div className="flex flex-col md:flex-row w-36  mx-auto md:w-auto md:justify-center gap-4 mb-8">
-          <SelectButton
-            active={activeTab === "2027"}
-            onClick={() => setActiveTab("2027")}
-          >
-            2024-2025
-          </SelectButton>
-          <SelectButton
-            active={activeTab === "2023"}
-            onClick={() => setActiveTab("2023")}
-          >
-            2023-2024
-          </SelectButton>
-          <SelectButton
-            active={activeTab === "previous"}
-            onClick={() => setActiveTab("previous")}
-          >
-            Previous
-          </SelectButton>
+    <section
+      id="sponsors"
+      className="relative w-full py-20 lg:py-28 bg-bg-base border-b border-border-subtle overflow-hidden"
+    >
+      {/* Background CAD grid */}
+      <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Deliverable 10 Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="section-header mb-3">
+              <span className="section-header-square" />
+              <h2 className="section-header-text text-xl sm:text-2xl lg:text-3xl">
+                The Network // Corporate Sponsors &amp; Industry Backing
+              </h2>
+            </div>
+            <p className="text-text-secondary text-sm max-w-2xl font-sans leading-relaxed">
+              Leading global enterprises and technology pioneers driving innovation in artificial intelligence, energy, industrial operations, and enterprise software.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 font-mono text-xs text-text-secondary border border-border-subtle bg-bg-surface px-4 py-2 self-start md:self-auto">
+            <Building2 className="w-3.5 h-3.5 text-accent-brand" />
+            <span>ENTERPRISE_NETWORK: VERIFIED</span>
+          </div>
         </div>
-        {/* Hardcoded Content Based on Selection */}
-        {activeTab === "2027" && (
-          // <div className="flex justify-center z-0">
-          // 	<ComingSoon /> {/* dummy */}
-          // </div>
-          <div className="space-y-10">
-            {Object.entries(SPONSORS_DATA["2027"].categories).map(
-              ([key, category]) => (
-                <SponsorCategory
-                  key={key}
-                  name={category.name}
-                  sponsors={category.sponsors}
-                  size={category.size}
-                />
-              )
-            )}
-          </div>
-        )}
 
-        {activeTab === "2023" && (
-          <div className="space-y-10">
-            {Object.entries(SPONSORS_DATA["2023"].categories).map(
-              ([key, category]) => (
-                <SponsorCategory
-                  key={key}
-                  name={category.name}
-                  sponsors={category.sponsors}
-                  size={category.size}
-                />
-              )
-            )}
+        {/* Strict Architectural Hierarchy Grid */}
+        <div className="space-y-6">
+          
+          {/* Tier 1: Title & Co-Title Sponsors (6-Column Spans) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
+            {tier1Sponsors.map((spons) => (
+              <SponsorCard
+                key={spons.name}
+                sponsor={spons}
+                span={spons.span}
+                height={spons.height}
+              />
+            ))}
           </div>
-        )}
-        {activeTab === "previous" && (
-          <div className="space-y-10">
-            {Object.entries(SPONSORS_DATA["previous"].categories).map(
-              ([key, category]) => (
-                <SponsorCategory
-                  key={key}
-                  name={category.name}
-                  sponsors={category.sponsors}
-                  size={category.size}
-                />
-              )
-            )}
+
+          {/* Tier 2: Platinum & Strategic Sponsors (4-Column Spans) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
+            {tier2Sponsors.map((spons) => (
+              <SponsorCard
+                key={spons.name}
+                sponsor={spons}
+                span={spons.span}
+                height={spons.height}
+              />
+            ))}
           </div>
-        )}
+
+          {/* Tier 3: Major & Powered By (3-Column Spans) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {tier3Sponsors.map((spons) => (
+              <SponsorCard
+                key={spons.name}
+                sponsor={spons}
+                height="h-32 sm:h-36"
+              />
+            ))}
+          </div>
+
+          {/* Tier 4: Media & Ecosystem Partners (Multi-Column Grid) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 pt-2">
+            {tier4Sponsors.map((spons) => (
+              <SponsorCard
+                key={spons.name}
+                sponsor={spons}
+                height="h-24 sm:h-28"
+              />
+            ))}
+          </div>
+
+        </div>
       </div>
-
-      <Gradient />
-    </Section>
+    </section>
   );
-};
-
-
-const SelectButton = ({ active, href, onClick, children }) => {
-	const classes = `
-    px-3 md:px-6 py-3 rounded-full transition-all duration-300
-    ${
-      active
-        ? "bg-white text-primary-1 text-black shadow-lg transform scale-105"
-        : "bg-n-8/80 text-n-3 hover:bg-n-6 hover:text-white"
-    }
-    font-medium border border-n-6 justify-center
-    flex items-center gap-2
-    text-center
-  `
-	const spanClasses = "relative z-10";
-
-	const renderButton = () => (
-		<button className={classes} onClick={onClick}>
-			<span className={spanClasses}>{children}</span>
-		</button>
-	);
-
-	const renderLink = () =>
-		href.startsWith("/") ? (
-			<Link to={href} className={classes}>
-				<span className={spanClasses}>{children}</span>
-			</Link>
-		) : (
-			<a href={href} className={classes} target="_blank">
-				<span className={spanClasses}>{children}</span>
-			</a>
-		);
-
-	return href ? renderLink() : renderButton();
 };
 
 export default Spons;

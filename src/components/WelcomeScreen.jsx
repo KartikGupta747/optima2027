@@ -1,27 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WelcomeScreen = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+    onCompleteRef.current?.();
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-
-      const completeTimer = setTimeout(() => {
-        onComplete?.();
-      }, 800);
-
-      return () => clearTimeout(completeTimer);
-    }, 4000);
+      const exitTimer = setTimeout(() => {
+        onCompleteRef.current?.();
+      }, 600);
+      return () => clearTimeout(exitTimer);
+    }, 2200);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
+          onClick={handleDismiss}
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
@@ -29,10 +35,11 @@ const WelcomeScreen = ({ onComplete }) => {
             filter: "blur(8px)",
           }}
           transition={{
-            duration: 0.8,
+            duration: 0.6,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505] overflow-hidden"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505] overflow-hidden cursor-pointer"
+          title="Click to enter"
         >
           {/* Ambient glow */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
