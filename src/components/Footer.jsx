@@ -86,7 +86,7 @@ const Footer = () => {
               of Industrial & Systems Engineering.
             </p>
             <div className="mt-4 text-xs font-mono text-gray-500">
-              OPTIMA 2027 &middot; 7TH - 9TH MARCH
+              OPTIMA 2027 &middot; 12TH - 14TH MARCH
             </div>
           </div>
 

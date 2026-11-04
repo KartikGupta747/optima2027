@@ -42,7 +42,7 @@ export const guestLectures = [
   //   companyUrl: null,
   //   path: "/Rajesh-Kumar",
   //   onlineMeetLink: null,
-  //   date: "04:30pm | 7th March, Opening Ceremony",
+  //   date: "04:30pm | 12th March, Opening Ceremony",
   //   mode: "Netaji Auditorium",
   // },
   // {
@@ -57,7 +57,7 @@ export const guestLectures = [
   //   companyUrl: null,
   //   path: "/Rajesh-Kumar",
   //   onlineMeetLink: null,
-  //   date: "04:30pm | 7th March, Opening Ceremony",
+  //   date: "04:30pm | 12th March, Opening Ceremony",
   //   mode: "Netaji Auditorium",
   // },
   {

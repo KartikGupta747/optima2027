@@ -26,7 +26,7 @@ const SYNAPTIC_SPRING = { mass: 1.2, stiffness: 100, damping: 15 };
 const timelinePhases = [
   {
     day: "DAY 01",
-    date: "7TH MARCH 2027",
+    date: "12TH MARCH 2027",
     title: "Inauguration & Keynote Convergence",
     desc: "Opening ceremony at Netaji Auditorium, inaugural address by Chief Guest Shri S K Nayak (DRDO), Guest of Honor Shri Sanjoy Chatterjee (NASSCOM), and flagship research keynotes.",
     side: "left",
@@ -36,7 +36,7 @@ const timelinePhases = [
   },
   {
     day: "DAY 02",
-    date: "8TH MARCH 2027",
+    date: "13TH MARCH 2027",
     title: "Flagship Hackathons & Operational Modeling",
     desc: "24-hour BizTech HackTank, Operheimer supply chain optimization, AI Odyssey generative pipelines, and industrial case evaluations with Philips & Tata Steel.",
     side: "right",
@@ -46,7 +46,7 @@ const timelinePhases = [
   },
   {
     day: "DAY 03",
-    date: "9TH MARCH 2027",
+    date: "14TH MARCH 2027",
     title: "Executive Presentations & Valedictory",
     desc: "Grand finale jury defenses, executive panels on global optimization networks, podium prize distribution, and closing valedictory gala.",
     side: "left",
@@ -234,158 +234,12 @@ const SpatialScheduleCard = ({ phase, isIgnited }) => {
 };
 
 /**
- * High-Security "Ingestion Module" Cinematic Container
- * - Flowing clockwise marching-ants animated SVG perimeter
- * - Periodic chromatic aberration RGB glitch on "AWAITING DATA INGESTION"
- * - Fiercely glowing blinking cursor block
- * - Apex CTA with moving light beam & magnetic pull
- */
-const IngestionModuleCinematic = () => {
-  return (
-    <div className="relative max-w-3xl mx-auto mt-16 p-8 sm:p-12 rounded-3xl bg-[#050508]/90 backdrop-blur-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
-      {/* Animated SVG Perimeter (Clockwise Marching Ants) */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none rounded-3xl"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <motion.rect
-          x="1"
-          y="1"
-          width="98"
-          height="98"
-          rx="6"
-          fill="none"
-          stroke="rgba(255, 69, 0, 0.45)"
-          strokeWidth="1.5"
-          strokeDasharray="6 6"
-          animate={{ strokeDashoffset: [0, -100] }}
-          transition={{
-            repeat: Infinity,
-            duration: 5,
-            ease: "linear",
-          }}
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-
-      {/* Background CAD Scanline Grid */}
-      <div className="absolute inset-0 bg-cad-grid opacity-20 pointer-events-none" />
-
-      {/* Internal Content */}
-      <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-        {/* Terminal Header Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#ff4500]/40 bg-[#ff4500]/10 font-mono text-[10px] text-[#ff4500] uppercase tracking-widest font-semibold">
-          <Terminal size={12} className="text-cyan-400" />
-          <span>TIMELINE_INGESTION_MODULE // HIGH_SECURITY_LOCK</span>
-        </div>
-
-        {/* Glitch Typography Headline + Fiercely Glowing Blinking Cursor */}
-        <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-tight flex items-center justify-center flex-wrap pt-2">
-          <span className="rgb-split-text drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">
-            Awaiting Data Ingestion
-          </span>
-          <span className="inline-block w-3.5 h-7 sm:h-9 bg-[#ff4500] ml-2.5 shadow-[0_0_18px_4px_#ff4500] animate-pulse" />
-        </h3>
-
-        <p className="font-sans text-xs sm:text-sm text-zinc-400 max-w-lg leading-relaxed pt-1">
-          Exact minute-by-minute session timings, auditorium allocations, and
-          guest keynote stages are being compiled with the Department of
-          Industrial &amp; Systems Engineering.
-        </p>
-
-        {/* Apex Pre-Register CTA Button with Magnetic Physics & Moving Light Beam */}
-        <div className="pt-6 w-full flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Magnetic pullFactor={0.28} proximityRange={35}>
-            <motion.a
-              href="https://unstop.com/college-fests/optima-2027-indian-institute-of-technology-iit-kharagpur-260905"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={playClickTick}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 350, damping: 20 }}
-              className="group relative inline-flex items-center justify-center px-7 py-3.5 rounded-full overflow-hidden text-xs font-mono tracking-widest select-none"
-            >
-              {/* Continuous Moving Perimeter Light Beam */}
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none rounded-full"
-                viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient
-                    id="schedCtaGrad"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="#00f0ff" />
-                    <stop offset="50%" stopColor="#ff4500" />
-                    <stop offset="100%" stopColor="#00f0ff" />
-                  </linearGradient>
-                </defs>
-                <rect
-                  x="1.5"
-                  y="1.5"
-                  width="97"
-                  height="97"
-                  rx="48.5"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.1)"
-                  strokeWidth="1"
-                  vectorEffect="non-scaling-stroke"
-                />
-                <motion.rect
-                  x="1.5"
-                  y="1.5"
-                  width="97"
-                  height="97"
-                  rx="48.5"
-                  fill="none"
-                  stroke="url(#schedCtaGrad)"
-                  strokeWidth="2"
-                  pathLength={100}
-                  strokeDasharray="25 75"
-                  animate={{ strokeDashoffset: [0, -100] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 2.2,
-                    ease: "linear",
-                  }}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-
-              {/* Core Body */}
-              <div className="absolute inset-[1px] rounded-full bg-[#050505] transition-colors group-hover:bg-[#0a0a10] -z-10" />
-
-              <span className="relative z-10 flex items-center gap-2 text-white font-bold uppercase tracking-wider">
-                <Zap size={13} className="text-cyan-400" />
-                <span>Pre-Register For Slots</span>
-                <ArrowUpRight
-                  size={13}
-                  className="text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </span>
-            </motion.a>
-          </Magnetic>
-
-
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/**
  * Event Schedule (The Synaptic Data-Stream)
  */
 const Schedule = () => {
   const containerRef = useRef(null);
   const [activeDayLabel, setActiveDayLabel] = useState(
-    "ACTIVE: DAY 01 // 07 MARCH"
+    "Day 01 · 12 March"
   );
   const [ignitedDays, setIgnitedDays] = useState([false, false, false]);
 
@@ -407,11 +261,11 @@ const Schedule = () => {
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
       if (latest < 0.35) {
-        setActiveDayLabel("ACTIVE: DAY 01 // 07 MARCH");
+        setActiveDayLabel("Day 01 · 12 March");
       } else if (latest < 0.68) {
-        setActiveDayLabel("ACTIVE: DAY 02 // 08 MARCH");
+        setActiveDayLabel("Day 02 · 13 March");
       } else {
-        setActiveDayLabel("ACTIVE: DAY 03 // 09 MARCH");
+        setActiveDayLabel("Day 03 · 14 March");
       }
 
       setIgnitedDays([
@@ -529,8 +383,8 @@ const Schedule = () => {
             })}
           </div>
 
-          {/* High-Security Timeline Ingestion Module Cinematic */}
-          <IngestionModuleCinematic />
+
+
         </div>
       </div>
     </section>

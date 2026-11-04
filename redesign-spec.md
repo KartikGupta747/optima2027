@@ -10,7 +10,7 @@ The visual identity relies on deep onyx backgrounds, strict modular grids (remin
 * **Branding:** Optima 2027 logo (orange gradient infinity symbol).
 
 
-* **Hero Content:** "Welcome to Optima 2027", "IIT Kharagpur's renowned Techno-Optimization Fest... 7th-9th March 2027", IIT Kharagpur gate photograph.
+* **Hero Content:** "Welcome to Optima 2027", "IIT Kharagpur's renowned Techno-Optimization Fest... 12th-14th March 2027", IIT Kharagpur gate photograph.
 
 
 * **Messages:** Welcome message from Head of Department, Chairman (Prof. Jitendra Kumar Jha), and user endorsements/reviews.
@@ -124,7 +124,7 @@ The redesigned website consolidates fragmented pages into a continuous, immersiv
 * **Typography:** "OPTIMA 2027" dominates the center spanning 10 columns, using Space Grotesk at `clamp(4rem, 10vw, 9rem)`. Letter spacing: `-0.02em`. The text is rendered with a CSS clip-path reveal animation.
 
 
-* **Sub-content:** The dates "7th-9th March 2027" and "IIT Kharagpur's renowned Techno-Optimization Fest" are positioned in a strict metadata block in the bottom-left corner, styled like a terminal readout.
+* **Sub-content:** The dates "12th-14th March 2027" and "IIT Kharagpur's renowned Techno-Optimization Fest" are positioned in a strict metadata block in the bottom-left corner, styled like a terminal readout.
 
 
 

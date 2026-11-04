@@ -448,17 +448,10 @@ const GuestLecture = () => {
             />
           ))}
         </div>
-
-        {/* Bottom Telemetry Caption */}
-        <div className="mt-8 flex items-center justify-between font-mono text-[10px] text-zinc-500">
-          <span>HOVER ANY SPEAKER TO TRIGGER FULL HOLOGRAPHIC EXPANSION</span>
-          <span className="text-cyan-400">
-            OPTIMA 2027 // DEPT. OF INDUSTRIAL &amp; SYSTEMS ENGINEERING
-          </span>
-        </div>
       </div>
     </section>
   );
 };
 
 export default GuestLecture;
+

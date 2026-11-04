@@ -436,20 +436,7 @@ const Team = () => {
 
         {/* ======================================================== */}
         {/* SECTION FOOTER TELEMETRY STATUS                          */}
-        {/* ======================================================== */}
-        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-white/40 gap-4">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-white/70">OPERATIONAL REGISTRY: ISE.IITKGP</span>
-            <span className="text-white/20">|</span>
-            <span>CHRONO_SYNC: 2025 - 2027</span>
-          </div>
-
-          <div className="text-orange-400/80">
-            DEPARTMENT OF INDUSTRIAL &amp; SYSTEMS ENGINEERING // IIT KHARAGPUR
-          </div>
         </div>
-      </div>
     </section>
   );
 };

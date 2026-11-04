@@ -146,7 +146,7 @@ const Hero = () => {
             <div className="terminal-meta space-y-1">
 
               <div className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.05em] text-white">
-                7TH &ndash; 9TH MARCH 2027
+                12TH &ndash; 14TH MARCH 2027
               </div>
               <p className="text-xs sm:text-sm text-zinc-300 leading-snug max-w-lg">
                 IIT Kharagpur&apos;s renowned Techno-Optimization Fest, proudly organized by the Department of Industrial & Systems Engineering.

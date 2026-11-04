@@ -7,7 +7,7 @@ export const benefitsForParticipants = [
 		id: "0",
 		img: accomodation,
 		title: "Accomodation*",
-		desc: "Accommodation provisions for 5 days, from March 6th to 10th, 2027, within the IIT Kharagpur campus (arrival on March 6th is not mandatory).",
+		desc: "Accommodation provisions for 5 days, from March 11th to 15th, 2027, within the IIT Kharagpur campus (arrival on March 11th is not mandatory).",
 	},
 	{
 		id: "1",
@@ -54,7 +54,7 @@ export const accomo = [
 		text: "Upon reaching the campus, you need to report to the Department of Industrial and Systems Engineering.",
 	},
 	{
-		text: "Accommodation provisions for 5 days, from March 6th [12:00pm] to 10th [12:00pm], 2027, within the IIT Kharagpur campus (arrival on March 6th is not mandatory).",
+		text: "Accommodation provisions for 5 days, from March 11th [12:00pm] to 15th [12:00pm], 2027, within the IIT Kharagpur campus (arrival on March 11th is not mandatory).",
 	},
 	{
 		text: "While Optima 2027 and IIT Kharagpur prioritize your well-being, it is important to note that neither entity can assume responsibility for any incidents during your stay. Furthermore, participants are encouraged to safeguard their personal belongings, as Optima cannot be held liable for any losses or damages incurred.",

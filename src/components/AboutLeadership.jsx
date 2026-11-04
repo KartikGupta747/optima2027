@@ -384,10 +384,10 @@ const SpatialLeadershipCard = () => {
       <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
         <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#ff4500] font-semibold">
           <Award className="w-4 h-4" />
-          <span>LEADERSHIP STATEMENT</span>
+          <span>Leadership Message</span>
         </div>
         <span className="font-mono text-[10px] text-zinc-500">
-          IIT KHARAGPUR // ISE
+          Department of ISE · IIT Kharagpur
         </span>
       </div>
 
@@ -625,7 +625,7 @@ const AboutLeadership = () => {
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md">
           <Layers className="w-3.5 h-3.5 text-[#ff4500]" />
           <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">
-            THE ARCHITECTURE // ABOUT &amp; DOMAINS
+            About &amp; Core Domains
           </span>
         </div>
 
@@ -669,7 +669,7 @@ const AboutLeadership = () => {
                 <div className="pt-2 space-y-3">
                   <div className="flex items-center gap-2 font-mono text-[11px] text-cyan-400 uppercase tracking-wider font-semibold">
                     <Compass className="w-3.5 h-3.5" />
-                    <span>CORE_ISE_DOMAINS</span>
+                    <span>Core Department Domains</span>
                   </div>
 
                   <div className="space-y-2.5">

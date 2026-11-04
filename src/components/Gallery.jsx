@@ -729,11 +729,8 @@ const Gallery = ({ standalone = false }) => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-8 border-b border-white/10">
           <div>
             {/* Category Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-white/80 mb-4 tracking-wide">
-              
-              <span>Festive Archives</span>
-              <span className="text-white/20">•</span>
-              <span className="text-orange-400">Moments of Optima</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-semibold text-orange-400 mb-4 tracking-wide">
+              <span>Photo Gallery</span>
             </div>
 
             {/* Colorful Typography Headline */}

@@ -265,7 +265,7 @@ const CyberMenu = ({
 
               <div className="flex items-center justify-between w-full font-mono text-[10px] text-zinc-500 tracking-tight">
                 <span>IIT KHARAGPUR</span>
-                <span className="text-[#ff4500]">MARCH 7-9, 2027</span>
+                <span className="text-[#ff4500]">MARCH 12-14, 2027</span>
               </div>
             </div>
           </motion.div>
