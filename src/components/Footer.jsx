@@ -223,12 +223,9 @@ const Footer = () => {
         </div>
 
         {/* The Copyright Bar (Bottom Sub-Footer) */}
-        <div className="border-t border-white/5 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-500">
+        <div className="border-t border-white/5 pt-8 mt-12 flex items-center justify-center text-xs font-mono text-gray-500">
           <div>
             &copy; 2027 Optima. Department of Industrial and Systems Engineering, IIT Kharagpur.
-          </div>
-          <div>
-            Designed with Algorithmic Elegance.
           </div>
         </div>
       </div>

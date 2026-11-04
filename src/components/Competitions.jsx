@@ -49,20 +49,15 @@ const Competitions = () => {
             <div className="section-header mb-3">
               <span className="section-header-square" />
               <h2 className="section-header-text text-xl sm:text-2xl lg:text-3xl">
-                The Arena // Flagship Competitions
+                Flagship Competitions
               </h2>
             </div>
             <p className="text-text-secondary text-sm max-w-2xl font-sans leading-relaxed">
-              Eight algorithmic challenges engineered to push analytical, operational, and strategic boundaries. Solve real-world industrial optimization problems.
+              Eight exciting competitions designed to test your analytical, operational, and problem-solving skills on real-world industrial challenges.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs text-text-secondary border border-border-subtle bg-bg-surface px-4 py-2 self-start md:self-auto">
-            <Terminal className="w-3.5 h-3.5 text-accent-brand" />
-            <span>TOTAL_EVENTS: 08</span>
-            <span className="text-border-subtle">|</span>
-            <span className="text-accent-brand">UNSTOP_ACTIVE</span>
-          </div>
+
         </div>
 
         {/* 4-Column Bento-Box Grid */}
@@ -80,12 +75,7 @@ const Competitions = () => {
               <motion.div
                 key={item.id}
                 variants={cardVariants}
-                className="group relative bg-bg-surface border border-border-subtle p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow active:scale-[0.98] cursor-pointer"
-                onClick={() => {
-                  if (item.unstopLink) {
-                    window.open(item.unstopLink, "_blank", "noopener,noreferrer");
-                  }
-                }}
+                className="group relative bg-bg-surface border border-border-subtle p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow"
               >
                 {/* Top Row: Index Tag & Desaturated Vector Illustration */}
                 <div className="flex items-start justify-between relative mb-6">
@@ -121,56 +111,50 @@ const Competitions = () => {
                   </p>
                 </div>
 
-                {/* Bottom Row: Default State vs Sliding Hover Button (Constraint 2) */}
-                <div className="relative z-10 pt-4 border-t border-border-subtle/60 mt-auto">
-                  {/* Default State Links */}
-                  <div className="flex items-center justify-between text-xs text-text-secondary transition-opacity duration-200 group-hover:opacity-0">
-                    <div className="flex items-center gap-3">
-                      {item.driveLink && (
-                        <a
-                          href={item.driveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="hover:text-text-primary flex items-center gap-1 font-mono text-[11px] hover:underline"
-                          title="Problem Statement"
-                        >
-                          <FileText className="w-3.5 h-3.5 text-accent-brand" />
-                          <span>PS</span>
-                        </a>
-                      )}
-                      {item.whatsAppLink && (
-                        <a
-                          href={item.whatsAppLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="hover:text-text-primary flex items-center gap-1 font-mono text-[11px] hover:underline"
-                          title="WhatsApp Discussion"
-                        >
-                          <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                          <span>Chat</span>
-                        </a>
-                      )}
-                    </div>
-                    <span className="font-display uppercase text-[10px] tracking-wider text-text-secondary/70">
-                      Unstop
-                    </span>
+                {/* Bottom Row: Permanent Problem Statement & Unstop Buttons */}
+                <div className="relative z-10 pt-4 border-t border-border-subtle/60 mt-auto flex flex-col gap-2.5">
+                  <div className="flex items-center gap-2">
+                    {item.driveLink ? (
+                      <a
+                        href={item.driveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 hover:border-orange-500/60 text-orange-300 font-mono text-xs font-semibold tracking-wide transition-all shadow-sm"
+                        title="View Problem Statement"
+                      >
+                        <FileText className="w-3.5 h-3.5 text-[#ff4500]" />
+                        <span>Problem Statement</span>
+                      </a>
+                    ) : (
+                      <span className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-white/5 border border-white/10 text-zinc-500 font-mono text-xs">
+                        <span>PS Coming Soon</span>
+                      </span>
+                    )}
+
+                    {item.whatsAppLink && (
+                      <a
+                        href={item.whatsAppLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-white/5 hover:bg-[#25D366]/20 border border-white/10 hover:border-[#25D366]/50 text-[#25D366] transition-colors"
+                        title="WhatsApp Discussion Group"
+                      >
+                        <MessageSquare className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
 
-                  {/* Slide-Up Primary Button on Hover (Deliverable 5 & 6) */}
-                  <div className="absolute inset-x-0 bottom-0 translate-y-3 opacity-0 pointer-events-none group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                  {item.unstopLink && (
                     <a
                       href={item.unstopLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="btn-primary w-full py-2.5 px-3 text-xs tracking-wider justify-center gap-1.5"
+                      className="btn-primary w-full py-2 px-3 text-xs tracking-wider justify-center gap-1.5 shadow-md"
                     >
                       <span>Register on Unstop</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
-                  </div>
+                  )}
                 </div>
 
                 {/* Subtle CAD Corner Accent */}

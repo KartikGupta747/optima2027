@@ -144,10 +144,7 @@ const Hero = () => {
           {/* Bottom-Left Metadata Terminal Readout (Spanning ~7 Columns) */}
           <div className="md:col-span-7 flex flex-col space-y-2">
             <div className="terminal-meta space-y-1">
-              <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-accent-brand font-medium">
-                <Terminal className="w-3.5 h-3.5" />
-                <span>TERMINAL READOUT // FEST_DATES</span>
-              </div>
+
               <div className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.05em] text-white">
                 7TH &ndash; 9TH MARCH 2027
               </div>
@@ -159,14 +156,22 @@ const Hero = () => {
 
           {/* Bottom-Right Interaction & Action Block (Spanning ~5 Columns) */}
           <div className="md:col-span-5 flex flex-col sm:flex-row md:justify-end items-start sm:items-center gap-3">
+            <Link
+              to="/register"
+              className="btn-primary w-full sm:w-auto text-xs py-3 px-6 gap-2 shadow-lg"
+            >
+              <span>Register</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+
             <a
               href="https://unstop.com/college-fests/optima-2027-indian-institute-of-technology-iit-kharagpur-260905"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary w-full sm:w-auto text-xs py-3 px-6 gap-2"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all gap-2"
             >
-              <span>Register on Unstop</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <span>Unstop Register</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </a>
 
             <a

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import NavLogo from "./NavLogo";
 import NavLinkItem from "./NavLinkItem";
 import RegisterButton from "./RegisterButton";
@@ -34,6 +35,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const { scrollY } = useScroll();
+  const { isAuthenticated, logout } = useAuth();
 
   // Hysteresis threshold: prevents boundary jitter
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -146,7 +148,26 @@ const Navbar = () => {
             </nav>
 
             {/* Right: Apex Register CTA Button */}
-            <div className="flex items-center pl-2 flex-shrink-0">
+            <div className="flex items-center gap-3 pl-2 flex-shrink-0">
+              {isAuthenticated ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  className="hidden 2xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-orange-400 uppercase tracking-wider transition-colors"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/signin"
+                  className="hidden 2xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-white uppercase tracking-wider transition-colors"
+                >
+                  Sign In
+                </Link>
+              )}
               <RegisterButton />
             </div>
           </div>

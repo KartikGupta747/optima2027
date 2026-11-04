@@ -13,7 +13,6 @@ import {
   Check,
   Globe,
   Layers,
-  Sparkles,
   Linkedin,
   Instagram,
   Facebook,
@@ -124,30 +123,14 @@ const QueryUs = () => {
         {/* SECTION HEADER: KINETIC TYPOGRAPHY STANDARD               */}
         {/* ========================================================= */}
         <div className="mb-14 pb-8 border-b border-white/10">
-          {/* Cyber HUD Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-xs font-mono text-cyan-400 mb-5 tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span>SEC_08 // INQUIRY_RELAY</span>
-            <span className="text-white/20">|</span>
-            <span className="text-[#ff4500]">IIT_KGP_ISE</span>
-            <span className="text-white/20">|</span>
-            <span className="text-emerald-400">DISPATCH_ONLINE</span>
-          </div>
 
-          {/* Kinetic Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-sans tracking-tight text-white flex items-center gap-3.5 flex-wrap">
-            <span className="text-[#ff4500]">■</span>
-            <span>TRANSMIT DISPATCH</span>
-            <span className="text-white/20 font-light">//</span>
-            <span className="bg-gradient-to-r from-white via-white/90 to-white/60 bg-clip-text text-transparent">
-              INQUIRY CONSOLE
-            </span>
+
+          <h1 className="text-3xl sm:text-5xl font-bold font-sans tracking-tight text-white">
+            Get in Touch
           </h1>
 
           <p className="text-sm sm:text-base text-zinc-400 font-sans mt-3 max-w-2xl leading-relaxed">
-            Connect directly with the Department of Industrial &amp; Systems Engineering
-            and the Optima 2027 organizing committee. Transmit queries regarding
-            sponsorships, hackathons, guest lectures, or academic delegations.
+            Have queries regarding Optima 2027 competitions, workshops, sponsorships, or general information? Reach out to our organizing team.
           </p>
         </div>
 
@@ -323,17 +306,10 @@ const QueryUs = () => {
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff4500]/60 to-cyan-400/60 pointer-events-none" />
 
               <div>
-                {/* Form Header Readout */}
-                <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-2 h-2 rounded-full bg-[#ff4500] animate-ping" />
-                    <span className="font-mono text-xs font-bold uppercase tracking-widest text-white">
-                      DISPATCH_BUFFER // TRANSMISSION_PORT
-                    </span>
-                  </div>
-                  <span className="font-mono text-[10px] text-zinc-500 uppercase">
-                    INPUT_MODE: ACTIVE
-                  </span>
+                <div className="mb-6 pb-4 border-b border-white/5">
+                  <h3 className="text-lg font-bold text-white">
+                    Send a Message
+                  </h3>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -342,7 +318,7 @@ const QueryUs = () => {
                     {/* Name Input */}
                     <div className="space-y-2">
                       <label className="block font-mono text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
-                        FULL_NAME <span className="text-[#ff4500]">*</span>
+                        Full Name <span className="text-[#ff4500]">*</span>
                       </label>
                       <input
                         type="text"
@@ -357,13 +333,13 @@ const QueryUs = () => {
                     {/* Email Input */}
                     <div className="space-y-2">
                       <label className="block font-mono text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
-                        ELECTRONIC_MAIL <span className="text-[#ff4500]">*</span>
+                        Email Address <span className="text-[#ff4500]">*</span>
                       </label>
                       <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="operator@domain.com"
+                        placeholder="yourname@example.com"
                         required
                         className="w-full px-4 py-3 rounded-2xl bg-black/60 border border-white/10 text-white font-sans text-sm placeholder-zinc-600 focus:outline-none focus:border-cyan-400 focus:shadow-[0_0_20px_rgba(0,240,255,0.25)] transition-all"
                       />
@@ -373,7 +349,7 @@ const QueryUs = () => {
                   {/* Row 2: Phone Input */}
                   <div className="space-y-2">
                     <label className="block font-mono text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
-                      CONTACT_NUMBER / WHATSAPP <span className="text-[#ff4500]">*</span>
+                      Phone Number <span className="text-[#ff4500]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -389,10 +365,10 @@ const QueryUs = () => {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <label className="block font-mono text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
-                        DISPATCH_PAYLOAD // QUERY DETAILS <span className="text-[#ff4500]">*</span>
+                        Your Message <span className="text-[#ff4500]">*</span>
                       </label>
                       <span className="font-mono text-[10px] text-zinc-500">
-                        MAX 2000 CHARS
+                        
                       </span>
                     </div>
                     <textarea
@@ -417,12 +393,12 @@ const QueryUs = () => {
                         {loading ? (
                           <>
                             <span className="w-3.5 h-3.5 rounded-full border-2 border-white/20 border-t-white animate-spin" />
-                            <span>TRANSMITTING PAYLOAD TO SYSTEM...</span>
+                            <span>Submitting Message...</span>
                           </>
                         ) : (
                           <>
                             <Send className="w-4 h-4 text-cyan-300 group-hover:text-black transition-colors" />
-                            <span>TRANSMIT DISPATCH // SUBMIT QUERY</span>
+                            <span>Submit Message</span>
                             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                           </>
                         )}

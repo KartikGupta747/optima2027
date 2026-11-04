@@ -12,7 +12,6 @@ import {
   ArrowUpRight,
   Linkedin,
   Award,
-  Sparkles,
   ExternalLink,
   ChevronRight,
 } from "lucide-react";
@@ -276,7 +275,7 @@ const AccordionSpeakerCard = ({
             {speaker.topic && (
               <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md max-w-xl">
                 <span className="font-mono text-[9px] text-cyan-400 uppercase tracking-widest block mb-1">
-                  LECTURE DOMAIN // DISCOURSE
+                  Lecture Topic
                 </span>
                 <p className="font-sans text-xs sm:text-sm text-zinc-200 italic leading-snug">
                   &ldquo;{speaker.topic}&rdquo;
@@ -386,15 +385,10 @@ const GuestLecture = () => {
         {/* Section Header & Roster Switcher */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">
-                DISCOURSE // KEYNOTES &amp; PANELS
-              </span>
-            </div>
+
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white tracking-tight">
-              The Minds // Guest Lectures
+              Guest Lectures
             </h2>
 
             <p className="font-sans text-xs sm:text-sm text-zinc-400 max-w-xl leading-relaxed">

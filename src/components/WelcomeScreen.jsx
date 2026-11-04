@@ -54,10 +54,10 @@ const WelcomeScreen = ({ onComplete }) => {
             />
           </div>
 
-          <div className="relative z-10 flex items-center justify-center">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center">
             <motion.div
               initial={{ opacity: 1 }}
-              className="relative flex-shrink-0 w-[150px] md:w-[190px]"
+              className="relative flex-shrink-0 w-[110px] sm:w-[130px] md:w-[150px] lg:w-[190px]"
             >
               <svg
                 viewBox="0 0 1160 1035"
@@ -276,14 +276,14 @@ const WelcomeScreen = ({ onComplete }) => {
                 duration: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex items-center ml-5 md:ml-7"
+              className="flex items-center mt-6 sm:mt-0 sm:ml-5 md:ml-7"
             >
               <h1
                 className="
                   text-white
-                  text-4xl
-                  sm:text-5xl
-                  md:text-6xl
+                  text-3xl
+                  sm:text-4xl
+                  md:text-5xl
                   lg:text-7xl
                   font-bold
                   tracking-[0.12em]

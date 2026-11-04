@@ -13,7 +13,6 @@ import {
   Terminal,
   Cpu,
   Layers,
-  Sparkles,
   Clock,
   Compass,
 } from "lucide-react";
@@ -231,9 +230,7 @@ const GlassIdentityPlate = ({ member, index, isArchived = false }) => {
             {member.name}
           </h3>
 
-          <p className="text-xs text-white/50 font-mono mt-1">
-            Department of Industrial & Systems Engineering
-          </p>
+
         </div>
 
         {/* Social / Direct Connect Bar */}
@@ -305,35 +302,20 @@ const Team = () => {
         {/* ======================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 mb-12 border-b border-white/10">
           <div>
-            {/* HUD Status Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/10 text-xs font-mono text-cyan-400 mb-5 tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>SEC_07 // CHRONO_ROSTER</span>
-              <span className="text-white/20">|</span>
-              <span className="text-orange-400">ORGANIZATION CORE</span>
-            </div>
 
-            {/* Kinetic Typography Headline */}
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black font-sans tracking-tight text-white flex items-center gap-4 flex-wrap">
-              <span className="text-[#ff4500]">■</span>
-              <span>THE ARCHITECTS</span>
-              <span className="text-white/20 font-light">//</span>
-              <span className="bg-gradient-to-r from-white via-white/90 to-white/60 bg-clip-text text-transparent">
-                CHRONO-ROSTER MATRIX
-              </span>
+
+            <h2 className="text-3xl md:text-5xl font-bold font-sans tracking-tight text-white">
+              Our Team
             </h2>
 
             <p className="text-sm md:text-base text-white/60 font-sans mt-3 max-w-2xl">
-              Student executive leadership and domain heads spearheading operations, sponsorship,
-              technology, and industry outreach across the continuum of Optima.
+              The dedicated student coordinators and domain heads organizing Optima 2027 at IIT Kharagpur.
             </p>
           </div>
 
           {/* Temporal Toggle HUD Switch */}
           <div className="flex flex-col items-start lg:items-end gap-3">
-            <div className="text-[11px] font-mono text-white/40 uppercase tracking-widest">
-              TEMPORAL REGISTRY TOGGLE
-            </div>
+
             <TimeToggleHUD activeTab={activeTab} onToggle={setActiveTab} />
           </div>
         </div>
@@ -365,14 +347,11 @@ const Team = () => {
             >
               {/* Category Subhead */}
               <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-3">
-                  <span className="w-2.5 h-2.5 rounded-sm bg-cyan-400 rotate-45" />
-                  <span className="font-mono text-xs text-cyan-300 uppercase tracking-widest font-bold">
-                    ACTIVE SQUAD // 2027 HEADSHIP DEPLOYMENT
-                  </span>
-                </div>
-                <span className="font-mono text-xs text-white/40">
-                  TOTAL NODES: {CoreHeads.length} OPERATORS
+                <h3 className="text-xl font-bold text-white tracking-tight">
+                  Event Heads &amp; Coordinators
+                </h3>
+                <span className="text-xs text-white/50 font-medium">
+                  {CoreHeads.length} Members
                 </span>
               </div>
 
@@ -413,7 +392,7 @@ const Team = () => {
                 <div className="flex items-center justify-center mb-6">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-xs font-mono text-orange-400 uppercase tracking-widest">
                     <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>LEADERSHIP ARCHIVE // EXECUTIVE ADVISORY BOARD</span>
+                    <span>Executive Advisory Board</span>
                   </div>
                 </div>
 
@@ -435,7 +414,7 @@ const Team = () => {
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/15 to-orange-500/40" />
                 <div className="px-4 py-1 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-xl font-mono text-[11px] text-white/60 uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(255,107,0,0.15)]">
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-                  <span>DEPARTMENT HEAD ARCHIVES // BATCH 2025</span>
+                  <span>Team Optima 2025</span>
                 </div>
                 <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-white/15 to-orange-500/40" />
               </div>

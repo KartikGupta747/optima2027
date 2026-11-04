@@ -167,18 +167,15 @@ const Spons = () => {
             <div className="section-header mb-3">
               <span className="section-header-square" />
               <h2 className="section-header-text text-xl sm:text-2xl lg:text-3xl">
-                The Network // Corporate Sponsors &amp; Industry Backing
+                Our Sponsors
               </h2>
             </div>
             <p className="text-text-secondary text-sm max-w-2xl font-sans leading-relaxed">
-              Leading global enterprises and technology pioneers driving innovation in artificial intelligence, energy, industrial operations, and enterprise software.
+              Leading enterprises and organizations supporting Optima at IIT Kharagpur.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs text-text-secondary border border-border-subtle bg-bg-surface px-4 py-2 self-start md:self-auto">
-            <Building2 className="w-3.5 h-3.5 text-accent-brand" />
-            <span>ENTERPRISE_NETWORK: VERIFIED</span>
-          </div>
+
         </div>
 
         {/* Strict Architectural Hierarchy Grid */}

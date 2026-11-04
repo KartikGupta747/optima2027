@@ -17,8 +17,7 @@ import {
   Zap,
   Terminal,
   Layers,
-  Sparkles,
-} from "lucide-react";
+  } from "lucide-react";
 import Magnetic from "./navbar/Magnetic";
 import { playHoverChirp, playClickTick } from "../utils/cyberAudio";
 
@@ -207,16 +206,7 @@ const SpatialScheduleCard = ({ phase, isIgnited }) => {
               </span>
             </div>
 
-            {/* Live Pulsing System Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-              </span>
-              <span className="font-mono text-[9px] font-bold text-emerald-400 uppercase tracking-widest">
-                LIVE_PROTOCOL
-              </span>
-            </div>
+
           </div>
 
           {/* Title & Narrative */}
@@ -382,9 +372,7 @@ const IngestionModuleCinematic = () => {
             </motion.a>
           </Magnetic>
 
-          <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
-            STATUS // LIVE_CORE_SYNC
-          </span>
+
         </div>
       </div>
     </div>
@@ -392,7 +380,7 @@ const IngestionModuleCinematic = () => {
 };
 
 /**
- * THE BLUEPRINT // EVENT SCHEDULE (The Synaptic Data-Stream)
+ * Event Schedule (The Synaptic Data-Stream)
  */
 const Schedule = () => {
   const containerRef = useRef(null);
@@ -452,12 +440,12 @@ const Schedule = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md">
               <Layers className="w-3.5 h-3.5 text-[#ff4500]" />
               <span className="font-mono text-xs uppercase tracking-widest text-zinc-400">
-                THE BLUEPRINT // EVENT SCHEDULE
+                Event Schedule
               </span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white tracking-tight">
-              Synaptic Timeline
+              Schedule Timeline
             </h2>
 
             <p className="font-sans text-xs sm:text-sm text-zinc-400 max-w-xl leading-relaxed">

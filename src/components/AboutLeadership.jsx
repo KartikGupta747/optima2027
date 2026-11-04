@@ -12,7 +12,6 @@ import cochairImg from "../assets/HodMessage/cochairman.png";
 import {
   Quote,
   ArrowUpRight,
-  Sparkles,
   Layers,
   Award,
   Compass,
@@ -235,15 +234,7 @@ const HolographicPill = ({ domain, index }) => {
         </span>
       </div>
 
-      <motion.div
-        animate={isHovered ? { rotate: 45, scale: 1.15 } : { rotate: 0, scale: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        <ArrowUpRight
-          size={14}
-          className="text-zinc-500 group-hover:text-cyan-400 transition-colors"
-        />
-      </motion.div>
+
     </motion.div>
   );
 };
@@ -328,9 +319,7 @@ const SecondaryLeaderCard = ({ name, role, dept, image }) => {
             className="flex-1 text-center sm:text-left space-y-2 pt-1"
           >
             <div>
-              <span className="font-mono text-[10px] text-cyan-400 uppercase tracking-widest font-semibold block mb-1">
-                ORGANIZING LEADERSHIP
-              </span>
+
               <h4 className="font-display text-lg sm:text-xl font-bold uppercase text-white tracking-tight leading-snug">
                 {name}
               </h4>
@@ -518,20 +507,11 @@ const ReviewMatrix = () => {
       className="p-6 sm:p-8 flex flex-col justify-between"
     >
       {/* Header: Pure Minimalist Telemetry (No stars or rating numbers) */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
+      <div className="flex items-center justify-between gap-4 mb-6 border-b border-white/5 pb-4">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-cyan-400" />
-          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-white">
-            THE REVIEW MATRIX // VERIFIED ENDORSEMENTS
+          <h3 className="font-display text-lg font-bold uppercase tracking-wider text-white">
+            Reviews
           </h3>
-        </div>
-
-        {/* Sleek Minimalist Status Indicator */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="font-mono text-xs text-zinc-400 uppercase tracking-wider">
-            EXECUTIVE &amp; ALUMNI VOICES
-          </span>
         </div>
       </div>
 
@@ -591,9 +571,7 @@ const ReviewMatrix = () => {
                 {/* Pure Kinetic Typography (No Star Icons) */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
-                      ENDORSEMENT // 0{((idx % reviews.length) + 1)}
-                    </span>
+
                     <Quote className="w-4 h-4 text-zinc-600" />
                   </div>
 
@@ -613,9 +591,7 @@ const ReviewMatrix = () => {
                   <span className="text-cyan-400 font-bold tracking-wider drop-shadow-[0_0_8px_rgba(0,240,255,0.4)]">
                     {rev.author}
                   </span>
-                  <span className="text-zinc-500 text-[11px] font-sans">
-                    {rev.role}
-                  </span>
+
                 </div>
               </motion.div>
             );
@@ -623,9 +599,8 @@ const ReviewMatrix = () => {
         </motion.div>
       </div>
 
-      <div className="mt-4 pt-3 flex items-center justify-between text-zinc-500 font-mono text-[10px]">
-        <span>HOVER TO INSPECT // DRAG TO NAVIGATE</span>
-        <span className="text-cyan-400">VERIFIED ATTENDEES</span>
+      <div className="mt-4 pt-3 flex items-center justify-end text-zinc-500 font-mono text-[10px]">
+        <span className="text-cyan-400 font-medium">Verified Attendees</span>
       </div>
     </BentoSpotlightCard>
   );

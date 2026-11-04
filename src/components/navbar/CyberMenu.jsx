@@ -252,8 +252,15 @@ const CyberMenu = ({
 
             {/* Bottom Actions & Metadata */}
             <div className="relative z-10 pt-4 border-t border-white/10 flex flex-col items-center gap-4">
-              <div className="w-full flex justify-center">
+              <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-3">
                 <RegisterButton />
+                <Link
+                  to="/signin"
+                  onClick={onClose}
+                  className="px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-all tracking-wider"
+                >
+                  SIGN IN PORTAL
+                </Link>
               </div>
 
               <div className="flex items-center justify-between w-full font-mono text-[10px] text-zinc-500 tracking-tight">
