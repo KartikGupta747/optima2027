@@ -207,7 +207,7 @@ const HolographicPill = ({ domain, index }) => {
         scale: 1.02,
       }}
       transition={{ type: "spring", ...SPATIAL_SPRING }}
-      className="relative group cursor-pointer overflow-hidden rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md px-4 py-3 flex items-center justify-between select-none"
+      className="relative group cursor-pointer overflow-hidden rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md px-3.5 py-2 flex items-center justify-between select-none"
     >
       {/* Internal Holographic Data-Stream Particle Shimmer on Hover */}
       <motion.div
@@ -303,8 +303,8 @@ const SecondaryLeaderCard = ({ name, role, dept, image }) => {
         />
 
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
-          {/* Portrait Container - exactly 75% scale */}
-          <div className="relative flex-shrink-0 w-32 h-44 sm:w-36 sm:h-48 rounded-xl overflow-hidden border border-white/15 bg-black">
+          {/* Portrait Container - proportional, compact scale */}
+          <div className="relative flex-shrink-0 w-24 h-32 sm:w-28 sm:h-36 rounded-xl overflow-hidden border border-white/15 bg-black">
             <img
               src={image}
               alt={name}
@@ -423,8 +423,8 @@ const SpatialLeadershipCard = () => {
           />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8">
-            {/* Prof. Jha Portrait: Proper defined height (h-64 sm:h-72), uncropped, spatial anchor */}
-            <div className="relative flex-shrink-0 w-full sm:w-60 md:w-64 h-64 sm:h-72 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-xl">
+            {/* Prof. Jha Portrait: Compact, elegant spatial anchor */}
+            <div className="relative flex-shrink-0 w-36 sm:w-44 md:w-48 h-48 sm:h-56 rounded-2xl overflow-hidden border border-white/15 bg-black shadow-xl">
               <img
                 src={hodImg}
                 alt="Prof. Jitendra Kumar Jha"
@@ -562,7 +562,7 @@ const ReviewMatrix = () => {
                   zIndex: 40,
                 }}
                 transition={{ type: "spring", ...SPATIAL_SPRING }}
-                className={`relative w-80 sm:w-96 p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between ${
+                className={`relative w-72 sm:w-80 p-5 rounded-2xl transition-all duration-300 flex flex-col justify-between ${
                   isHovered
                     ? "neon-animated-border shadow-2xl"
                     : "bg-white/[0.03] border border-white/5 backdrop-blur-xl"
@@ -613,7 +613,7 @@ const AboutLeadership = () => {
   return (
     <section
       id="about"
-      className="relative w-full py-24 lg:py-32 bg-[#030305] border-b border-white/5 overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-[#030305] border-b border-white/5 overflow-hidden"
     >
       {/* Background Ambient Glows & Spatial Atmosphere */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-[#ff4500]/10 rounded-full blur-[140px]" />

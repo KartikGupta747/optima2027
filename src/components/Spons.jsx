@@ -8,7 +8,7 @@ const tier1Sponsors = [
     logo: "/assets/spons/spons-25/Hire3x.webp",
     url: "https://hire3x.com/",
     span: "md:col-span-6",
-    height: "h-44 sm:h-52",
+    height: "h-36 sm:h-44",
   },
   {
     tier: "CO-TITLE SPONSOR",
@@ -16,7 +16,7 @@ const tier1Sponsors = [
     logo: "/assets/spons/spons-25/Adani_Ai_Sirius_Digitech.webp",
     url: "https://www.linkedin.com/company/sirius-digitech/",
     span: "md:col-span-6",
-    height: "h-44 sm:h-52",
+    height: "h-36 sm:h-44",
   },
 ];
 
@@ -27,7 +27,7 @@ const tier2Sponsors = [
     logo: "/assets/spons/spons-25/ONGC.webp",
     url: "https://ongcindia.com/",
     span: "md:col-span-4",
-    height: "h-36 sm:h-40",
+    height: "h-30 sm:h-36",
   },
   {
     tier: "STRATEGIC SPONSOR",
@@ -35,7 +35,7 @@ const tier2Sponsors = [
     logo: "/assets/spons/spons-25/OPTYM.webp",
     url: "https://www.optym.com/",
     span: "md:col-span-4",
-    height: "h-36 sm:h-40",
+    height: "h-30 sm:h-36",
   },
   {
     tier: "IN ASSOCIATION WITH",
@@ -43,7 +43,7 @@ const tier2Sponsors = [
     logo: "/assets/spons/spons-25/GAIL.webp",
     url: "https://gailonline.com/",
     span: "md:col-span-4",
-    height: "h-36 sm:h-40",
+    height: "h-30 sm:h-36",
   },
 ];
 
@@ -153,7 +153,7 @@ const Spons = () => {
   return (
     <section
       id="sponsors"
-      className="relative w-full py-20 lg:py-28 bg-bg-base border-b border-border-subtle overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-bg-base border-b border-border-subtle overflow-hidden"
     >
       {/* Background CAD grid */}
       <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
@@ -162,7 +162,7 @@ const Spons = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Deliverable 10 Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div>
             <div className="section-header mb-3">
               <span className="section-header-square" />
@@ -211,7 +211,7 @@ const Spons = () => {
               <SponsorCard
                 key={spons.name}
                 sponsor={spons}
-                height="h-32 sm:h-36"
+                height="h-28 sm:h-32"
               />
             ))}
           </div>
@@ -222,7 +222,7 @@ const Spons = () => {
               <SponsorCard
                 key={spons.name}
                 sponsor={spons}
-                height="h-24 sm:h-28"
+                height="h-20 sm:h-24"
               />
             ))}
           </div>

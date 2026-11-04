@@ -205,7 +205,7 @@ const GlassIdentityPlate = ({ member, index, isArchived = false }) => {
       {/* ======================================================== */}
       {/* IDENTITY METADATA & KINETIC TYPOGRAPHY                   */}
       {/* ======================================================== */}
-      <div className="p-5 relative z-20 flex flex-col justify-between flex-1 bg-gradient-to-b from-[#09090e]/90 to-[#050508]">
+      <div className="p-4 sm:p-4.5 relative z-20 flex flex-col justify-between flex-1 bg-gradient-to-b from-[#09090e]/90 to-[#050508]">
         <div>
           {/* Glowing Dynamic Role Pill */}
           <div className="mb-3">
@@ -281,7 +281,7 @@ const Team = () => {
   return (
     <section
       id="team"
-      className="relative w-full py-28 md:py-36 bg-[#030305] text-white border-b border-white/5 overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-[#030305] text-white border-b border-white/5 overflow-hidden"
     >
       {/* Ambient Lighting Spheres */}
       <div className="absolute top-1/3 -left-48 w-96 h-96 rounded-full bg-cyan-500/10 blur-[150px] pointer-events-none" />
@@ -300,7 +300,7 @@ const Team = () => {
         {/* ======================================================== */}
         {/* SECTION HEADER: KINETIC TYPOGRAPHY STANDARD              */}
         {/* ======================================================== */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 mb-12 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 mb-8 sm:mb-10 border-b border-white/10">
           <div>
 
 

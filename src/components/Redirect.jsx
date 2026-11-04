@@ -1,62 +1,55 @@
 import React, { useEffect } from "react";
-import Section from "./Section";
-import { Link, useNavigate } from "react-router-dom";
-import { heroBackground } from "../assets";
-import { BackgroundCircles } from "./design/Hero";
+import { Link } from "react-router-dom";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 export default function Redirect({ href, delay, place }) {
-	//   const navigate = useNavigate();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = href;
+    }, delay || 1000);
+    return () => clearTimeout(timer);
+  }, [href, delay]);
 
-	//   useEffect(() => {
-	//     const timer = setTimeout(() => {
-	//       // Open in new tab
-	//       window.open(href, '_blank');
+  return (
+    <main className="min-h-screen bg-bg-base text-text-primary pt-24 sm:pt-28 pb-16 px-4 flex items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
+      <div className="pointer-events-none absolute top-1/3 -left-32 w-80 h-80 bg-accent-brand/10 rounded-full blur-[140px]" />
 
-	//       navigate('/competitions');
-	//     }, delay ? delay : 2000);
+      <div className="max-w-md w-full mx-auto relative z-10 text-center">
+        <div className="cad-card p-8 sm:p-10 shadow-2xl space-y-5">
+          <div className="w-12 h-12 rounded-full bg-accent-brand/10 border border-accent-brand/30 flex items-center justify-center mx-auto text-accent-brand animate-pulse">
+            <ExternalLink size={22} />
+          </div>
 
-	//     return () => clearTimeout(timer);
-	//   }, [href, delay, navigate]);
+          <div className="space-y-2">
+            <h2 className="font-display text-2xl font-bold uppercase text-white tracking-wide">
+              Transferring Dispatch
+            </h2>
+            <p className="text-xs sm:text-sm text-text-secondary font-sans leading-relaxed">
+              Redirecting you to <span className="text-white font-semibold">{place}</span>...
+            </p>
+          </div>
 
-	useEffect(() => {
-		setTimeout(
-			() => {
-				window.location.href = href;
-			},
-			delay ? delay : 1000
-		);
-	}, []);
+          <div className="pt-3">
+            <a
+              href={href}
+              className="btn-primary w-full py-2.5 text-xs tracking-wider justify-center gap-2"
+            >
+              <span>Click Here if not redirected</span>
+              <ArrowRight size={14} />
+            </a>
+          </div>
 
-	return (
-		<Section className="pt-[5rem] -mt-[5.25rem] ">
-			<div className="container relative z-2 min-h-[25rem] flex flex-col items-center justify-center text-center lg:mt-10">
-				<h2 className="h2 mb-4">Redirecting...</h2>
-				<p className="body-2 mb-8 text-500">
-					You will be redicted to the {place} page in a moment.
-				</p>
-				<Link
-					to="/"
-					className="button button-gradient px-8 py-4 hover:scale-105 transition-transform"
-				>
-					Back to Homepage
-				</Link>
-
-				{/* Background decorative elements */}
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] opacity-10 pointer-events-none">
-					<div className="absolute inset-0 rotate-45 bg-gradient-to-r from-primary to-secondary rounded-full blur-3xl"></div>
-					<div className="absolute inset-0 -rotate-45 bg-gradient-to-l from-primary to-secondary rounded-full blur-3xl"></div>
-				</div>
-			</div>
-			<div className="absolute -top-[54%] left-1/2 w-[234%] -translate-x-1/2 md:-top-[46%] md:w-[138%] lg:-top-[102%]">
-				<img
-					src={heroBackground}
-					className="w-full"
-					width={1440}
-					height={1800}
-					alt="hero"
-				/>
-			</div>
-			<BackgroundCircles />
-		</Section>
-	);
+          <div>
+            <Link
+              to="/"
+              className="text-xs font-mono text-zinc-500 hover:text-white transition-colors"
+            >
+              Cancel &amp; Return to Optima Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
 }

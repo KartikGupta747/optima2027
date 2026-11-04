@@ -181,7 +181,7 @@ const SpatialScheduleCard = ({ phase, isIgnited }) => {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className={`relative rounded-3xl p-7 sm:p-8 backdrop-blur-2xl border transition-all duration-500 overflow-hidden cursor-pointer select-none group ${
+        className={`relative rounded-2xl p-5 sm:p-6 backdrop-blur-2xl border transition-all duration-500 overflow-hidden cursor-pointer select-none group ${
           isIgnited
             ? "bg-[#06060c]/85 border-cyan-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
             : "bg-white/[0.02] border-white/10 hover:border-white/20"
@@ -280,7 +280,7 @@ const Schedule = () => {
     <section
       id="schedule"
       ref={containerRef}
-      className="relative w-full py-24 lg:py-32 bg-[#030305] border-b border-white/5 overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-[#030305] border-b border-white/5 overflow-hidden"
     >
       {/* Background Synaptic Glows */}
       <div className="pointer-events-none absolute top-1/3 -left-40 w-96 h-96 bg-[#ff4500]/10 rounded-full blur-[140px]" />
@@ -337,7 +337,7 @@ const Schedule = () => {
         {/* 
           Central Synaptic Data-Stream Timeline
         */}
-        <div className="relative max-w-5xl mx-auto py-10">
+        <div className="relative max-w-5xl mx-auto py-6 sm:py-8">
           {/* Deep Dark Structural Track */}
           <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[3px] bg-[#14141e] rounded-full hidden sm:block">
             {/* Scroll-Reactive Glowing Liquid-Neon Beam (Deep Orange to Cyan) */}
@@ -348,7 +348,7 @@ const Schedule = () => {
           </div>
 
           {/* Timeline Milestones */}
-          <div className="space-y-16 sm:space-y-24 mb-16">
+          <div className="space-y-8 sm:space-y-12 mb-8">
             {timelinePhases.map((phase, idx) => {
               // Real-time reactive ignition triggered as the neon beam reaches this node
               const isIgnited = ignitedDays[idx];

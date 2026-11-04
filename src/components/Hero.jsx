@@ -46,7 +46,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden bg-bg-base flex flex-col justify-between border-b border-border-subtle"
+      className="relative min-h-[calc(100vh-3.5rem)] w-full overflow-hidden bg-bg-base flex flex-col justify-between pt-16 lg:pt-24 border-b border-border-subtle"
     >
       {/* Background Layer: High-Contrast Desaturated Gate Image with Heavy Radial Mask */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -107,9 +107,9 @@ const Hero = () => {
               className="w-full overflow-hidden"
             >
               <h1
-                className="font-display font-extrabold uppercase text-text-primary leading-[0.88] select-none tracking-[-0.02em]"
+                className="font-display font-extrabold uppercase text-text-primary leading-[0.92] select-none tracking-tight"
                 style={{
-                  fontSize: "clamp(3.75rem, 10vw, 9rem)",
+                  fontSize: "clamp(2.5rem, 8.5vw, 7.5rem)",
                 }}
               >
                 OPTIMA{" "}
@@ -155,10 +155,10 @@ const Hero = () => {
           </div>
 
           {/* Bottom-Right Interaction & Action Block (Spanning ~5 Columns) */}
-          <div className="md:col-span-5 flex flex-col sm:flex-row md:justify-end items-start sm:items-center gap-3">
+          <div className="md:col-span-5 flex flex-col sm:flex-row md:justify-end items-stretch sm:items-center gap-2.5 sm:gap-3">
             <Link
               to="/register"
-              className="btn-primary w-full sm:w-auto text-xs py-3 px-6 gap-2 shadow-lg"
+              className="btn-primary w-full sm:w-auto text-xs py-2.5 px-5 gap-2 shadow-lg text-center justify-center"
             >
               <span>Register</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -168,9 +168,9 @@ const Hero = () => {
               href="https://unstop.com/college-fests/optima-2027-indian-institute-of-technology-iit-kharagpur-260905"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all gap-2"
+              className="inline-flex items-center justify-center px-4 py-2.5 rounded-none border border-white/20 bg-white/5 hover:bg-white/10 text-white font-mono text-xs tracking-wider transition-all gap-2"
             >
-              <span>Unstop Register</span>
+              <span>Unstop</span>
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </a>
 
@@ -183,9 +183,9 @@ const Hero = () => {
                   elem.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className="btn-secondary w-full sm:w-auto text-xs py-3 px-5 gap-2 text-white"
+              className="btn-secondary w-full sm:w-auto text-xs py-2.5 px-4 gap-2 text-white justify-center"
             >
-              <span>Explore Fest</span>
+              <span>Explore</span>
               <ChevronDown className="w-4 h-4 text-accent-brand" />
             </a>
           </div>

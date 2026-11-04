@@ -62,7 +62,7 @@ const Competitions = () => {
   return (
     <section
       id="events"
-      className="relative w-full py-20 lg:py-28 bg-bg-base border-b border-border-subtle overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-bg-base border-b border-border-subtle overflow-hidden"
     >
       {/* Background CAD Grid texture */}
       <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
@@ -129,17 +129,17 @@ const Competitions = () => {
                ======================================================== */
             <motion.div
               key="upcoming-animation"
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
-              className="relative max-w-4xl mx-auto my-6 p-8 sm:p-14 border border-border-subtle bg-bg-surface/90 backdrop-blur-md overflow-hidden text-center shadow-[0_20px_50px_rgba(0,0,0,0.7)]"
+              exit={{ opacity: 0, scale: 0.95, y: -15 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative max-w-3xl mx-auto my-4 p-6 sm:p-10 border border-border-subtle bg-bg-surface/90 backdrop-blur-md overflow-hidden text-center shadow-[0_15px_40px_rgba(0,0,0,0.7)]"
             >
               {/* Subtle background glow */}
-              <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-brand/10 rounded-full blur-[100px]" />
+              <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-brand/10 rounded-full blur-[90px]" />
 
-              {/* Orbital Radar / Rings Animation */}
-              <div className="relative w-36 h-36 sm:w-44 sm:h-44 mx-auto mb-8 flex items-center justify-center">
+              {/* Orbital Radar / Rings Animation - Compact */}
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-5 flex items-center justify-center">
                 {/* Outermost pulsing ring */}
                 <motion.div
                   animate={{
@@ -162,7 +162,7 @@ const Competitions = () => {
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                  className="absolute inset-3 sm:inset-4 rounded-full border border-white/15 border-t-accent-brand/70"
+                  className="absolute inset-2 sm:inset-3 rounded-full border border-white/15 border-t-accent-brand/70"
                 />
 
                 {/* Counter-rotating inner ring */}
@@ -173,14 +173,14 @@ const Competitions = () => {
                     repeat: Infinity,
                     ease: "linear",
                   }}
-                  className="absolute inset-7 sm:inset-9 rounded-full border border-dashed border-cyan-400/30"
+                  className="absolute inset-4 sm:inset-6 rounded-full border border-dashed border-cyan-400/30"
                 />
 
                 {/* Central glowing orb with trophy */}
-                <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent-brand/20 to-black border border-accent-brand/60 flex items-center justify-center shadow-[0_0_25px_rgba(255,107,0,0.35)]">
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-accent-brand/20 to-black border border-accent-brand/60 flex items-center justify-center shadow-[0_0_20px_rgba(255,107,0,0.35)]">
                   <motion.div
                     animate={{
-                      y: [-2, 3, -2],
+                      y: [-2, 2, -2],
                       rotate: [-2, 2, -2],
                     }}
                     transition={{
@@ -189,29 +189,29 @@ const Competitions = () => {
                       ease: "easeInOut",
                     }}
                   >
-                    <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-accent-brand drop-shadow-[0_0_12px_rgba(255,107,0,0.6)]" />
+                    <Trophy className="w-6 h-6 sm:w-7 sm:h-7 text-accent-brand drop-shadow-[0_0_10px_rgba(255,107,0,0.6)]" />
                   </motion.div>
                 </div>
               </div>
 
               {/* Status Pill */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 mb-5 rounded-full border border-accent-brand/30 bg-accent-brand/10 text-xs font-mono font-semibold tracking-wider text-accent-brand">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-accent-brand/30 bg-accent-brand/10 text-xs font-mono font-semibold tracking-wider text-accent-brand">
                 <span className="w-2 h-2 rounded-full bg-accent-brand animate-ping" />
                 <span>Competitions Announcing Soon</span>
               </div>
 
               {/* Heading */}
-              <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black uppercase text-white tracking-tight mb-4">
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-tight mb-3">
                 Optima 2027 Challenges
               </h3>
 
               {/* Clean natural description */}
-              <p className="font-sans text-sm sm:text-base text-zinc-300 max-w-xl mx-auto leading-relaxed mb-8">
+              <p className="font-sans text-xs sm:text-sm text-zinc-300 max-w-lg mx-auto leading-relaxed mb-6">
                 We are currently finalizing problem statements, sponsor partnerships, and prize pools. Detailed challenges, rulebooks, and registration portals will go live soon.
               </p>
 
               {/* Key Highlights */}
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs font-mono text-zinc-400 mb-10">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs font-mono text-zinc-400 mb-6">
                 <div className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10">
                   <Calendar className="w-3.5 h-3.5 text-accent-brand" />
                   <span>March 12–14, 2027</span>
@@ -286,7 +286,7 @@ const Competitions = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
                 {pastCompetitions.map((item, index) => {
                   const hasSponsor = Boolean(item.subTitle);
 
@@ -294,23 +294,23 @@ const Competitions = () => {
                     <motion.div
                       key={item.id}
                       variants={cardVariants}
-                      className="group relative bg-bg-surface border border-border-subtle p-5 sm:p-6 flex flex-col justify-between transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow"
+                      className="group relative bg-bg-surface border border-border-subtle p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow"
                     >
                       {/* Top Row: Index Tag & Desaturated Vector Illustration */}
-                      <div className="flex items-start justify-between relative mb-6">
-                        <div className="flex flex-col gap-1.5 z-10">
-                          <span className="font-mono text-[11px] font-semibold text-accent-brand tracking-wider">
+                      <div className="flex items-start justify-between relative mb-4">
+                        <div className="flex flex-col gap-1 z-10">
+                          <span className="font-mono text-[10px] sm:text-[11px] font-semibold text-accent-brand tracking-wider">
                             CHALLENGE.0{index + 1}
                           </span>
                           {hasSponsor && (
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-accent-muted bg-accent-muted/10 border border-accent-muted/30 px-2 py-0.5 max-w-[170px] truncate">
+                            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-accent-muted bg-accent-muted/10 border border-accent-muted/30 px-2 py-0.5 max-w-[150px] truncate">
                               {item.subTitle}
                             </span>
                           )}
                         </div>
 
                         {/* Vector Illustration */}
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 overflow-hidden">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 overflow-hidden">
                           <img
                             src={item.photoUrl}
                             alt={item.title}
@@ -321,11 +321,11 @@ const Competitions = () => {
                       </div>
 
                       {/* Middle: Title & Description */}
-                      <div className="relative z-10 mb-8">
-                        <h3 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-text-primary group-hover:text-accent-brand transition-colors duration-200">
+                      <div className="relative z-10 mb-4">
+                        <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-text-primary group-hover:text-accent-brand transition-colors duration-200">
                           {item.title}
                         </h3>
-                        <p className="mt-2 text-xs sm:text-sm text-text-secondary line-clamp-3 leading-relaxed">
+                        <p className="mt-1.5 text-xs text-text-secondary line-clamp-3 leading-relaxed">
                           {item.text}
                         </p>
                       </div>

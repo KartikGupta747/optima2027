@@ -23,7 +23,7 @@ const NavLinkItem = ({ name, isActive, onClick }) => {
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative px-2.5 py-1.5 flex items-center justify-center font-mono text-[11px] font-medium tracking-wider transition-colors select-none group"
+        className="relative px-1.5 xl:px-2.5 py-1 flex items-center justify-center font-mono text-[10px] xl:text-[11px] font-medium tracking-wider transition-colors select-none group whitespace-nowrap"
       >
         {/* Dynamic bracket markers appearing on hover */}
         <span

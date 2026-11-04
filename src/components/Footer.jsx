@@ -68,10 +68,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-[#050505] border-t border-white/10 text-gray-400 py-12 lg:py-16 relative z-10">
+    <footer className="w-full bg-[#050505] border-t border-white/10 text-gray-400 py-10 lg:py-14 relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {/* Column 1: Brand Anchor */}
           <div className="flex flex-col">
             <Link to="/" data-cursor="pointer" className="inline-block mb-4">

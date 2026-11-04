@@ -107,6 +107,59 @@ const ACCORDION_SPRING = { stiffness: 120, damping: 20 };
  * - Hover / Active: fluid layout expansion, volumetric light sweep, crossfade to vibrant color,
  *   subtle cyber mainframe particle overlay, holographic glass pill badge, and 200ms cryptographic name scramble.
  */
+const MobileSpeakerCard = ({ speaker, index }) => {
+  return (
+    <div className="relative rounded-xl overflow-hidden border border-white/10 bg-[#07070c] p-4 flex flex-col justify-between transition-all hover:border-cyan-400/40">
+      <div className="flex items-start gap-3.5">
+        <div className="relative w-16 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-black border border-white/10">
+          <img
+            src={speaker.imgUrl}
+            alt={speaker.name}
+            className="w-full h-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center justify-between gap-1 mb-1">
+            <span className="font-mono text-[10px] text-accent-brand font-semibold uppercase">
+              {speaker.badge}
+            </span>
+            <span className="font-mono text-[10px] text-zinc-500">
+              0{index + 1}
+            </span>
+          </div>
+          <h4 className="font-display text-base font-bold text-white uppercase tracking-tight truncate">
+            {speaker.name}
+          </h4>
+          <p className="font-mono text-[11px] text-zinc-400 truncate">
+            {speaker.designation} {speaker.company ? `· ${speaker.company}` : ""}
+          </p>
+          {speaker.topic && (
+            <p className="mt-1 text-xs text-zinc-300 font-sans line-clamp-2 italic">
+              &ldquo;{speaker.topic}&rdquo;
+            </p>
+          )}
+        </div>
+      </div>
+      {speaker.linkedin && (
+        <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-end">
+          <a
+            href={speaker.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={playClickTick}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 font-mono text-[10px] font-semibold tracking-wider hover:bg-cyan-500/20 transition-all"
+          >
+            <Linkedin className="w-3 h-3" />
+            <span>LINKEDIN</span>
+            <ArrowUpRight className="w-2.5 h-2.5" />
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const AccordionSpeakerCard = ({
   speaker,
   index,
@@ -132,13 +185,13 @@ const AccordionSpeakerCard = ({
       }}
       onMouseEnter={handleMouseEnter}
       onClick={handleMouseEnter}
-      className={`relative rounded-3xl overflow-hidden cursor-pointer select-none border transition-all duration-500 flex flex-col justify-between ${
+      className={`relative rounded-2xl overflow-hidden cursor-pointer select-none border transition-all duration-500 flex flex-col justify-between ${
         isActive
           ? "flex-[3.5] lg:flex-[4] border-cyan-400/50 shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
           : "flex-1 border-white/10 hover:border-white/20 bg-white/[0.02]"
       }`}
       style={{
-        minHeight: isActive ? "520px" : "140px",
+        minHeight: "100%",
       }}
     >
       {/* 
@@ -348,7 +401,7 @@ const GuestLecture = () => {
     <section
       id="speakers"
       ref={containerRef}
-      className="relative w-full py-24 lg:py-32 bg-[#030305] border-b border-white/5 overflow-hidden"
+      className="relative w-full pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-[#030305] border-b border-white/5 overflow-hidden"
     >
       {/* Background Ambient Atmosphere */}
       <div className="pointer-events-none absolute top-1/4 -right-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-[140px]" />
@@ -398,7 +451,7 @@ const GuestLecture = () => {
           </div>
 
           {/* Roster Category Toggle Pills */}
-          <div className="flex items-center gap-2 bg-white/[0.03] border border-white/10 p-1 rounded-full">
+          <div className="flex flex-wrap items-center gap-2 bg-white/[0.03] border border-white/10 p-1 rounded-full">
             <button
               type="button"
               onClick={() => {
@@ -406,7 +459,7 @@ const GuestLecture = () => {
                 setActiveTab("flagship");
                 setActiveSpeakerId(flagshipSpeakers[0].id);
               }}
-              className={`px-4 py-2 rounded-full font-mono text-xs font-semibold tracking-wider transition-all duration-300 ${
+              className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 ${
                 activeTab === "flagship"
                   ? "bg-gradient-to-r from-[#ff4500] to-cyan-500 text-black shadow-lg"
                   : "text-zinc-400 hover:text-white"
@@ -422,7 +475,7 @@ const GuestLecture = () => {
                 setActiveTab("faculty");
                 setActiveSpeakerId(facultySpeakers[0].id);
               }}
-              className={`px-4 py-2 rounded-full font-mono text-xs font-semibold tracking-wider transition-all duration-300 ${
+              className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full font-mono text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 ${
                 activeTab === "faculty"
                   ? "bg-gradient-to-r from-[#ff4500] to-cyan-500 text-black shadow-lg"
                   : "text-zinc-400 hover:text-white"
@@ -433,11 +486,22 @@ const GuestLecture = () => {
           </div>
         </div>
 
+        {/* Mobile & Tablet Card Grid (< 1024px) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 lg:hidden">
+          {activeRoster.map((speaker, index) => (
+            <MobileSpeakerCard
+              key={`mobile-${speaker.id}`}
+              speaker={speaker}
+              index={index}
+            />
+          ))}
+        </div>
+
         {/* 
-          THE HOLOGRAPHIC ACCORDION (Fluid Spatial Physics)
+          Desktop: THE HOLOGRAPHIC ACCORDION (>= 1024px)
           Interactive expanding card gallery driven by Framer Motion layout animations
         */}
-        <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 h-auto lg:h-[620px] w-full items-stretch">
+        <div className="hidden lg:flex flex-row gap-2.5 xl:gap-3.5 h-[500px] w-full items-stretch">
           {activeRoster.map((speaker, index) => (
             <AccordionSpeakerCard
               key={speaker.id}

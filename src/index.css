@@ -70,11 +70,14 @@
     html,
     body,
     a,
-    button,
-    input,
-    select,
-    textarea {
+    button {
       cursor: none !important;
+    }
+
+    input,
+    textarea,
+    select {
+      cursor: text !important;
     }
   }
 

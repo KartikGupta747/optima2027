@@ -66,6 +66,12 @@ const GlobalCursor = () => {
         return;
       }
 
+      const textInputEl = target.closest("input, textarea, select");
+      if (textInputEl) {
+        setCursorMode("text");
+        return;
+      }
+
       const interactiveEl = target.closest(
         'a, button, [role="button"], input, textarea, select, label, .cursor-pointer, [data-cursor-interactive], [data-cursor="pointer"]'
       );
@@ -121,7 +127,7 @@ const GlobalCursor = () => {
         style={{
           x: springRingX,
           y: springRingY,
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible && cursorMode !== "text" ? 1 : 0,
         }}
         className="fixed top-0 left-0 transition-opacity duration-200 pointer-events-none"
       >
@@ -192,7 +198,7 @@ const GlobalCursor = () => {
         style={{
           x: rawX,
           y: rawY,
-          opacity: isVisible && !isViewData ? 1 : 0,
+          opacity: isVisible && !isViewData && cursorMode !== "text" ? 1 : 0,
         }}
         className="fixed top-0 left-0 pointer-events-none transition-opacity duration-150"
       >

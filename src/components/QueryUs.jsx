@@ -112,7 +112,7 @@ const QueryUs = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#030305] text-white pt-28 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <main className="min-h-screen bg-[#030305] text-white pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Ambient Sci-Fi Atmospheric Lighting */}
       <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 bg-[#ff4500]/12 rounded-full blur-[150px]" />
       <div className="pointer-events-none absolute top-1/2 -right-32 w-96 h-96 bg-cyan-400/12 rounded-full blur-[160px]" />
@@ -122,7 +122,7 @@ const QueryUs = () => {
         {/* ========================================================= */}
         {/* SECTION HEADER: KINETIC TYPOGRAPHY STANDARD               */}
         {/* ========================================================= */}
-        <div className="mb-14 pb-8 border-b border-white/10">
+        <div className="mb-8 pb-6 border-b border-white/10">
 
 
           <h1 className="text-3xl sm:text-5xl font-bold font-sans tracking-tight text-white">

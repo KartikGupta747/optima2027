@@ -1,52 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { workshops } from "../constants/Workshops";
-import Heading from "./Heading";
-import Section from "./Section";
-import { motion } from "framer-motion";
-import { Gradient } from "./design/Services";
-import { BackgroundCircles } from "./design/Hero";
-import ComingSoon from "./design/ComingSoon";
-import { grid } from "../assets";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Link } from "react-router-dom";
-import "../components/OptimaCss/Workshop.css";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { ArrowUpRight, Cpu, Layers } from "lucide-react";
+import { workshops } from "../constants/Workshops";
+import { playClickTick, playHoverChirp } from "../utils/cyberAudio";
 
-// New component for handling workshop text with read more functionality
 const WorkshopDescription = ({ text }) => {
   const [showFull, setShowFull] = useState(false);
   const [isLongText, setIsLongText] = useState(false);
-  const characterLimit = 300; // Adjust this value based on your needs
+  const characterLimit = 240;
 
   useEffect(() => {
-    // Check if text is long enough to need the "Read More" button
     setIsLongText(text && text.length > characterLimit);
   }, [text]);
 
-  const toggleShowFull = () => setShowFull(!showFull);
+  const toggleShowFull = () => {
+    playClickTick();
+    setShowFull(!showFull);
+  };
 
   if (!text) return null;
 
-  const getDescription = () => {
-    if (showFull || !isLongText) {
-      return text;
-    }
-    // Return truncated text with ellipsis
-    return text.substring(0, characterLimit);
-  };
+  const displayText = showFull || !isLongText ? text : `${text.substring(0, characterLimit)}...`;
 
   return (
-    <div>
-      <p className="body-1 text-n-3 md:text-n-4 mb-2">
-        {getDescription()}
+    <div className="mt-3">
+      <p className="text-xs sm:text-sm text-text-secondary font-sans leading-relaxed">
+        {displayText}
+      </p>
       {isLongText && (
         <button
+          type="button"
           onClick={toggleShowFull}
-          className="text-purple-400 hover:text-purple-300 mb-6"
+          className="mt-2 text-xs font-mono text-accent-brand hover:underline font-semibold"
         >
-          {showFull ? "...Read Less" : "...Read More"}
+          {showFull ? "[Show Less]" : "[Read More]"}
         </button>
       )}
-	  </p>
     </div>
   );
 };
@@ -55,87 +45,98 @@ const Workshops = () => {
   document.title = "Workshops | Optima 2027";
 
   return (
-    <Section id="workshops">
-      <div className="container relative z-2">
-        <Heading
-          className="md:max-w-md lg:max-w-2xl text-center"
-          title="Optima 2027 Workshops"
-        />
-        <BackgroundCircles />
+    <main className="min-h-screen bg-bg-base text-text-primary pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background CAD grid & atmosphere */}
+      <div className="absolute inset-0 bg-cad-grid opacity-15 pointer-events-none" />
+      <div className="pointer-events-none absolute top-1/4 -left-40 w-96 h-96 bg-accent-brand/10 rounded-full blur-[140px]" />
+      <div className="pointer-events-none absolute bottom-1/4 -right-40 w-96 h-96 bg-cyan-400/10 rounded-full blur-[140px]" />
 
-        {/* <div className="flex justify-center">
-          <ComingSoon link="https://2023.optima.org.in/workshops" />
-        </div> */}
-        <div className="relative grid gap-6 md:grid-cols-2 md:gap-12 md:pb-[7rem]">
-          {workshops.map((workshop) => (
-            <div key={workshop.id || workshop.title} className="md:flex even:md:translate-y-[10rem] p-0.25 rounded-[2.5rem] bg-conic-gradient">
-            
-              <div className="relative p-8 bg-n-8 rounded-[2.4375rem] overflow-hidden xl:p-15 transition-all duration-200 hover:shadow-lg hover:shadow-purple-500">
-                {/* <div className="absolute top-0 left-0 max-w-full">
-                  <img
-                    className="w-full"
-                    src={grid}
-                    width={550}
-                    height={550}
-                    alt="Grid"
-                  />
-                </div> */}
-                <div className="relative z-1">
-                  {workshop.animationlink && (
-                    <div className="mb-1">
-                      <DotLottieReact
-                        className="w-[90%] mx-auto rounded-xl"
-                        src={workshop.animationlink}
-                        loop
-                        autoplay
-                        width={428}
-                        height={326}
-                      />
-                    </div>
-                  )}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="mb-10 pb-6 border-b border-white/10">
+          <div className="section-header mb-3">
+            <span className="section-header-square" />
+            <h1 className="section-header-text text-2xl sm:text-3xl lg:text-4xl">
+              Optima 2027 Workshops
+            </h1>
+          </div>
+          <p className="text-text-secondary text-xs sm:text-sm max-w-2xl font-sans leading-relaxed">
+            Hands-on technical workshops and industrial masterclasses conducted by leading practitioners in data systems, operations, and enterprise architecture.
+          </p>
+        </div>
 
-                  <h4 className="h2 md:h4 mb-4">{workshop.title}</h4>
-                  {workshop.companyLink && (
-                    <div className="flex mb-4">
-                      <h4 className="text-lg md:text-2xl mr-2.5">by</h4>
-                      <Link
-                        to={workshop.companyLink}
-                        target="_blank"
-                        className="text-md md:text-lg rounded-lg p-1 bg-purple-600 hover:bg-purple-500 transition transform-translate duration-200"
-                      >
-                        {workshop.company}
-                      </Link>
-                    </div>
-                  )}
-                  {workshop.text && (
-                    <WorkshopDescription text={workshop.text} />
+        {/* 2-Column Responsive Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+          {workshops.map((workshop, idx) => (
+            <div
+              key={workshop.id || workshop.title || idx}
+              onMouseEnter={playHoverChirp}
+              className="cad-card p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:border-accent-brand hover:shadow-brand-glow"
+            >
+              <div>
+                {/* Lottie Animation Header */}
+                {workshop.animationlink && (
+                  <div className="mb-6 rounded-xl overflow-hidden bg-black/40 border border-white/10 flex items-center justify-center p-4">
+                    <DotLottieReact
+                      className="w-full max-w-[340px] mx-auto rounded-lg"
+                      src={workshop.animationlink}
+                      loop
+                      autoplay
+                    />
+                  </div>
+                )}
+
+                {/* Index & Badge */}
+                <div className="flex items-center justify-between gap-2 mb-3 font-mono text-xs">
+                  <span className="text-accent-brand font-semibold">
+                    // WORKSHOP.0{idx + 1}
+                  </span>
+                  {workshop.company && (
+                    <span className="px-2.5 py-0.5 rounded-full border border-cyan-400/30 bg-cyan-500/10 text-cyan-300 text-[10px] font-semibold">
+                      IN PARTNERSHIP WITH {workshop.company.toUpperCase()}
+                    </span>
                   )}
                 </div>
+
+                {/* Title */}
+                <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-text-primary">
+                  {workshop.title}
+                </h2>
+
+                {/* Company Link */}
+                {workshop.companyLink && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <span className="text-xs text-text-secondary font-sans">Conducted by</span>
+                    <Link
+                      to={workshop.companyLink}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-accent-brand hover:underline font-semibold"
+                    >
+                      <span>{workshop.company}</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                )}
+
+                {/* Description */}
+                {workshop.text && <WorkshopDescription text={workshop.text} />}
+              </div>
+
+              {/* Footer status / callout */}
+              <div className="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between text-[11px] font-mono text-text-secondary">
+                <span className="flex items-center gap-1.5 text-zinc-400">
+                  <Cpu className="w-3.5 h-3.5 text-accent-brand" />
+                  <span>IIT KHARAGPUR</span>
+                </span>
+                <span className="text-accent-brand font-semibold">
+                  MARCH 12–14, 2027
+                </span>
               </div>
             </div>
           ))}
-
-          {/* waiting animation*/}
-          {/* <div className="md:flex even:md:translate-y-[10rem] p-0.25 rounded-[2.5rem] bg-n-7 relative overflow-hidden workshop-shine flex items-center justify-center min-h-[500px] md:min-h-[800px]">
-            <div className="relative p-8 rounded-[2.4375rem] overflow-hidden xl:p-15 flex items-center justify-center">
-              <div className="h2 md:h4 mb-4 flex items-center justify-center">
-                <DotLottieReact
-                  className="w-full max-w-[428px] mx-auto rounded-xl opacity-80"
-                  src="https://lottie.host/df71c51b-5927-4054-a0b3-9564d8ac7cac/NBte6JOa8o.lottie"
-                  loop
-                  autoplay
-                  width={428}
-                  height={428}
-                />
-              </div>
-            </div>
-          </div> */}
-
-          <Gradient />
         </div>
       </div>
-      <Gradient />
-    </Section>
+    </main>
   );
 };
 

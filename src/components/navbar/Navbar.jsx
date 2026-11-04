@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import NavLogo from "./NavLogo";
 import NavLinkItem from "./NavLinkItem";
 import RegisterButton from "./RegisterButton";
 import CyberMenu from "./CyberMenu";
 import { playClickTick } from "../../utils/cyberAudio";
+import logo from "../../assets/optima2027-logo.png";
 
 const NAV_ITEMS = [
   { name: "HOME", href: "/#hero", path: "/", sectionId: "hero" },
@@ -21,10 +23,9 @@ const NAV_ITEMS = [
 ];
 
 /**
- * THE ALGORITHMIC RIBBON
- * - 0 Scroll: Expansive, prominent command ribbon (max-w-7xl) with larger logo & generous padding.
- * - Scrolled: Smoothly transitions into a sleek compact dock (max-w-[1120px]) with tight padding.
- * - Hardware-accelerated CSS transition replaces Framer layout to guarantee buttery 60/120fps performance.
+ * THE ALGORITHMIC RIBBON & RESPONSIVE COMMAND BAR
+ * - Desktop & Laptop (>= 1024px): Sleek floating Command Ribbon with kinetic route indicator.
+ * - Mobile & Tablet (< 1024px): High-contrast sticky header with quick Register CTA and Cyber Hamburger drawer.
  */
 const Navbar = () => {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -94,10 +95,61 @@ const Navbar = () => {
   return (
     <>
       {/* 
-        Sticky Desktop Ribbon (Never leaves screen, fixed top-4 z-[999])
-        Hidden on mobile viewports (< 1280px) where the Command Grid takes over
+        Mobile & Tablet Top Header (< 1024px)
+        Sticky top bar: Logo, Register CTA, and Cyber Hamburger trigger
       */}
-      <header className="fixed top-4 left-0 right-0 z-[999] hidden xl:flex items-center justify-center px-4 sm:px-6 pointer-events-none">
+      <header className="fixed top-0 left-0 right-0 z-[990] lg:hidden h-14 bg-[#050505]/92 backdrop-blur-xl border-b border-white/10 px-4 sm:px-6 flex items-center justify-between pointer-events-auto">
+        <Link
+          to="/"
+          onClick={() => {
+            playClickTick();
+            if (location.pathname === "/") {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          className="flex items-center"
+          aria-label="Optima 2027 Home"
+        >
+          <img
+            src={logo}
+            alt="Optima 2027"
+            className="h-7 sm:h-8 w-auto object-contain"
+          />
+        </Link>
+
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <Link
+            to={isAuthenticated ? "/profile" : "/register"}
+            onClick={playClickTick}
+            className="px-3 py-1.5 rounded-full border border-accent-brand/50 bg-accent-brand/10 text-accent-brand font-mono text-[11px] font-semibold tracking-wider hover:bg-accent-brand hover:text-black transition-all"
+          >
+            {isAuthenticated ? "PROFILE" : "REGISTER"}
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => {
+              playClickTick();
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
+            className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/15 bg-white/5 text-zinc-300 hover:text-white hover:border-cyan-400/50 transition-colors focus:outline-none"
+            aria-label={mobileMenuOpen ? "Close Navigation Menu" : "Open Navigation Menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <X size={18} className="text-red-400" />
+            ) : (
+              <Menu size={18} className="text-cyan-400" />
+            )}
+          </button>
+        </div>
+      </header>
+
+      {/* 
+        Desktop & Laptop Ribbon (>= 1024px)
+        Fixed top-3 z-[999]
+      */}
+      <header className="fixed top-3 left-0 right-0 z-[999] hidden lg:flex items-center justify-center px-4 sm:px-6 pointer-events-none">
         <div className="relative pointer-events-auto flex items-center justify-center w-full max-w-7xl">
           {/* Ambient Backing Glow */}
           <div
@@ -106,22 +158,21 @@ const Navbar = () => {
             }`}
           />
 
-          {/* Morphing Ribbon: Smooth native CSS transition with 0 layout calculation lag */}
+          {/* Morphing Ribbon */}
           <div
-            className={`relative flex items-center justify-between gap-4 transition-all duration-300 ease-out will-change-[max-width,padding,border-radius] ${
+            className={`relative flex items-center justify-between gap-2 xl:gap-4 transition-all duration-300 ease-out will-change-[max-width,padding,border-radius] ${
               isAtTop
-                ? "w-full max-w-7xl px-8 py-3.5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-                : "w-full max-w-[1120px] px-5 py-2 rounded-full bg-[#050505]/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.85)]"
+                ? "w-full max-w-7xl px-5 xl:px-8 py-2.5 xl:py-3.5 rounded-2xl bg-black/50 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                : "w-full max-w-[1140px] px-4 xl:px-5 py-2 rounded-full bg-[#050505]/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.85)]"
             }`}
           >
-            {/* Left: Brand Logo (Scales up smoothly via CSS) */}
-            <div className="flex items-center pr-2 flex-shrink-0">
+            {/* Left: Brand Logo */}
+            <div className="flex items-center pr-1 xl:pr-2 flex-shrink-0">
               <NavLogo isScrolled={!isAtTop} />
             </div>
 
-            {/* Center: Kinetic Typography & Active Route Indicator */}
-            <nav className="flex items-center gap-0.5 sm:gap-1 relative flex-shrink-0">
-              {/* Geometric SVG guide path */}
+            {/* Center: Kinetic Typography Links */}
+            <nav className="flex items-center gap-0.5 xl:gap-1 relative flex-shrink-0">
               <svg
                 className="absolute -bottom-1 left-0 w-full h-[1px] pointer-events-none opacity-20 overflow-visible"
                 preserveAspectRatio="none"
@@ -147,8 +198,8 @@ const Navbar = () => {
               ))}
             </nav>
 
-            {/* Right: Apex Register CTA Button */}
-            <div className="flex items-center gap-3 pl-2 flex-shrink-0">
+            {/* Right: Register CTA & Sign In */}
+            <div className="flex items-center gap-2 xl:gap-3 pl-1 xl:pl-2 flex-shrink-0">
               {isAuthenticated ? (
                 <button
                   type="button"
@@ -156,14 +207,14 @@ const Navbar = () => {
                     logout();
                     navigate("/");
                   }}
-                  className="hidden 2xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-orange-400 uppercase tracking-wider transition-colors"
+                  className="hidden xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-orange-400 uppercase tracking-wider transition-colors"
                 >
                   Logout
                 </button>
               ) : (
                 <Link
                   to="/signin"
-                  className="hidden 2xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-white uppercase tracking-wider transition-colors"
+                  className="hidden xl:inline-block text-[11px] font-mono text-zinc-400 hover:text-white uppercase tracking-wider transition-colors"
                 >
                   Sign In
                 </Link>
@@ -175,12 +226,10 @@ const Navbar = () => {
       </header>
 
       {/* 
-        Mobile Experience: "The Command Grid"
-        Fixed glowing hexagon trigger at bottom-center + screen-shatter circular clip-path reveal
+        Mobile Full-Screen Command Drawer
       */}
       <CyberMenu
         isOpen={mobileMenuOpen}
-        onToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
         onClose={() => setMobileMenuOpen(false)}
         navItems={NAV_ITEMS}
         activeSection={activeSection}

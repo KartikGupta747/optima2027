@@ -512,7 +512,7 @@ const MediaPlate = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={() => onClick(item)}
-      className={`group relative mb-6 rounded-2xl overflow-hidden cursor-pointer select-none transition-all duration-300 border ${
+      className={`group relative mb-0 rounded-2xl overflow-hidden cursor-pointer select-none transition-all duration-300 border ${
         isTarget
           ? `z-30 ${theme.cardGlow} ring-1 ring-white/20`
           : "z-10 shadow-[0_10px_30px_rgba(0,0,0,0.6)] border-white/10 hover:border-white/30"
@@ -661,26 +661,11 @@ const Gallery = ({ standalone = false }) => {
     mass: 0.2,
   });
 
-  // Parallax Translations across 4 Columns
-  const col1Y = useTransform(smoothProgress, [0, 1], ["40px", "-90px"]);
-  const col2Y = useTransform(smoothProgress, [0, 1], ["-40px", "60px"]);
-  const col3Y = useTransform(smoothProgress, [0, 1], ["60px", "-100px"]);
-  const col4Y = useTransform(smoothProgress, [0, 1], ["-50px", "70px"]);
-
   // Filtered dataset
   const filteredItems = useMemo(() => {
     if (activeFilter === "ALL") return GALLERY_ITEMS;
     return GALLERY_ITEMS.filter((item) => item.category === activeFilter);
   }, [activeFilter]);
-
-  // Distribute items across 4 asymmetric columns
-  const columnData = useMemo(() => {
-    const cols = [[], [], [], []];
-    filteredItems.forEach((item, index) => {
-      cols[index % 4].push(item);
-    });
-    return cols;
-  }, [filteredItems]);
 
   const handleOpenModal = (item) => {
     playClickTick();
@@ -706,7 +691,7 @@ const Gallery = ({ standalone = false }) => {
       ref={sectionRef}
       id="gallery"
       onMouseLeave={() => setHoveredId(null)}
-      className="relative py-24 md:py-32 bg-[#030305] text-white border-t border-b border-white/5 overflow-hidden"
+      className="relative pt-16 sm:pt-18 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 bg-[#030305] text-white border-t border-b border-white/5 overflow-hidden"
     >
       {/* Background Ambient Glow Gradients */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 rounded-full bg-orange-500/10 blur-[140px] pointer-events-none" />
@@ -771,77 +756,23 @@ const Gallery = ({ standalone = false }) => {
       </div>
 
       {/* ========================================== */}
-      {/* PARALLAX MASONRY GRID                      */}
+      {/* RESPONSIVE MASONRY GRID                    */}
       {/* ========================================== */}
       <div ref={containerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-          {/* COLUMN 1 */}
-          <motion.div style={{ y: col1Y }} className="flex flex-col">
-            <AnimatePresence mode="popLayout">
-              {columnData[0].map((item) => (
-                <MediaPlate
-                  key={item.id}
-                  item={item}
-                  isTarget={hoveredId === item.id}
-                  isDimmed={hoveredId !== null && hoveredId !== item.id}
-                  onHoverStart={(id) => setHoveredId(id)}
-                  onHoverEnd={() => setHoveredId(null)}
-                  onClick={handleOpenModal}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* COLUMN 2 */}
-          <motion.div style={{ y: col2Y }} className="flex flex-col">
-            <AnimatePresence mode="popLayout">
-              {columnData[1].map((item) => (
-                <MediaPlate
-                  key={item.id}
-                  item={item}
-                  isTarget={hoveredId === item.id}
-                  isDimmed={hoveredId !== null && hoveredId !== item.id}
-                  onHoverStart={(id) => setHoveredId(id)}
-                  onHoverEnd={() => setHoveredId(null)}
-                  onClick={handleOpenModal}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* COLUMN 3 */}
-          <motion.div style={{ y: col3Y }} className="flex flex-col">
-            <AnimatePresence mode="popLayout">
-              {columnData[2].map((item) => (
-                <MediaPlate
-                  key={item.id}
-                  item={item}
-                  isTarget={hoveredId === item.id}
-                  isDimmed={hoveredId !== null && hoveredId !== item.id}
-                  onHoverStart={(id) => setHoveredId(id)}
-                  onHoverEnd={() => setHoveredId(null)}
-                  onClick={handleOpenModal}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {/* COLUMN 4 */}
-          <motion.div style={{ y: col4Y }} className="flex flex-col">
-            <AnimatePresence mode="popLayout">
-              {columnData[3].map((item) => (
-                <MediaPlate
-                  key={item.id}
-                  item={item}
-                  isTarget={hoveredId === item.id}
-                  isDimmed={hoveredId !== null && hoveredId !== item.id}
-                  onHoverStart={(id) => setHoveredId(id)}
-                  onHoverEnd={() => setHoveredId(null)}
-                  onClick={handleOpenModal}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 items-start">
+          <AnimatePresence mode="popLayout">
+            {filteredItems.map((item) => (
+              <MediaPlate
+                key={item.id}
+                item={item}
+                isTarget={hoveredId === item.id}
+                isDimmed={hoveredId !== null && hoveredId !== item.id}
+                onHoverStart={(id) => setHoveredId(id)}
+                onHoverEnd={() => setHoveredId(null)}
+                onClick={handleOpenModal}
+              />
+            ))}
+          </AnimatePresence>
         </div>
       </div>
 

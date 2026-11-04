@@ -61,7 +61,7 @@ const App = () => {
 			<AnimatePresence>
 				{showSplash && <WelcomeScreen onComplete={handleSplashComplete} />}
 			</AnimatePresence>
-			<div className="min-h-screen bg-bg-base text-text-primary font-sans selection:bg-accent-brand selection:text-black overflow-x-clip">
+			<div className="min-h-screen bg-bg-base text-text-primary font-sans selection:bg-accent-brand selection:text-black overflow-x-hidden w-full max-w-full">
 				<Header />
 				<Routes>
 					<Route path="/" element={<Homepage />} />

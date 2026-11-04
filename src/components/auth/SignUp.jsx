@@ -94,7 +94,7 @@ const SignUp = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#030305] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <main className="min-h-screen bg-[#030305] text-white pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Ambient Sci-Fi Glows */}
       <div className="pointer-events-none absolute -top-32 -left-32 w-96 h-96 bg-[#ff4500]/12 rounded-full blur-[150px]" />
       <div className="pointer-events-none absolute top-1/2 -right-32 w-96 h-96 bg-cyan-400/12 rounded-full blur-[160px]" />
